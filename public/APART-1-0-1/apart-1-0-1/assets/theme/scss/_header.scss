@@ -1,0 +1,203 @@
+.header {
+	background: $main-light-color;
+	z-index: 100;
+	width: 100%;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+	transition: all 350ms ease-in-out;
+	top: 0;
+	font-family: $main-font;
+	z-index: 1000;
+
+
+	@include tablet {
+		position: absolute;
+
+		.header-link, form, .form-group, input {
+			width: 100% !important;
+			float: left;
+			position: relative;
+		}
+		form .btn {
+			position: absolute;
+			right: 0;
+			top: 30px;
+			width: auto;
+		}
+		form input {
+			padding-right: $padding-large;
+		}
+		.navbar-form {
+			border: none;
+			border-top: 4px solid $main-theme-color;
+			padding-top: $padding-medium;
+			background: none;
+			margin: $margin-medium 0;
+		}
+	}
+	@include smartphone {
+		position: absolute;
+
+		.header-link, form, .form-group, input {
+			width: 100% !important;
+			float: left;
+			position: relative;
+		}
+		form .btn {
+			position: absolute;
+			right: 0;
+			top: 30px;
+			width: auto;
+		}
+		form input {
+			padding-right: $padding-large;
+		}
+		.navbar-form {
+			border: none;
+			border-top: 4px solid $main-theme-color;
+			padding-top: $padding-medium;
+			background: none;
+			margin: $margin-medium 0;
+		}
+
+	}
+	&-languages, &-links {
+		padding-top: $padding-base;
+		font-size: 12px;
+
+		li {
+			display: inline-block;
+
+			a {
+				padding: $padding-base * 0.7;
+			}
+		}
+		@include tablet {
+			width: 100%;
+			margin-right: 0 !important;
+			text-align: left;
+
+			li {
+				width: auto;
+			}
+		}
+		@include smartphone {
+			width: 100%;
+			margin-right: 0 !important;
+
+			text-align:left
+			li {
+				width: auto;
+			}
+		}
+	}
+	&-links {
+		@include tablet {
+			text-align: right;
+		}
+		@include smartphone {
+			text-align: right
+		}
+	}
+	&-languages {
+		text-align: left;
+
+		@include tablet {
+			padding-left: 20px
+		}
+		@include smartphone {
+			padding-left: 20px
+		}
+		li {
+			display: inline-block;
+
+			span {
+				color: $main-dark-color;
+				padding: $padding-base * 0.7;
+				opacity: 0.5;
+			}
+		}
+	}
+	&-logo {
+		display: inline-block;
+		margin: 0 auto $margin-medium;
+		text-align: center;
+
+		img {
+			height: 35px;
+
+		}
+		@include tablet {
+			margin-top: $margin-medium;
+		}
+		@include smartphone {
+			margin-top: $margin-medium;
+		}
+		&-small {
+			display: inline-block;
+			margin-left: $margin-medium;
+
+			img {
+				height: 20px;
+			}
+			@include tablet {
+				margin-left: $margin-base;
+			}
+			@include smartphone {
+				margin-left: $margin-base;
+			}
+		}
+	}
+	.navbar {
+		margin-bottom: 0;
+		background: $main-light-color;
+		border-top: 1px solid $body-bg;
+
+		a {
+			font-size: 12px;
+
+			&:after {
+				position: absolute;
+			}
+			&:hover {
+			}
+		}
+		&-nav {
+			@include tablet {
+				padding: $padding-medium;
+			}
+			@include smartphone {
+				padding: $padding-base;
+			}
+		}
+	}
+	&.nav-up {
+		top: -100px;
+	}
+	&-top {
+		max-height: 300px;
+		transition: all 350ms ease-in-out;
+		opacity: 1;
+	}
+	&-fixed {
+		position: fixed;
+
+		@include tablet {
+			position: absolute;
+		}
+		@include smartphone {
+			position: absolute;
+		}
+	}
+	[class^="ti-"], [class*=" ti-"] {
+		position: relative;
+		top: 1px;
+	}
+	&-search-container {
+		@include tablet {
+			width: 100%;
+		}
+		@include smartphone {
+			width: 100%;
+		}
+	}
+}

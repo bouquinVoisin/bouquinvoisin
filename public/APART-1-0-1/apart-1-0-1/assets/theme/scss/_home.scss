@@ -1,0 +1,109 @@
+.home {
+	@extend %box;
+
+	&-slider {
+		position: relative;
+
+		.left-arrow, .right-arrow, .left-arrow-negative, .right-arrow-negative {
+			font-size: 50px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		&-pagination, .swiper-pagination-bullets {
+			border: 0 none;
+			bottom: 10px;
+			position: absolute;
+			text-align: center;
+			z-index: 10;
+		}
+		&-full-page {
+			.swiper-slide {
+				background-size: cover;
+				background-position: center;
+				min-height: 100vh;
+				align-items: center;
+			}
+		}
+		&-half-page {
+			.swiper-slide {
+				background-size: cover;
+				background-position: center;
+				min-height: 50vh;
+				align-items: center;
+			}
+		}
+		&-centered {
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			-moz-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			-moz-box-orient: vertical;
+			-moz-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			-moz-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			min-height: 100vh;
+		}
+			h1, .h1 {
+		text-align: center;
+		@include smartphone {
+			font-size: 32px;
+			padding: 0 $padding-medium;
+		}
+	}
+	}
+	&-search {
+		@extend %box;
+		background: $main-theme-color;
+		padding: $padding-medium;
+
+		@include smartphone {
+			padding: $padding-base;
+			padding-bottom: $padding-medium;
+		}
+		.btn {
+			width: 100%;
+			transition: all 300ms ease-in-out;
+		}
+		.form-control {
+			background: $main-light-color;
+			border-radius: 3px;
+		}
+		.form-inline .form-control {
+			width: 100%;
+		}
+		&-row {
+			@extend %box;
+		}
+		&-group {
+			background: rgba(255, 255, 255, 0.1) none repeat scroll 0 0;
+			color: $main-light-color;
+			float: left;
+			margin-top: $margin-medium;
+			padding-bottom: $padding-base;
+			padding-top: 0;
+			width: 100%;
+		}
+		.btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+			background-color: rgba(230, 230, 230, 0);
+			border-color: inherit;
+			color: #ff6b6b;
+		}
+	}
+}

@@ -1,0 +1,157 @@
+.post {
+	margin-top: $margin-medium;
+
+	&-links {
+		@extend %panel-links;
+	}
+	&-header {
+		margin: (-$margin-large) (-$margin-large) $margin-x-large (-$margin-large);
+		position: relative;
+		background-color: $main-light-color;
+		background-position: top center;
+		background-size: cover;
+		height: 50vh;
+		width: auto;
+
+		img {
+			border: 10px solid $main-light-color;
+			border-radius: 1000px;
+			bottom: -90px;
+			left: 50%;
+			position: absolute;
+			right: 50%;
+			transform: translateX(-50%);
+			width: 180px;
+		}
+	}
+	&-content {
+		background: $main-light-color;
+		padding: $padding-large;
+		border: 1px solid $border-color;
+
+		@include smartphone {
+			padding: $padding-base;
+		}
+		p {
+			margin: $margin-medium 0;
+			font-size: 16px;
+			font-family: $main-font;
+		}
+	}
+	&-details {
+		display: block;
+		margin-bottom: $margin-medium;
+	}
+	&-introduction {
+		border-left: 3px solid $main-theme-color;
+		padding-left: $padding-base;
+		font-size: 18px;
+	}
+	img {
+		margin: 0;
+		padding: 0;
+
+		&.left {
+			padding: 0 $padding-base $padding-base 0;
+		}
+		&.right {
+			padding: 0 0 $padding-base $padding-base;
+		}
+	}
+	&-sidebar {
+		.blog-posts-list {
+			margin: 0;
+
+			li {
+				padding: 0;
+			}
+		}
+	}
+	&-entry {
+		float: left;
+		width: 100%;
+		padding: 0;
+		background: $main-light-color;
+
+		h4, .h4 {
+			margin-bottom: $margin-medium;
+			float: left;
+			width: 100%;
+		}
+		&-meta {
+			display: block;
+			width: 100%;
+			float: left;
+		}
+		&-author {
+			width: 50px;
+			height: 50px;
+			border-radius: 100px;
+			margin-right: $margin-base;
+
+			&-name {
+				padding-top: $padding-base;
+			}
+		}
+		&-name, &-time {
+			padding-top: $padding-base;
+			width: 100%;
+		}
+		&-category {
+			margin-left: $margin-base;
+			color: $main-theme-color;
+			float: right;
+		}
+		&-cover {
+			width: 100%;
+			height: 170px;
+			float: left;
+			margin: $margin-medium 0;
+			background-size: cover;
+			background-position: center;
+			border-radius: 3px;
+		}
+		p {
+			font-size: 18px;
+			color: $main-gray;
+			line-height: 26px;
+			display: block;
+			float: left;
+			width: 100%;
+		}
+		&-more {
+			display: block;
+			float: left;
+		}
+		&-modal {
+			padding: $padding-medium;
+			float: left;
+			background: $main-light-color;
+			margin-bottom: 0 !important;
+		}
+	}
+	.comments {
+		border: 1px solid $border-color;
+		padding: $padding-large;
+		margin-top: $margin-medium;
+		float: left;
+		@include smartphone {
+			padding: $padding-medium $padding-base;
+			.btn {
+				width: 100%;
+				margin-top: $margin-base
+			}
+		}
+
+		&-form {
+			margin-top: $margin-medium;
+		}
+		p {
+			margin: $margin-medium 0;
+		}
+
+	}
+	hr {
+		border-color: $border-color !important;
+	}
+}

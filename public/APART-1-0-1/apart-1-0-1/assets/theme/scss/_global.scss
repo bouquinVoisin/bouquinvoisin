@@ -1,0 +1,102 @@
+// sass --watch assets/theme/scss/theme.scss:assets/theme/css/theme.css
+// sass --watch assets/bootstrap/scss/bootstrap.scss:assets/bootstrap/css/bootstrap.css  
+body {
+	width: 100%;
+	overflow-x: hidden;
+	background: $main-light-color;
+	padding-top: 50px;
+}
+ul, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+p {
+	color: $main-gray;
+}
+.heading {
+	position: relative;
+	margin-bottom: $margin-base;
+	font-size: 14px;
+	padding-bottom: $padding-base;
+}
+.light {
+	color: $main-light-color;
+}
+.dark {
+	color: $main-dark-color;
+}
+.light-bg {
+	background-color: $border-color;
+}
+.dark-bg {
+	background-color: $main-dark-color;
+}
+.theme-color {
+	color: $main-theme-color;
+}
+.theme-color-secondary {
+	color: $main-theme-color-secondary;
+}
+.theme-color-bg {
+	background-color: $main-theme-color;
+}
+//smartphone full width
+.smartphone-fw {
+	@include smartphone {
+		width: 100% !important;
+	}
+}
+.relative {
+	position: relative;
+}
+.overflow-visible {
+	overflow: visible;
+}
+.overflow-hidden {
+	overflow: hidden;
+}
+.styled-list {
+	li {
+		list-style: none;
+		position: relative;
+		padding: $padding-base / 3 0;
+		padding-left: $padding-medium;
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: tranlsateY(-50%);
+			height: 2px;
+			background: $main-theme-color-secondary;
+			width: 15px;
+		}
+	}
+}
+section {
+	@extend %box;
+
+	&.padding {
+		padding: $padding-large 0;
+	}
+}
+.padding {
+	padding: $padding-large 0;
+}
+.padding-medium {
+	padding: $padding-medium 0;
+}
+.border {
+	border: 1px solid $border-color;
+}
+.bold {
+	font-weight: 700;
+}
+.small {
+	font-size: 80%;
+}
+.large {
+	font-size: 120%;
+}

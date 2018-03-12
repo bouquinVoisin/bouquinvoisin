@@ -1,0 +1,113 @@
+footer {
+	display: block;
+	width: 100%;
+	float: left;
+	margin-top: $margin-large;
+	padding-bottom: $padding-large;
+
+	.footer {
+		border-top: 1px solid $body-bg;
+
+		&-top {
+			padding: $padding-base 0;
+			border-top: 1px solid $main-light-gray;
+			border-bottom: 1px solid $main-light-gray;
+			margin-bottom: $margin-large;
+
+			p {
+				padding-top: $padding-base / 3;
+				margin-bottom: 0;
+
+				span {
+					font-weight: 700;
+				}
+			}
+		}
+		&-bottom {
+			background: $body-bg;
+			color: $main-gray;
+
+			p {
+				margin: $margin-base 0;
+			}
+		}
+		a, p, address {
+			color: $main-gray;
+			transition: all 150ms ease-in-out;
+			font-size: 13px;
+		}
+		a:hover {
+			color: $main-theme-color;
+			border-color: $main-theme-color;
+		}
+		li {
+			@extend %custom-list;
+		}
+		&-social {
+			display: inline-block;
+			width: 100%;
+			text-align: right;
+
+			@include smartphone {
+				text-align: left;
+				margin-top: $margin-base;
+			}
+			@include medium-tablet {
+				text-align: left;
+				margin-top: $margin-base;
+			}
+			li {
+				padding: 0;
+				display: inline-block;
+
+				&:after {
+					display: none;
+				}
+				a {
+					display: block;
+					color: $main-theme-color-secondary;
+					width: 30px;
+					height: 30px;
+					line-height: 30px;
+					text-align: center;
+					border: 1px solid $main-light-gray;
+					margin-right: 5px;
+					border-radius: 5px;
+					@include medium-tablet {
+						line-height: 20px;
+					}
+					@include smartphone {
+						line-height: 20px;
+					}
+				}
+			}
+		}
+	}
+	.heading {
+		@include medium-tablet {
+			margin-bottom: 0;
+			margin-top: $margin-medium;
+		}
+		@include smartphone {
+			margin-bottom: 0;
+			margin-top: $margin-medium;
+		}
+		span {
+			color: $main-theme-color;
+		}
+	}
+	a {
+		@include medium-tablet {
+			padding: $padding-base / 2 0;
+			display: inline-block;
+			width: 100%;
+			border-bottom: 1px solid $border-color;
+		}
+		@include smartphone {
+			padding: $padding-base / 3 0;
+			display: inline-block;
+			width: 100%;
+			border-bottom: 1px solid $border-color;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+.about {
+	&-team {
+		margin-top: $margin-medium;
+
+		li {
+			text-align: center;
+
+			span {
+				@extend %box;
+				display: block;
+			}
+			img {
+				border-radius: 100%;
+			}
+		}
+	}
+	p {
+		margin-top: $margin-medium;
+	}
+}

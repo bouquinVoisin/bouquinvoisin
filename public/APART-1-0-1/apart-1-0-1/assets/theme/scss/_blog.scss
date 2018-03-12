@@ -1,0 +1,66 @@
+.blog {
+	margin-top: $margin-medium;
+
+	&-posts {
+		position: relative;
+		//@extend %section-padding;
+
+		&-list {
+			margin: 0 $margin-base;
+			width: 100%;
+
+			li {
+				list-style: none;
+				background: white;
+				margin-bottom: $margin-medium;
+				padding-top: $padding-base;
+			}
+		}
+		&-item {
+			float: left;
+
+			@include smartphone {
+				margin-bottom: $margin-medium;
+			}
+			@include tablet {
+				margin-bottom: $margin-medium;
+			}
+			&-title {
+				color: $main-theme-color;
+				display: block;
+				margin: $margin-base 0 $margin-base / 4;
+				font-family: $main-font;
+				width: 100%;
+			}
+			&-date {
+				margin-bottom: $margin-base;
+				display: block;
+				width: 100%;
+			}
+			&-description {
+				color: $main-theme-color;
+				display: block;
+				font-family: $main-font;
+				margin: 0 0 $margin-medium;
+				width: 100%;
+			}
+			p {
+				float: left;
+				overflow: hidden;
+				position: relative;
+			}
+			img {
+				width: 100%;
+			}
+		}
+	}
+	&-sidebar {
+		.blog-posts-list {
+			margin: 0;
+
+			li {
+				padding: 0;
+			}
+		}
+	}
+}

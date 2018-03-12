@@ -1,0 +1,58 @@
+.services {
+	&-box {
+		background: $main-light-color;
+		padding: $padding-medium;
+		margin-bottom: $margin-medium;
+		float: left;
+		width: 100%;
+		border: 1px solid $border-color;
+
+		.icon {
+			font-size: 40px;
+			margin-bottom: $margin-medium;
+			display: block;
+			color: $main-theme-color;
+		}
+		h4 {
+			text-transform: uppercase;
+			position: relative;
+			height: 2em;
+			text-overflow: hidden;
+
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: -15px;
+				width: 40px;
+				height: 3px;
+				background: $main-theme-color;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+		p {
+			margin: $margin-medium 0;
+			font-size: 16px;
+			color: $main-gray;
+
+			&.fixed-height {
+				height: 4.8em;
+				line-height: 1.2em;
+				overflow: hidden;
+			}
+		}
+	}
+	&-modal {
+		.contact-data {
+			ul {
+				margin: $margin-base 0 0;
+				background: $main-theme-color;
+				color: $main-light-color;
+
+				li .icon {
+					color: $main-light-color;
+				}
+			}
+		}
+	}
+}

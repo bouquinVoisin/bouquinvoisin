@@ -1,0 +1,40 @@
+.developer {
+	&-header {
+		padding: $padding-medium 0;
+		background-size: cover;
+	}
+	&-landing-header {
+		padding: $padding-medium 0;
+		background-size: cover;
+		height: 500px;
+
+		&-detail {
+			text-align: center;
+			margin: 0 auto;
+
+			span {
+				background: $main-theme-color-secondary;
+				color: $main-light-color;
+				display: inline-block;
+				width: auto;
+				margin: 0 auto;
+				padding: $padding-base /2 $padding-medium;
+			}
+		}
+	}
+	&-property {
+		.google-maps, .google-maps > div {
+			height: 300px;
+			width: 100%;
+		}
+	}
+	&-landing {
+		.google-maps, .google-maps > div {
+			height: 300px;
+			width: 100%;
+		}
+		&-row-background {
+			background: $border-color;
+		}
+	}
+}

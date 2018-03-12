@@ -1,0 +1,90 @@
+.post {
+	&-list {
+		//@extend %section-padding;
+		position: relative;
+
+		&-sidebar-item {
+			@extend %box;
+		}
+	}
+	&-slider {
+		@include smartphone {
+			margin: 0 $margin-base;
+			overflow: hidden;
+		}
+		@include medium-tablet {
+			margin: 0 $margin-base;
+			overflow: hidden;
+		}
+	}
+	&-entry {
+		float: left;
+		width: 100%;
+		padding: 0 0 $padding-base 0;
+
+		h4, .h4 {
+			margin-bottom: $margin-medium;
+			float: left;
+			width: 100%;
+		}
+		.section-heading {
+			font-size: 60px;
+		}
+		&-meta {
+			display: block;
+			width: 100%;
+			float: left;
+			margin-top: $margin-base;
+		}
+		&-author {
+			width: 50px;
+			height: 50px;
+			border-radius: 100px;
+			margin-right: $margin-base;
+
+			&-name {
+				padding-top: $padding-base;
+			}
+		}
+		&-name, &-time {
+			padding-top: $padding-base;
+			width: 100%;
+		}
+		&-category {
+			margin-left: $margin-base;
+			color: $main-theme-color;
+			float: right;
+		}
+		.icon {
+			position: relative;
+			top: 2px;
+		}
+		&-cover {
+			width: 100%;
+			height: 170px;
+			float: left;
+			margin: 0 0 $margin-base 0;
+			background-size: cover;
+			background-position: center;
+			border-radius: 3px;
+		}
+		p {
+			font-size: 18px;
+			color: $main-gray;
+			line-height: 26px;
+			display: block;
+			float: left;
+			width: 100%;
+		}
+		&-more {
+			display: block;
+			float: left;
+		}
+		&-modal {
+			padding: $padding-medium;
+			float: left;
+			background: $main-light-color;
+			margin-bottom: 0 !important;
+		}
+	}
+}

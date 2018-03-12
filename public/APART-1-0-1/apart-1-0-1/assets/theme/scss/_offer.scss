@@ -1,0 +1,129 @@
+.offer {
+	&-box {
+		margin-bottom: $margin-medium;
+		overflow: hidden;
+		width: 100%;
+
+		.left-arrow, .right-arrow, .left-arrow-negative, .right-arrow-negative {
+			font-size: 50px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		a {
+			color: $main-dark-color;
+		}
+		&-head {
+			@extend %box;
+			position: relative;
+			margin-bottom: $margin-base;
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				border-radius: 3px;
+			}
+		}
+		&-title {
+			height: 62px;
+			line-height: 20px;
+			overflow: hidden;
+			float: left;
+			width: 100%;
+			padding-top: 0!important;
+			margin-top: $margin-base;
+		}
+		&-price {
+			position: absolute;
+			right: 0;
+			bottom: 15px;
+			background: $main-theme-color-secondary;
+			color: $main-light-color;
+			font-weight: 700;
+			padding: 0 $padding-base;
+			z-index: 10;
+		}
+		&-label {
+			position: absolute;
+			background: $main-light-color;
+			top: 15px;
+			left: 15px;
+			z-index: 10;
+			text-transform: uppercase;
+			font-size: 12px;
+			padding: 0 $padding-base /2;
+		}
+		&-location, &-meta {
+			display: block;
+		}
+		&-meta {
+			opacity: 0.3;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		[class^="ti-"], [class*=" ti-"] {
+			color: $main-theme-color-secondary;
+		}
+		&-horizontal {
+			border-radius: 3px;
+
+			.offer-box-head {
+				width: 40%;
+				float: left;
+				margin-bottom: 0;
+
+				@include medium-tablet {
+					width: 100%;
+				}
+				@include smartphone {
+					width: 100%
+				}
+			}
+			.offer-box-title {
+				padding-top: $padding-base;
+			}
+			a {
+				display: block;
+				float: left;
+				width: 60%;
+				padding-left: $padding-medium;
+
+				@include medium-tablet {
+					width: 100%;
+					padding-left: $padding-base;
+					padding-right: $padding-base;
+				}
+				@include smartphone {
+					width: 100%;
+					padding-left: $padding-base;
+					padding-right: $padding-base;
+				}
+			}
+			a.btn {
+				display: inline-block;
+				width: auto;
+				margin-left: $margin-medium;
+				margin-top: $margin-medium;
+
+				@include medium-tablet {
+					margin-left: $margin-base;
+					margin-bottom: $margin-medium;
+				}
+				@include smartphone {
+					margin-left: $margin-base;
+					margin-bottom: $margin-medium;
+				}
+			}
+		}
+	}
+	&-row {
+		padding-bottom: $padding-medium;
+		margin-bottom: $margin-medium;
+		border-bottom: 1px solid $border-color;
+
+		li {
+			padding-left: 0;
+			margin-bottom: $margin-base
+		}
+	}
+}
