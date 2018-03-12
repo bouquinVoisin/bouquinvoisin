@@ -9,7 +9,16 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+//= require wow
+//= require jquery-1.11.2.min
+//= require swiper.min
+//= require bootstrap.min
+//= require jquery.countTo
+//= require jquery.inview
+//= require jquery.countdown
+//= require bootstrap-select
+//= require main
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+

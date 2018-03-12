@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Liens utiles
+- pour faire marcher les fonts spéciales (type icones), ligne à rajouter dans config/application.rb :
+config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+source : https://stackoverflow.com/questions/27147844/rails-4-1-actioncontrollerroutingerror-no-route-matches-get-fonts-t
