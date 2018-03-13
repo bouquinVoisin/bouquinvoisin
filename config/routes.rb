@@ -1,20 +1,21 @@
 Rails.application.routes.draw do
-  resources :reviews
-
-  get 'books/new'
-
   
+#Static Pages
+  root 'static_pages#home'
+  get 'static_pages/about'
+  get 'static_pages/contact'
+
+
+#Users 
   devise_for :users
     resources :users, :only => [:show, :profile]
 
+#Reviews
+resources :reviews
 
 
-  root 'static_pages#home'
-
-  get 'static_pages/about'
-
-  get 'static_pages/contact'
-
+#Books - en STAND BY
+  get 'books/new'
   get 'books/search'
   get 'books/autocomplete'
   get 'books/index'
