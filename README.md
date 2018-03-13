@@ -1,5 +1,8 @@
 # README
 
+http://bouquinvoisin.herokuapp.com/
+
+
 ## Liens utiles
 - pour faire marcher les fonts spéciales (type icones), ligne à rajouter dans config/application.rb :
 config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
