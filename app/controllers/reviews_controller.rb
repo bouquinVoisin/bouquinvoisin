@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
+      flash[:success] = "Vous avez bien édité votre commentaire"
       redirect_to @review
   	else render 'edit'
     end
