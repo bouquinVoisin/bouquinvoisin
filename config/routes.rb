@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
+
+  get 'reviews/index'
+
+  get 'reviews/show'
+
+  get 'reviews/edit'
+
   get 'books/new'
 
   devise_for :users
