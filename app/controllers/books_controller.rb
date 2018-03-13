@@ -21,8 +21,6 @@ class BooksController < ApplicationController
 
   def force_json
     request.format = :json
-
-  def new
   end
 
 
