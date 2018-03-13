@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+<<<<<<< HEAD
 
   before_action :force_json, only: :autocomplete
 
@@ -21,5 +22,9 @@ class BooksController < ApplicationController
 
   def force_json
     request.format = :json
+
+  def new
   end
+
+
 end
