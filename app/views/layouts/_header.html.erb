@@ -13,13 +13,19 @@
 
 				<div class="collapse navbar-collapse js-navbar-collapse row">
 					<ul class="nav navbar-nav">
-						<li class="header-link"><a href="index.html">home</a></li>
-						<li class="header-link"><a href="listing.html">listing</a></li>
-						<li class="header-link"><a href="offer.html">offer</a></li>
+						<li class="header-link"><%=link_to "home", root_path %></li>
+						
 						<li class="header-link"><a href="landing.html">landing</a></li>
 						<li class="header-link"><a href="developer.html">developer page</a></li>
 						<li class="header-link"><a href="blog-post.html">blog - post</a></li>
 						<li class="header-link"><a href="about-us.html">about-us</a></li>
+						  <% if user_signed_in? %>
+						    <li class="header-link"><%= link_to "Mon profil", root_path%></li>
+						    <li class="header-link"><%= link_to "Déconnexion", destroy_user_session_path %></li>
+						  <%else %>
+						    <li class="header-link"><%= link_to "S'inscrire",  new_user_registration_path%></li>
+						    <li class="header-link"><%= link_to "Se connecter", new_user_session_path %></li>
+						  <% end %>
 						<li class="header-link dropdown mega pull-left ">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">mega menu<span class="ti-angle-down"></span></a>
 							<ul class="dropdown-menu mega-menu container">
