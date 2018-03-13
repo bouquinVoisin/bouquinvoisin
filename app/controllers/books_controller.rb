@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-<<<<<<< HEAD
 
   before_action :force_json, only: :autocomplete
 
