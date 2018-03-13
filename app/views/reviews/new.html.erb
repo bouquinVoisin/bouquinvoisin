@@ -1,6 +1,6 @@
 <div align="center">
 
-<h3>Création de review</h3><br>
+<h3>Création de commentaire</h3><br>
 
 	<%= form_for @review, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
 	  <%= label_tag 'Quel est le titre du livre :' %>
@@ -10,8 +10,8 @@
 	  <%= label_tag 'Quel est le genre du livre :' %>
 	  <%= f.select :book_category, ['Aventure', 'Fantastique', 'Roman d\'amour', 'Policier', 'Science-fiction', 'Autre']%><br>
 	  <%= label_tag 'Quel est ton commentaire sur ce livre :' %>
-	  <%= f.text_area :body %><br>
-	  <%= f.submit "Crée ta review" %>
+	  <%= f.text_area :body, cols: "40", rows: "3" %><br><br>
+	  <%= f.submit "Crée ton commentaire", class: "btn btn-info" %>
 
 	  <% if @review.errors.any? %>
 	    <div id="error_explanation">

@@ -83,8 +83,15 @@
 					</ul>
 
 					<div class="navbar-buttons">
-						<a class="btn btn-link btn-sm mt-10">your account</a>
-						<a class="btn btn-primary btn-sm mt-10"><span class="ti-plus"></span>place a free ad</a>
+						<% if user_signed_in? %>
+							<a class="btn btn-link btn-sm mt-10">Votre profil</a>
+							<a class="btn btn-primary btn-sm mt-10"><span class="ti-plus"></span>Découvez de nouveaux livres</a>
+						<% else %>
+							<%= link_to "Connectez vous", new_user_session_path, :class => "btn btn-link btn-sm mt-10"  %>
+       					    <%= link_to "Inscrivez vous", new_user_registration_path, :class => "btn btn-primary btn-sm mt-10" %>
+						<% end %>
+
+
 					</div>
 				</div>
 			</nav>
