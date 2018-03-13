@@ -1,0 +1,15 @@
+
+<%= form_with url: books_index_path, local: true, method: :get, html: { class: "searchform"} do |form| %>
+	<%= form.text_field :q, placeholder: "Search", id: "mysearchbar", data: {behavior: 'autocomplete'}, class: "form_input" %>
+	<%= form.button "Search", class: "btn" %>
+	<%end%>
+
+
+
+<% @books.each do |book| %>
+ <div style = "border: 1px solid black">
+ 	<%= book.title %>
+   <%= book.author %>
+ </div>
+
+ <%end %>
