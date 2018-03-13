@@ -3927,7 +3927,7 @@ section.padding {
   padding: 60px 0; }
 
 .padding-medium {
-  padding: 30px 0; }
+  padding: 30px 30px; }
 
 .border {
   border: 1px solid rgba(170, 170, 170, 0.15); }
@@ -4733,22 +4733,18 @@ a.socialIcon:hover, .socialHoverClass {
 .post {
   margin-top: 30px; }
   .post-header {
-    margin: -60px -60px 90px -60px;
-    position: relative;
+    margin: -60px -60px 90px -30px;
     background-color: #fff;
     background-position: top center;
     background-size: cover;
-    height: 50vh;
     width: auto; }
     .post-header img {
       border: 10px solid #fff;
       border-radius: 1000px;
-      bottom: -90px;
+
       left: 50%;
-      position: absolute;
-      right: 50%;
-      transform: translateX(-50%);
-      width: 180px; }
+
+      max-width: 30vh; }
   .post-content {
     background: #fff;
     padding: 60px;
@@ -4757,9 +4753,10 @@ a.socialIcon:hover, .socialHoverClass {
       .post-content {
         padding: 15px; } }
     .post-content p {
-      margin: 30px 0;
+      margin: 30px 30px;
       font-size: 16px;
-      font-family: "Montserrat", sans-serif; }
+      font-family: "Montserrat", sans-serif;
+      padding: 0px 9px; }
   .post-details {
     display: block;
     margin-bottom: 30px; }
