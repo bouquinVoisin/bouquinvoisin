@@ -3,7 +3,7 @@ class CreateBooks < ActiveRecord::Migration[5.1]
     create_table :books do |t|
       t.string :title
       t.string :author
-      t.string :caterogy
+      t.string :category
       t.string :cover_url
 
       t.timestamps
