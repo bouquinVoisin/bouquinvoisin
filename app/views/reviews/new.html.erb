@@ -1,2 +1,31 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div align="center">
+
+<h3>Création de review</h3><br>
+
+	<%= form_for @review, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+	  <%= label_tag 'Quel est le titre du livre :' %>
+	  <%= f.text_field :book_title %><br>
+	  <%= label_tag 'Quel est l\'auteur du livre :' %>
+	  <%= f.text_field :book_author %><br>
+	  <%= label_tag 'Quel est le genre du livre :' %>
+	  <%= f.select :book_category, ['Aventure', 'Fantastique', 'Roman d\'amour', 'Policier', 'Science-fiction', 'Autre']%><br>
+	  <%= label_tag 'Quel est ton commentaire sur ce livre :' %>
+	  <%= f.text_area :body %><br>
+	  <%= f.submit "Crée ta review" %>
+
+	  <% if @review.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@review.errors.count, "error") %> prohibited
+	        this review from being saved:
+	      </h2>
+	      <ul>
+	        <% @review.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+    <% end %>
+
+</div>
