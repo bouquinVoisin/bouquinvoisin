@@ -20,5 +20,6 @@
 //= require main
 //= require rails-ujs
 //= require turbolinks
+//= require jquery-ui/autocomplete
 //= require_tree .
 
