@@ -3,7 +3,12 @@ Rails.application.routes.draw do
 
   get 'books/new'
 
+  
   devise_for :users
+    resources :users, :only => [:show, :profile]
+
+
+
   root 'static_pages#home'
 
   get 'static_pages/about'

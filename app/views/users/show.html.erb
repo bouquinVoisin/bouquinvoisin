@@ -1,0 +1,119 @@
+
+    <div class="container">
+        <div class="row ">
+            <div class="post padding-medium">
+               
+                    <div class=" post-content">
+
+
+
+                        <div class="post-header">
+                           <div class = "row">
+                              <div class = "col-xs-5 col-md-4">
+                                <img class="post-user mb-30" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNLHhn2q9dD2MlYx1GXRhJrsYLbm-cBmfr2IVhBlGCot2i1Dg" alt="user avatar">
+                                
+                              </div>
+                              <div class = "col-xs-6 offset-md-1 col-md-6">
+                                <h3><%= @user.name %></h3>
+                                <h4>xx ans</h4>
+                                <h4><%= @user.address %></h4>
+                                
+                                
+                              </div>
+                           </div>
+
+                           <div class = "row">
+                               <div class = offset-xs-1 col-xs-10 offset-md-2 col-md-8>
+                                 <p> Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio.</p>
+                                 <a class="btn btn-primary" data-toggle="collapse" href="#comments-form">contacter <%= @user.name%></a>
+                               </div>
+                           </div>
+                   
+                        </div>
+                    </div>
+
+              
+            </div>
+        </div>
+
+   
+            <div class="row mt-30">
+                <% @reviews.each do |review| %>
+                  <% @i += 1 %>
+                    <div class="col-md-4 wow fadeInLeft">
+                        <div class="services-box text-center shadow">
+                            <span class="icon"> # <%= @i%></span>
+                            <h4><%=review.book_title%>, <%=review.book_author%></h4>
+                            <p class="fixed-height"><%=review.body[0..50]%>
+                            </p>
+                            <%= review.book_cover %>
+
+                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#service-0<%=@i%>">Lire +</a>
+                        </div>
+                    </div>
+                <% end %>
+
+                    
+            </div>
+                <!-- / SERVICE MODAL -->
+            <% @reviews.each do |review| %>
+              <% @j += 1 %>
+                <div id="service-0<%=@j%>" class="modal fade services-modal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content shadow">
+                            <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
+                            <div class="modal-body">
+                                <div class="post-entry post-entry-modal">
+
+                                    <div class="services-box text-center">
+                                        <span class="icon"># <%=@j%></span>
+                                        <h4>La recommandation de <%=@user.name%></h4>
+                                        <h3><%=review.book_title%>, <%=review.book_author%></h3>
+                                        <p>Genre : <%=review.book_category%>
+                                        </p>
+                                    </div>
+
+                                    <p><%=review.body%>
+                                    </p>
+
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%end%>
+
+            <div class = "row">
+                        <h3 class="mb-60">Contacter <%=@user.name%></h3>
+                        <div class="comments-form col-md-12" id="comments-form">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading ">
+                                    <div class="panel-title h3">Un des livres vous intéresse ? Envoyez un message à <%=@user.name%> et demandez-lui si il voudrait bien vous le prêter :) 
+                                        <div class="pull-right login-context-info">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <form id="comment-new" class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <textarea class="form-control" placeholder="Votre message ... "></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- Button -->
+                                            <div class="col-md-12 login-btn">
+                                                <a href="#" class="btn btn-primary">Envoyer votre message</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+
+    </div>
