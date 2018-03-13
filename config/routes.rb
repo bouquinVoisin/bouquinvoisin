@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
-
-  get 'reviews/index'
-
-  get 'reviews/show'
-
-  get 'reviews/edit'
+  resources :reviews
 
   get 'books/new'
 
@@ -19,6 +13,8 @@ Rails.application.routes.draw do
   get 'books/search'
   get 'books/autocomplete'
   get 'books/index'
+
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

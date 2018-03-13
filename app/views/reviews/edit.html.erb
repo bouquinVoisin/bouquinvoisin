@@ -1,2 +1,36 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<div align="center">
+
+<h3>Edition de commentaire</h3><br>
+
+	<%= form_for @review, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+	  <%= label_tag 'Quel est le titre du livre :' %>
+	  <%= f.text_field :book_title %><br>
+	  <%= label_tag 'Quel est l\'auteur du livre :' %>
+	  <%= f.text_field :book_author %><br>
+	  <%= label_tag 'Quel est le genre du livre :' %>
+	  <%= f.select :book_category, ['Aventure', 'Fantastique', 'Roman d\'amour', 'Policier', 'Science-fiction', 'Autre']%><br>
+	  <%= label_tag 'Quel est ton commentaire sur ce livre :' %>
+	  <%= f.text_area :body, cols: "40", rows: "3"%><br><br>
+	  <%= f.submit "Valider tes modifications", :class => "btn btn-primary" %>
+
+	  <% if @review.errors.any? %>
+	    <div id="error_explanation">
+	      <h2>
+	        <%= pluralize(@review.errors.count, "error") %> prohibited
+	        this review from being saved:
+	      </h2>
+	      <ul>
+	        <% @review.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+    <% end %>
+	<br>
+    <%= link_to "Supprimer ce commentaire", review_path(@review),
+              method: :delete,
+              data: { confirm: 'Etes vous sûr ?' },
+              :class => "btn btn-info btn-lg text-center float-right" %>
+
+</div>

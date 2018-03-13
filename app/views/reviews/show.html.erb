@@ -1,2 +1,9 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<div align="center">
+	<h3>Voici la review</h3>
+	Review : <%= @review.body %><br>
+	Titre du livre : <%= @review.book_title %><br>
+	Auteur du livre : <%= @review.book_author %><br>
+	Genre : <%= @review.book_category %><br>
+	<img src="<%= @review.book_cover %>">
+
+</div>
