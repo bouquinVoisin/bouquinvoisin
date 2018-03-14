@@ -6,11 +6,14 @@ class ReviewsController < ApplicationController
   def new
   	@review = Review.new
   end
+
+  def index
+    @reviews = Review.all
+  end
   
   def create
   	@review = Review.new(review_params)
   	@google_books = GoogleBooks.search(@review.book_title).first
-  	#debugger
   	@review.user_id = current_user.id
   	@review.book_cover = @google_books.image_link(:zoom => 5)
 

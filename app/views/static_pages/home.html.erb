@@ -3,7 +3,10 @@
 	        <div class="swiper-wrapper">
 	            <div class="swiper-slide home-slider-centered" id = "bg1">
 	           		<h1 class="light wow fadeInDown mb-30">Découvre<br/> les bouquins préférés de tes voisins</h1>
-	            	<a class="btn btn-primary wow fadeInUp">Découvrir<span class="ti-arrow-right light"></span></a>
+	            	<%= link_to reviews_path, :class => "btn btn-primary wow fadeInUp" do %>
+	            	Découvrir <span class="ti-arrow-right light"></span>
+	            	<% end %>
+	            	
 	            </div>
 
 	        </div>

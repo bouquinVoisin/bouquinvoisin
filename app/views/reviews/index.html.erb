@@ -1,2 +1,152 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+	<section class="home">
+		<div class="box home-search">
+			<div class="container">
+				<div class="row">
+					<div class="">
+						<div class="box">
+							<form class="form-inline" action="search.html">
+								<div class="home-search-row col-md-12">
+									<div class="home-search-group pt-30 pb-30">
+										<div class="form-group col-md-2">
+											<select id="type" class="selectpicker" data-live-search="false" title="Genre">
+												<option>Aventure</option>
+												<option>Fantastique</option>
+												<option>Roman d'amour</option>
+												<option>Policier</option>
+												<option>Science-fiction</option>
+												<option>Autre</option>
+											</select>
+										</div>
+										<div class="form-group col-md-2">
+											<select id="for" class="selectpicker" data-live-search="false" title="A proximité">
+												<option>Oui</option>
+												<option>Non</option>
+											</select>
+										</div>
+
+										<div class="form-group col-md-6">
+											<input type="text" class="form-control" placeholder="Saisissez votre adresse pour une recherche dans votre quartier" />
+										</div>
+
+										<div class="form-group col-md-2">
+											<button type="submit" class="btn btn-primary">search <span class="ti-angle-right"></span></button>
+										</div>
+									</div>
+								</div>
+							</form>
+					    </div>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="padding">
+		<h3 align="center">Voici ce que nous avons dans notre Bibliothèque</h3><br>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-offset-2 col-md-8">
+					<% @reviews.each do |review|%>
+						<div class="box">
+							<div class="offer-box offer-box-horizontal border">
+									<div class="offer-box-head">
+										
+												<div class="swiper-slide"><%= image_tag(review.book_cover, :alt=>"offer image")%></div>
+			
+									</div>
+									<a href="#"> 
+										<span class="h4 offer-box-title">Spacious 1 Bed Flat near Bermondsey Sq. Lovely Period property</span>
+										<span class="offer-box-location"><span class="ti-location-pin"></span>Tower Bridge, London </span>
+										<span class="offer-box-meta">Nordman Agency | 30 Nov 2016 | Flat | 2 Beds</span>
+									</a>
+									<a href="#" class="btn btn-default" data-toggle="modal" data-target="#offer-01">contact</a>
+									<a href="#" class="btn btn-link btn-sm ml-0 pull-right"><span class="ti-star"></span>J'aime</a>
+							</div>
+						</div>
+					<% end %>
+			        <div class="col-md-12 ml-0 mr-0 pt-5 pb-0 border">
+	                    <div class="category-pagination text-center">
+	                        <nav aria-label="Page navigation">
+	                            <ul class="pagination">
+	                                <li>
+	                                    <a href="#" aria-label="Previous">
+	                                        <span aria-hidden="true">&laquo;</span>
+	                                    </a>
+	                                </li>
+	                                <li class="active"><a href="#">1</a></li>
+	                                <li><a href="#">2</a></li>
+	                                <li><a href="#">3</a></li>
+	                                <li><a href="#">4</a></li>
+	                                <li><a href="#">5</a></li>
+	                                <li>
+	                                    <a href="#" aria-label="Next">
+	                                        <span aria-hidden="true">&raquo;</span>
+	                                    </a>
+	                                </li>
+	                            </ul>
+	                        </nav>
+	                    </div>
+	                </div>
+				</div><!--/ col-md-9-->
+			</div><!--/ row -->
+		</div><!--/ container -->
+
+		<!-- OFFER CONTACT FORM-->
+		<div id="offer-01" class="modal fade services-modal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content shadow">
+            		<div class="offer-box">
+						<div class="offer-box-head">
+							<div class="offer-slider">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide"><img src="assets/images/offer/08.jpg" alt="offer image"></div>
+									<div class="swiper-slide"><img src="assets/images/offer/09.jpg" alt="offer image"></div>
+								</div>
+
+								<div class="offer-pagination-prev left-arrow">
+									<span class="ti-angle-left"></span>
+								</div>
+
+								<div class="offer-pagination-next right-arrow">
+									<span class="ti-angle-right"></span>
+								</div>
+							</div>
+							<span class="offer-box-price">$350pw</span>
+							<span class="offer-box-label"><span class="ti-star"></span>featured</span>	
+						</div>
+						<div class="offer-content pl-30 pr-30">
+							<span class="h4 offer-box-title">Spacious 1 Bed Flat near Bermondsey Sq. Lovely Period property</span>
+							<span class="offer-box-location"><span class="ti-location-pin"></span>Tower Bridge, London </span>
+							<span class="offer-box-meta">Nordman Agency | 30 Nov 2016 | Flat | 2 Beds</span>
+							<a href="#" class="btn btn-link btn-sm pr-0 pull-right"><span class="ti-star"></span> to favorites</a>
+							<a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
+	                        <div class="contact-form mt-60">
+	                            <form>
+	                                <div class="form-group">
+	                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+	                                </div>
+
+	                                <div class="form-group">
+	                                    <input type="text" class="form-control" id="contact-email" name="contact-email" placeholder="Email" required>
+	                                </div>
+
+	                                <div class="form-group">
+	                                    <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+	                                </div>
+
+	                                <div class="form-group">
+	                                    <textarea class="form-control" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+	                                </div>
+
+	                                <button type="button" id="submit" name="submit" class="btn btn-primary btn-lg text-center float-right">Send</button>
+	                            </form>
+	                        </div>
+                        </div>
+					</div>
+                </div>
+            </div>
+        </div>
+		<!-- / OFFER CONTACT FORM -->
+	</section>
