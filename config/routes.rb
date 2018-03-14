@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'messages/new'
+
 #Static Pages
   root 'static_pages#home'
   get 'static_pages/about'
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
 #Reviews
 resources :reviews
 
+#Messages
+resources :messages 
 
 #Books - en STAND BY
   get 'books/new'

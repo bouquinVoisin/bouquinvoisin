@@ -11,6 +11,8 @@ gem 'jbuilder',     '2.7.0'
 gem 'devise'
 gem 'googlebooks'
 gem 'ransack'
+gem 'dotenv-rails'
+
 
 
 group :development, :test do

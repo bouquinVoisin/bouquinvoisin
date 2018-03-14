@@ -108,7 +108,8 @@
                                         <div class="form-group">
                                             <!-- Button -->
                                             <div class="col-md-12 login-btn">
-                                                <a href="#" class="btn btn-primary">Envoyer votre message</a>
+                                                <%= link_to "Envoyer un message", new_message_path(@user),
+                                                  :class => "btn btn-info btn-lg text-center float-right" %>
                                             </div>
                                         </div>
                                     </form>
