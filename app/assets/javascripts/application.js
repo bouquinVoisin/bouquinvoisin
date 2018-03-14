@@ -23,3 +23,22 @@
 //= require jquery.easy-autocomplete
 //= require_tree .
 
+
+
+$(document).ready(function() { // Fonction pour englober notre code js pour le rendre compatible avec rails
+
+// FONCTION POUR SCROLLER AU SEIN DE LA PAGE
+   function goToByScroll(id){ // Définition de la fonction
+    $('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
+
+    $('#contactshow').on("click", function () { // Appel de la fonction pour mes différents boutons et liens
+            
+             goToByScroll('contactsection');
+
+
+                                     }
+                );
+
+
+
+});

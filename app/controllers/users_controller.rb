@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def profile
+  	@i = 0
+  	@j=0
+  	@x=0
+  	@y=0
   	@user = current_user
+  	@reviews = @user.reviews
   end
 
 end
