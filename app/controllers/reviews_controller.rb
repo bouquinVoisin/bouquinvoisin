@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
         @reviews = Review.all
 
 
-      when user_signed_in? && !@user.nearbys.exists?
+      when user_signed_in? && @user.nearbys.nil?
         @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
         @reviews = Review.all   
       
