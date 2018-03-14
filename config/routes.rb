@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 resources :reviews
 
 #Messages
-resources :messages 
+resources :messages, :only => [:new, :create]
 
 #Books - en STAND BY
   get 'books/new'
