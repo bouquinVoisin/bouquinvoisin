@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
 #Users 
   devise_for :users
-    resources :users, :only => [:show, :profile]
+    resources :users, :only => [:show]
+    get '/profile', to: 'users#profile', as: 'profile'
 
 #Reviews
 resources :reviews

@@ -1,41 +1,41 @@
 
     <div class="container">
-        <div class="row ">
-            <div class="post padding-medium">
-               
-                    <div class=" post-content">
-
-
-
-                        <div class="post-header">
-                           <div class = "row">
-                              <div class = "col-xs-5 col-md-4">
-                                <img class="post-user mb-30" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNLHhn2q9dD2MlYx1GXRhJrsYLbm-cBmfr2IVhBlGCot2i1Dg" alt="user avatar">
-                                
-                              </div>
-                              <div class = "col-xs-6 offset-md-1 col-md-6">
-                                <h3><%= @user.name %></h3>
-                                <h4>xx ans</h4>
-                                <h4><%= @user.address %></h4>
-                                
-                                
-                              </div>
-                           </div>
-
-                           <div class = "row">
-                               <div class = offset-xs-1 col-xs-10 offset-md-2 col-md-8>
-                                 <p> Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio.</p>
-                                 <a class="btn btn-primary" data-toggle="collapse" href="#comments-form">contacter <%= @user.name%></a>
-                               </div>
-                           </div>
+        <section id = "profileshow">
+            <div class="row ">
+                <div class="post padding-medium">
                    
+                        <div class=" post-content">
+
+                            <div class="post-header">
+                               <div class = "row">
+                                  <div class = "col-xs-5 col-md-4">
+                                    <img class="post-user mb-30" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNLHhn2q9dD2MlYx1GXRhJrsYLbm-cBmfr2IVhBlGCot2i1Dg" alt="user avatar">      
+                                  </div>
+
+                                  <div class = "col-xs-6 offset-md-1 col-md-6">
+                                    <h3><%= @user.name %></h3>
+                                    <h4>xx ans</h4>
+                                    <h4><%= @user.address %></h4> 
+                                  </div>                             
+                               </div>
+
+                               <div class = "row">
+                                   <div class = offset-xs-1 col-xs-10 offset-md-2 col-md-8>
+                                     <p> Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio.</p>
+                                     <a id = "contactshow" class="btn btn-primary" data-toggle="collapse" href="#comments-form">contacter <%= @user.name%></a>
+                                   </div>
+                               </div>                  
+                            </div>
                         </div>
-                    </div>
-
-              
+                 
+                </div>
             </div>
-        </div>
-
+        </section>
+            
+        <section id="recoshow">
+            <div class = "row headtitle">
+                <h2> Les recommandations de <%=@user.name%></h2>
+            </div>
    
             <div class="row mt-30">
                 <% @reviews.each do |review| %>
@@ -46,16 +46,13 @@
                             <h4><%=review.book_title%>, <%=review.book_author%></h4>
                             <p class="fixed-height"><%=review.body[0..50]%>
                             </p>
-                            
-
                             <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#service-0<%=@i%>">Lire +</a>
-
                         </div>
                     </div>
-                <% end %>
-
-                    
+                <% end %>            
             </div>
+
+
                 <!-- / SERVICE MODAL -->
             <% @reviews.each do |review| %>
               <% @j += 1 %>
@@ -74,21 +71,24 @@
                                         <p>Genre : <%=review.book_category%>
                                         </p>
                                     </div>
-
-                                    <p><%=review.body%>
-                                    </p>
-                                    <%= image_tag review.book_cover%>
-
-                                   
-                                </div>
+                                    <p><%=review.body%></p>                                    
+                                   <%if review.book_cover%> <%= image_tag review.book_cover%><%end %>                                  
+                               </div>
                             </div>
                         </div>
                     </div>
                 </div>
             <%end%>
+        </section>
+
+
+       <section id = "contactsection">
+            <div class = "row headtitle">
+                    <h2>Contacter <%=@user.name%></h2>
+            </div>
 
             <div class = "row">
-                        <h3 class="mb-60">Contacter <%=@user.name%></h3>
+
                         <div class="comments-form col-md-12" id="comments-form">
 
                             <div class="panel panel-default">
@@ -102,7 +102,7 @@
                                     <form id="comment-new" class="form-horizontal">
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <textarea class="form-control" placeholder="Votre message ... "></textarea>
+                                                <textarea class="form-control" style = "min-height: 200px;" placeholder="Votre message ... "></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -115,8 +115,11 @@
                                     </form>
                                 </div>
                             </div>
+            
                         </div>
             </div>
+   </section>
+            
 
 
-    </div>
+</div>

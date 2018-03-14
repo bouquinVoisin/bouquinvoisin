@@ -4731,7 +4731,8 @@ a.socialIcon:hover, .socialHoverClass {
     color: #ff6b6b; }
 
 .post {
-  margin-top: 30px; }
+  margin-top: 30px;
+  overflow:hidden; }
   .post-header {
     margin: -60px -60px 90px -30px;
     background-color: #fff;
@@ -5650,5 +5651,19 @@ This is visible during transitions. */
   .services-modal .contact-data ul li .icon {
     color: #fff; }
 
+.headtitle {
+  background-color: #715656cc;
+  padding: 10px; 
+  color: white;
+  margin-bottom: 20px;
+  position: relative;
+left: -15px;
+width: 104%;
+}
 
+.headtitle h2 {
+  font-size: 2em;
+  margin-left: 40px;
+
+}
 /*# sourceMappingURL=theme.css.map */
