@@ -7,4 +7,6 @@ class Review < ApplicationRecord
   validates :book_author, presence: true
   validates :book_category, presence: true
 
+
+
 end
