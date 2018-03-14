@@ -18,7 +18,7 @@ get '/about', to: 'static_pages#about', as: 'about'
 resources :reviews
 
 #Messages
-resources :messages 
+resources :messages, :only => [:new, :create]
 
 #Books - en STAND BY
   get 'books/new'
