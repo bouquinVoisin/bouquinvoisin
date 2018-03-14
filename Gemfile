@@ -12,6 +12,7 @@ gem 'devise'
 gem 'googlebooks'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'geocoder'
 
 
 
