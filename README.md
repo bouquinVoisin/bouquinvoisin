@@ -15,3 +15,10 @@ https://www.youtube.com/watch?v=9eFXEzOPRNs
 
 - Collaborating on heroku 
 https://devcenter.heroku.com/articles/collab
+
+
+- Using Geocoder
+https://github.com/alexreisner/geocoder
+https://gorails.com/episodes/geolocation-and-search-with-geocoder
+ Les méthodes utiles de Geocoder : User.first.nearbys
+ User.near("75002, France")
