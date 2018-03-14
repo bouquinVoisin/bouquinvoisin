@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(email:"michel@bv.com", password: "azertyui", name: "Michel", date_of_birth: 12/12/1980, address: "75018")
-User.create(email:"john@bv.com", password: "azertyui", name: "John", date_of_birth: 12/12/1980, address: "78 rue Gay Lussac, 75005")
-User.create(email:"Alice@bv.com", password: "azertyui", name: "Alice", date_of_birth: 12/12/1980, address: "75019")
+User.create(email:"michel@bv.com", password: "azertyui", name: "Michel", date_of_birth: 12/12/1980, address: "69001")
+User.create(email:"john@bv.com", password: "azertyui", name: "John", date_of_birth: 12/12/1980, address: "59000")
+User.create(email:"Alice@bv.com", password: "azertyui", name: "Alice", date_of_birth: 12/12/1980, address: "125 rue Colbert, 59000, Lille")
 User.create(email:"Charlotte@bv.com", password: "azertyui", name: "Charlotte", date_of_birth: 12/12/1980, address: "30 rue de Thionville, Paris 75019")
 User.create(email:"Anne@bv.com", password: "azertyui", name: "Anne", date_of_birth: 12/12/1980, address: "6 rue de Castellane, 75009")
 User.create(email:"Valentin@bv.com", password: "azertyui", name: "Valentin", date_of_birth: 12/12/1980, address: "34 rue des Martyrs, 75009")
-User.create(email:"Seb@bv.com", password: "azertyui", name: "Seb", date_of_birth: 12/12/1980, address: "75009")
-User.create(email:"Lei@bv.com", password: "azertyui", name: "Lei", date_of_birth: 12/12/1980, address: "75020")
-User.create(email:"fab@bv.com", password: "azertyui", name: "Fab", date_of_birth: 12/12/1980, address: "impasse Poule, 75020")
-User.create(email:"Fanny@bv.com", password: "azertyui", name: "Fanny", date_of_birth: 12/12/1980, address: "rue Gay Lussac, 75005")
+User.create(email:"Seb@bv.com", password: "azertyui", name: "Seb", date_of_birth: 12/12/1980, address: "44 Boulevard des Brotteaux, 69006 Lyon")
+User.create(email:"Lei@bv.com", password: "azertyui", name: "Lei", date_of_birth: 12/12/1980, address: "102 Cours Lafayette, 69003 Lyon")
+User.create(email:"fab@bv.com", password: "azertyui", name: "Fab", date_of_birth: 12/12/1980, address: "38 rue Saint Sebastien, 59800, Lille")
+User.create(email:"Fanny@bv.com", password: "azertyui", name: "Fanny", date_of_birth: 12/12/1980, address: "78 rue Gay Lussac, 75005")
 
 
 Book.create(title:"L'étranger", author:"Albert Camus", category:"Classique")

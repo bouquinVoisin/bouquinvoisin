@@ -8,7 +8,18 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    if user_signed_in?
+      @reviews = []
+      @user = current_user
+        @user.nearbys.each do |user|
+          @reviews = @reviews + user.reviews
+        end
+
+        @reviews.sort_by(&:created_at)
+
+    else
+      @reviews = Review.all
+    end
   end
   
   def create
@@ -50,6 +61,7 @@ class ReviewsController < ApplicationController
     end
     redirect_to root_path
   end
+
 
 
   private 
