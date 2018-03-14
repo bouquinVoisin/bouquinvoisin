@@ -12,3 +12,6 @@ https://www.youtube.com/watch?v=ibxlNN73UTY
 
 - Intégrer email dans rails : 
 https://www.youtube.com/watch?v=9eFXEzOPRNs
+
+- Collaborating on heroku 
+https://devcenter.heroku.com/articles/collab

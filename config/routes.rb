@@ -4,8 +4,9 @@ Rails.application.routes.draw do
 
 #Static Pages
   root 'static_pages#home'
-  get 'static_pages/about'
-  get 'static_pages/contact'
+get '/contact', to: 'static_pages#contact', as: 'contact'
+get '/about', to: 'static_pages#about', as: 'about'
+
 
 
 #Users 

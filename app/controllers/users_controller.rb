@@ -17,15 +17,15 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
 
   end
 
   def update
-   @user = current_user
-       if @user.update(user_params)
-      flash[:success] = "Vous avez bien édité votre profil"
-      redirect_to profile_path
+   @user = User.find(params[:id])
+     if @user.update(user_params)
+       flash[:success] = "Vous avez bien édité votre profil"
+       redirect_to profile_path
     else render 'edit'
     end
   end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 private 
 
   def user_params
-    params.require(:users).permit(:name, :email, :bio, :address)
+    params.require(:user).permit(:bio, :address)
   end
 
 end

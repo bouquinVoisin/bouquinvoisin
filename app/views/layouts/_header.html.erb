@@ -15,76 +15,19 @@
 					<ul class="nav navbar-nav">
 						<li class="header-link"><%=link_to "home", root_path %></li>
 						
-						<li class="header-link"><%=link_to "contact", static_pages_contact_path %></li>
+						<li class="header-link"><%=link_to "contact", contact_path %></li>
 
-						<li class="header-link"><%=link_to "about", static_pages_contact_path %></li>
-						  <% if user_signed_in? %>
-						    <li class="header-link"><%= link_to "Mon profil", root_path%></li>
-						    <li class="header-link"><%= link_to "Déconnexion", destroy_user_session_path, method: :delete  %></li>
-						  <%else %>
-						    <li class="header-link"><%= link_to "S'inscrire",  new_user_registration_path%></li>
-						    <li class="header-link"><%= link_to "Se connecter", new_user_session_path %></li>
-						  <% end %>
-						<li class="header-link dropdown mega pull-left ">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">mega menu<span class="ti-angle-down"></span></a>
-							<ul class="dropdown-menu mega-menu container">
-								<li class="col-sm-3">
-									<ul>
-									<li><%= image_tag("menu-add.png", :class=>"img-responsive  col-lg-12 mb-15", :alt=>"category image")%>
-									<%= image_tag("menu-add.png", :class=>"img-responsive col-lg-12", :alt=>"category image")%></li>
-									</ul>
-								</li>
+						<li class="header-link"><%=link_to "about", about_path %></li>
 
-								<li class="col-sm-3 col-xs-6 smartphone-fw">
-									<ul>
-										<li class="dropdown-header">Excepteur s cupidatat </li>
-										<li><a href="#">lorem ipsum dolor </a></li>
-										<li><a href="#">laboris nisi ut aliquip</a></li>
-										<li><a href="#">int occaecat</a></li>
-										<li><a href="#">Newsletter Form</a></li>
-										<li><a href="#">fugiat nulla pariatur</a></li>
-										<li class="divider"></li>
-										<li class="dropdown-header">Reprehenderit </li>
-										<li><a href="#">ullamco  ex ea commodo</a></li>
-										<li><a href="#">incididunt ut labore </a></li>
-										<li><a href="#">fugiat nulla pariatur</a></li>
-									</ul>
-								</li>
-
-								<li class="col-sm-3 col-xs-6 smartphone-fw">
-									<ul>
-										<li class="dropdown-header">Culpa qui officia deserunt</li>
-										<li><a href="#">laboris nisi ut aliquip</a></li>
-										<li><a href="#">int occaecat</a></li>
-										<li><a href="#">nostrud exercitation </a></li>
-										<li><a href="#">fugiat nulla pariatur</a></li>
-										<li class="divider"></li>
-
-										<li class="dropdown-header">Consectetur adipisicing </li>
-										<li><a href="#">enim ad minim veniam</a></li>
-										<li><a href="#">dolore magna aliqua</a></li>
-										<li><a href="#"> aute irure dolor</a></li>
-									</ul>
-								</li>
-
-								<li class="col-sm-3 col-xs-6 smartphone-fw">
-									<ul>
-										<li class="dropdown-header">Aute irure dolor</li>
-										<li><a href="#">mollit anim id est</a></li>
-										<li><a href="#">enim ad minim veniam</a></li>
-										<li><a href="#">dolore magna aliqua</a></li>
-										<li class="divider"></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
+						
 						
 					</ul>
 
 					<div class="navbar-buttons">
 						<% if user_signed_in? %>
-							<a class="btn btn-link btn-sm mt-10">Votre profil</a>
-							<a class="btn btn-primary btn-sm mt-10"><span class="ti-plus"></span>Découvez de nouveaux livres</a>
+							<%= link_to "Mon profil", profile_path, class: "btn btn-link btn-sm mt-10"%>
+							<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-link btn-sm mt-10"%>
+							<%= link_to reviews_path, class: "btn btn-primary btn-sm mt-10" do %><span class="ti-plus"></span>Découvez de nouveaux livres<%end%>
 						<% else %>
 							<%= link_to "Connectez vous", new_user_session_path, :class => "btn btn-link btn-sm mt-10"  %>
        					    <%= link_to "Inscrivez vous", new_user_registration_path, :class => "btn btn-primary btn-sm mt-10" %>
