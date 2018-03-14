@@ -46,21 +46,22 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 col-md-offset-2 col-md-8">
+				<div class="col-xs-12 col-md-offset-1 col-md-10">
 					<% @reviews.each do |review|%>
 						<div class="box">
 							<div class="offer-box offer-box-horizontal border">
+									<% if review.book_cover %>
 									<div class="offer-box-head">
-										
-												<div class="swiper-slide"><%= image_tag(review.book_cover, :alt=>"offer image")%></div>
-			
+										<div class="swiper-slide"><%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%></div>
 									</div>
+									<% end %>
 									<a href="#"> 
-										<span class="h4 offer-box-title">Spacious 1 Bed Flat near Bermondsey Sq. Lovely Period property</span>
-										<span class="offer-box-location"><span class="ti-location-pin"></span>Tower Bridge, London </span>
-										<span class="offer-box-meta">Nordman Agency | 30 Nov 2016 | Flat | 2 Beds</span>
+										<span class="h4 offer-box-title"><%=review.book_title%> de <%=review.book_author %></span>
+										<span class="offer-box-location">Recommandé par : <%=User.find(review.user_id).name%></span>
+										<span class="offer-box-meta">Le commentaire sur ce livre : <%= review.body%></span>
 									</a>
-									<a href="#" class="btn btn-default" data-toggle="modal" data-target="#offer-01">contact</a>
+									<a href="#" class="btn btn-link btn-sm ml-0" data-toggle="modal">Voir le commentaire</a>
+									<a href="#" class="btn btn-link btn-sm ml-0" data-toggle="modal">Voir le profil de <%=User.find(review.user_id).name%></a>
 									<a href="#" class="btn btn-link btn-sm ml-0 pull-right"><span class="ti-star"></span>J'aime</a>
 							</div>
 						</div>
