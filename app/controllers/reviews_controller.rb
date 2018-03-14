@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
 
   	if @review.save
   		flash[:success] = "Vous avez créé un nouveau commentaire"
-  		redirect_to @review
+  		redirect_to profile_path
   	else
   		render 'new'
   	end

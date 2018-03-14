@@ -20,18 +20,30 @@
                                     <img class="post-user mb-30" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNLHhn2q9dD2MlYx1GXRhJrsYLbm-cBmfr2IVhBlGCot2i1Dg" alt="user avatar">      
                                   </div>
 
-                                  <div class = "col-xs-6 offset-md-1 col-md-6">
+                                  <div class = "col-xs- col-md-offset-1 col-md-3">
                                     <h3><%= @user.name %></h3>
                                     <h4>xx ans</h4>
                                     <h4><%= @user.address %></h4> 
-                                  </div>                             
+                                  </div> 
+                                  <div class = "col-xs-1 col-md-1">
+                                    <%=link_to edit_user_path(@user) do%>
+                                       <span class="icon ti-pencil"></span>
+                                     <% end %>
+                                  </div>
+
                                </div>
 
                                <div class = "row">
-                                   <div class = offset-xs-1 col-xs-10 offset-md-2 col-md-8>
-                                     <p> Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio.</p>
-                                     <a  class="btn btn-primary" data-toggle="collapse" href="#comments-form">éditer</a>
+                                   <div class = "col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
+                                     <p> Ecrivez un petit texte pour vous présenter !</p>
+                                     
                                    </div>
+                                    <div class = "col-xs-2 col-md-1">
+                                    <%=link_to edit_user_path(@user) do%>
+                                       <span class="icon ti-pencil"></span>
+                                     <% end %>
+                                     
+                                   </div>                                  
                                </div>                  
                             </div>
                         </div>
@@ -50,6 +62,7 @@
                   <% @i += 1 %>
                     <div class="col-md-4 wow fadeInLeft">
                         <div class="services-box text-center shadow">
+
                             <span class="icon"> # <%= @i%></span>
                             <h4><%=review.book_title%>, <%=review.book_author%></h4>
                             <p class="fixed-height"><%=review.body[0..50]%>
@@ -60,14 +73,15 @@
                 <% end %>
             <% if @reviews.count <3 %>
                    <%(3-@reviews.count).times do%>
-                     <% @x += 1 %>
+
                      <div class="col-md-4 wow fadeInLeft">
                         <div class="services-box text-center shadow">
                             <span class="icon"> + </span>
                             <h4>Ajouter une recommandation</h4>
                             <p class="fixed-height">Faite découvrir un de vos livres préférez
                             </p>
-                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#ajout-0<%=@x%>">Ajouter +</a>
+                            <%=link_to 'Ajouter +', new_review_path, class: "btn btn-margin btn-default btn-lg"%>
+                           
                         </div>
                       </div> 
                     <%end%>            
@@ -101,65 +115,6 @@
                     </div>
                 </div>
             <%end%>
-             <% if @reviews.count <3 %>
-                   <%(3-@reviews.count).times do%>
-                   <% @y += 1 %>
-                  <div id="ajout-0<%=@y%>" class="modal fade services-modal" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content shadow">
-                            <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
-                            <div class="modal-body">
-                                <div class="post-entry post-entry-modal">
-
-                                    <div class="services-box text-center">
-                                        <span class="icon">+</span>
-                                        <h4>Ajoutez une recommandation</h4>
-                                        <h3>Votre nouvelle recommandation</h3>
-                                    </div>
-
-
-
-                                          <div align="center">
-
-                                          <h3>Création de commentaire</h3><br>
-
-                                            <%= form_for @review, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-                                              <%= label_tag 'Quel est le titre du livre :' %>
-                                              <%= f.text_field :book_title %><br>
-                                              <%= label_tag 'Quel est l\'auteur du livre :' %>
-                                              <%= f.text_field :book_author %><br>
-                                              <%= label_tag 'Quel est le genre du livre :' %>
-                                              <%= f.select :book_category, ['Aventure', 'Fantastique', 'Roman d\'amour', 'Policier', 'Science-fiction', 'Autre']%><br>
-                                              <%= label_tag 'Quel est ton commentaire sur ce livre :' %>
-                                              <%= f.text_area :body, cols: "40", rows: "3" %><br><br>
-                                              <%= f.submit "Crée ton commentaire", class: "btn btn-info" %>
-
-                                              <% if @review.errors.any? %>
-                                                <div id="error_explanation">
-                                                  <h2>
-                                                    <%= pluralize(@review.errors.count, "error") %> prohibited
-                                                    this review from being saved:
-                                                  </h2>
-                                                  <ul>
-                                                    <% @review.errors.full_messages.each do |msg| %>
-                                                      <li><%= msg %></li>
-                                                    <% end %>
-                                                  </ul>
-                                                </div>
-                                              <% end %>
-                                              <% end %>
-
-                                          </div>                                
-                                     
-
-
-                               </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <%end%>            
-             <%end %>   
+            
 
         </section>       

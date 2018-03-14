@@ -1,31 +1,41 @@
-<div align="center">
 
-<h3>Création de commentaire</h3><br>
+<div class = "row">
+	<div class="col-md-offset-4 col-md-4 col-xs-12">
+				     <div class="contact-form contact-form-box border mt-30 mb-30 pull-left">
+            <div class = "row headtitle">
+                <h2> Créez une recommandation</h2>
+            </div>
 
-	<%= form_for @review, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-	  <%= label_tag 'Quel est le titre du livre :' %>
-	  <%= f.text_field :book_title %><br>
-	  <%= label_tag 'Quel est l\'auteur du livre :' %>
-	  <%= f.text_field :book_author %><br>
-	  <%= label_tag 'Quel est le genre du livre :' %>
-	  <%= f.select :book_category, ['Aventure', 'Fantastique', 'Roman d\'amour', 'Policier', 'Science-fiction', 'Autre']%><br>
-	  <%= label_tag 'Quel est ton commentaire sur ce livre :' %>
-	  <%= f.text_area :body, cols: "40", rows: "3" %><br><br>
-	  <%= f.submit "Crée ton commentaire", class: "btn btn-info" %>
 
-	  <% if @review.errors.any? %>
-	    <div id="error_explanation">
-	      <h2>
-	        <%= pluralize(@review.errors.count, "error") %> prohibited
-	        this review from being saved:
-	      </h2>
-	      <ul>
-	        <% @review.errors.full_messages.each do |msg| %>
-	          <li><%= msg %></li>
-	        <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-    <% end %>
+	                    <%= form_for @review, class: "mt-30", url: {action: "create"} do |f| %> 
+	                        <div class="form-group">
+	                         <%= f.text_field :book_title, class: "form-control", placeholder: "Titre du livre" %>	           
+	                        </div>
+	                        <div class="form-group">
+	                         <%= f.text_field :book_author, class: "form-control", placeholder: "Auteur du livre" %>	           
+	                        </div>
+	                        <div class="form-group">
+	                         <%= f.select :book_category, ['Aventure', 'Fantastique', 'Roman d\'amour', 'Policier', 'Science-fiction', 'Autre'], :class => "form-control", placeholder: "Genre"%>	           
+	                        </div>	                        
+	                        <div class="form-group">
+	                         <%= f.text_area :body, class: "form-control", placeholder: "Dis nous pourquoi tu adore ce livre" %>           
+	                        </div>
 
+	                        <%= f.submit "Crée ta recommandation", class: "btn btn-default col-md-12 btn-lg text-center float-right" %>
+
+	                        	  <% if @review.errors.any? %>
+									    <div id="error_explanation">
+									      <h2>
+									        <%= pluralize(@review.errors.count, "error") %> prohibited
+									        this review from being saved:
+									      </h2>
+									      <ul>
+									        <% @review.errors.full_messages.each do |msg| %>
+									          <li><%= msg %></li>
+									        <% end %>
+									      </ul>
+									    </div>
+								  <% end %>
+	                    <%end%>
+	                </div>
 </div>
