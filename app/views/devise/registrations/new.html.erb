@@ -1,39 +1,37 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class="row" align="center">
+  <div class="col-xs-12 col-md-offset-4 col-md-4">
+             <div class="contact-form contact-form-box border mt-30 mb-30">
+             <h5 align="center">S'inscrire</h5><br>
+                      
+                      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :class => "mt-30") do |f| %>
+                      <%= devise_error_messages! %>
+                          <div class="form-group">
+                              <%= f.email_field :email, autofocus: true, autocomplete: "email" , :class => "form-control", :placeholder => "Email"%>
+                          </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                          <div class="form-group">
+                              <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Mot de passe"%>
+                          </div>
+
+                          <div class="form-group">
+                              <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Confirmation de mot de passe"%>
+                          </div>
+                          
+                          <div class="form-group">
+                              <%= f.text_field :name, autocomplete: "off", :class => "form-control", :placeholder => "Prénom"%>
+                          </div>
+
+                          <div class="form-group">
+                              <%= f.text_field :address, autocomplete: "off", :class => "form-control", :placeholder => "Adresse précise, CP ou ville"%><i style="font-size: 80%">L'adresse nous permettra de vous proposer les commentaires de vos voisins</i>
+                          </div>
+                          
+
+                          <%= f.submit "S'inscrire", :id => "submit", :class => "btn btn-primary col-md-12 btn-lg text-center float-right"%>
+
+                          <%= render "devise/shared/links" %>
+                      <% end %>
+              </div>                
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-    <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

@@ -5,6 +5,7 @@
              <h5 align="center">Se connecter</h5><br>
                       
                       <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => "mt-30") do |f| %>
+                          <%= devise_error_messages! %>
                           <div class="form-group">
                               <%= f.email_field :email, autofocus: true, autocomplete: "email" , :class => "form-control", :placeholder => "Email"%>
                           </div>
