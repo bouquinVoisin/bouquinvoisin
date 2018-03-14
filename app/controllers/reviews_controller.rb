@@ -8,19 +8,34 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    if user_signed_in?
-      @reviews = []
-      @user = current_user
-        @user.nearbys.each do |user|
-          @reviews = @reviews + user.reviews
-        end
+    @user = current_user
+    @phrase = ""
+    case 
+      when !user_signed_in?
+        @phrase = ""
+        @reviews = Review.all
 
-        @reviews.sort_by(&:created_at)
 
-    else
-      @reviews = Review.all
+      when user_signed_in? && !@user.nearbys.exists?
+        @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
+        @reviews = Review.all   
+      
+        when user_signed_in? && @user.nearbys.exists?
+
+            @phrase = ""
+            @reviews = []
+             @user.nearbys.each do |user|
+              @reviews = user.reviews + @reviews
+             end
+          if @reviews = []
+             @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
+             @reviews = Review.all   
+          end
+
+
     end
   end
+    
   
   def create
   	@review = Review.new(review_params)
