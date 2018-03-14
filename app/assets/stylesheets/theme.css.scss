@@ -29,7 +29,13 @@
   overflow: hidden;
  }
 
-
+#image_cover {
+  width: auto; 
+  height: 100%; 
+  margin-left: auto;          
+  margin-right: auto; 
+  display: block;
+}
 
 
 .swiper-container {
@@ -5540,7 +5546,7 @@ This is visible during transitions. */
   .offer-box-horizontal {
     border-radius: 3px; }
     .offer-box-horizontal .offer-box-head {
-      width: 40%;
+      width: 20%;
       float: left;
       margin-bottom: 0; }
       @media (min-width: 480px) and (max-width: 991px) {
