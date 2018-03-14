@@ -1,0 +1,39 @@
+
+<div class = "row">
+	<div class="col-md-offset-4 col-md-4 col-xs-12">
+				     <div class="contact-form contact-form-box border mt-30 mb-30 pull-left">
+            <div class = "row headtitle">
+                <h2> Editez votre profil</h2>
+            </div>
+
+
+	                    <%= form_for @user, class: "mt-30" do |f| %> 
+	                        <div class="form-group">
+	                        <p> Nous avons besoin de vous localiser afin de vous montrer les bouquins préférés de vos voisins. Donnez-nous votre exacte, ou bien votre rue, votre code postal ou votre ville. Votre adresse exacte ne sera jamais communiquée aux autres membres.</p>
+	                         <%= f.label "Votre adresse"%>
+	                         <%= f.text_field :address, class: "form-control", placeholder: "Votre adresse" %>	           
+	                        </div>
+	                                              
+	                        <div class="form-group">
+	                         <%= f.label "Votre bio"%>
+	                         <%= f.text_area :bio, class: "form-control", placeholder: "Présentez-vous aux autres membres :)" %>           
+	                        </div>
+
+	                        <%= f.submit "Edite ton profil", class: "btn btn-default col-md-12 btn-lg text-center float-right" %>
+
+	                        	  <% if @user.errors.any? %>
+									    <div id="error_explanation">
+									      <h2>
+									        <%= pluralize(@user.errors.count, "error") %> prohibited
+									        this review from being saved:
+									      </h2>
+									      <ul>
+									        <% @user.errors.full_messages.each do |msg| %>
+									          <li><%= msg %></li>
+									        <% end %>
+									      </ul>
+									    </div>
+								  <% end %>
+	                    <%end%>
+	                </div>
+</div>

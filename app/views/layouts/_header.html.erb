@@ -15,10 +15,9 @@
 					<ul class="nav navbar-nav">
 						<li class="header-link"><%=link_to "home", root_path %></li>
 						
-						<li class="header-link"><a href="landing.html">landing</a></li>
-						<li class="header-link"><a href="developer.html">developer page</a></li>
-						<li class="header-link"><a href="blog-post.html">blog - post</a></li>
-						<li class="header-link"><a href="about-us.html">about-us</a></li>
+						<li class="header-link"><%=link_to "contact", static_pages_contact_path %></li>
+
+						<li class="header-link"><%=link_to "about", static_pages_contact_path %></li>
 						  <% if user_signed_in? %>
 						    <li class="header-link"><%= link_to "Mon profil", root_path%></li>
 						    <li class="header-link"><%= link_to "Déconnexion", destroy_user_session_path, method: :delete  %></li>
