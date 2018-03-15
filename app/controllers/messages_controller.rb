@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
   	@message = Message.new
   	@@user = User.find(params[:format])

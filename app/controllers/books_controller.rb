@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
 
   before_action :force_json, only: :autocomplete
 

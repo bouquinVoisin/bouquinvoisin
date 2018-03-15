@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(email:"sebastien@hotmail.fr", password: "foobar", name: "Sebastien Lille", date_of_birth: 16/06/1987, postal_code:"59800", address: "58 rue de la Barre, Lille")
+User.create(email:"sebastien.rombaut@hotmail.fr", password: "foobar", name: "Sebastien Lille", date_of_birth: 16/06/1987, postal_code:"59800", address: "58 rue de la Barre, Lille")
 User.create(email:"leila_06@hotmail.com", password: "foobar", name: "Leila Paris", date_of_birth: 06/07/1990, postal_code:"75005", address: "78 rue Gay Lussac")
 User.create(email:"rombaut.se@gmail.com", password: "foobar", name: "Sebastien Paris", date_of_birth: 16/06/1987, postal_code:"75012", address: "28 rue Traversière")
 User.create(email:"leila.chaouih@gmail.com", password: "foobar", name: "Leila Région Parisienne", date_of_birth: 06/07/1990, postal_code:"95290", address: "5 impasse des Sablons")
