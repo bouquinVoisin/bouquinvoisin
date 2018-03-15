@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
 
 	def full_address
-	 address + postal_code + ", France"
+	 address +" "+ postal_code + ", France"
 	end
 
 
