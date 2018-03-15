@@ -11,15 +11,6 @@ class ReviewsController < ApplicationController
     @user = current_user
     @phrase = ""
     case 
-      when !user_signed_in?
-        @phrase = ""
-        @reviews = Review.all
-
-      when user_signed_in? && !@user.geocoded?
-        @user.geocoded
-        @user.save
-
-
       when user_signed_in? && @user.nearbys.nil? || user_signed_in? && !@user.nearbys.exists?
 
         @phrase = "1 Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
@@ -30,10 +21,13 @@ class ReviewsController < ApplicationController
             @phrase = ""
             @reviews = []
              @user.nearbys.each do |user|
-              @reviews << user.reviews
+               user.reviews.each do |review_near|
+                @reviews << review_near
+              end
              end
             @reviews 
-          if @reviews = []
+
+          if @reviews == []
              @phrase = "2 Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
              @reviews = Review.all   
           end

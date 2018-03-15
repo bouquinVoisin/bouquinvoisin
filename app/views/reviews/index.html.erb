@@ -68,13 +68,15 @@
 									<% end %>
 									<a href="#"> 
 										<span class="h4 offer-box-title"><%=review.book_title%> de <%=review.book_author %></span>
-										<span class="offer-box-location">Recommandé par : <%=User.find(review.user_id).name%></span>
+										<span class="offer-box-location">Recommandé par votre voisin(e) <%=User.find(review.user_id).name%>, à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
 										<span class="offer-box-meta">Le commentaire sur ce livre : <%= review.body%></span>
 									</a>
 									<a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=@k%>" >Voir le commentaire</a>
 									<%= link_to user_link, :class => "btn btn-link btn-sm ml-0" do %>
 									Voir le profil de <%=User.find(review.user_id).name%>
+
 									<% end%>
+
 									<a href="#" class="btn btn-link btn-sm ml-0 pull-right"><span class="ti-star"></span>J'aime</a>
 							</div>
 						</div>
