@@ -4707,7 +4707,7 @@ a.socialIcon:hover, .socialHoverClass {
   .home-slider-half-page .swiper-slide {
     background-size: cover;
     background-position: center;
-    min-height: 50vh;
+    min-height: 75vh;
     align-items: center; }
   .home-slider-centered {
     -webkit-box-align: center;
@@ -4737,11 +4737,21 @@ a.socialIcon:hover, .socialHoverClass {
     justify-content: center;
     min-height: 100vh; }
   .home-slider h1, .home-slider .h1 {
-    text-align: center; }
+    width: 60%;
+   font-weight: bold;
+   font-size: 10vh; }
     @media (max-width: 479px) {
       .home-slider h1, .home-slider .h1 {
-        font-size: 32px;
-        padding: 0 30px; } }
+        font-size: 36px;
+       padding: 0 10px;
+       width: 85%; } }
+    .home-slider .btn {
+    font-size: 2em;
+    }
+    @media (max-width: 479px) {
+      .home-slider .btn {
+        font-size: 22px;
+        } }
 .home-search {
   background: #556270;
   padding: 30px; }
