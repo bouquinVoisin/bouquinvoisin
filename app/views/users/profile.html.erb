@@ -1,6 +1,6 @@
  <div class="container">
              
-                <h1> Bienvenue, <%=@user.name%></h1>
+     <h1> Bienvenue, <%=@user.name%></h1>
            
         <section id = "profile">
 
@@ -67,10 +67,12 @@
                     <div class="col-md-4 wow fadeInLeft">
                         <div class="services-box text-center shadow">
 
-                            <span class="icon"> # <%= @i%></span>
-                            <h4><%=review.book_title%>, <%=review.book_author%></h4>
-                            <p class="fixed-height"><%=review.body[0..50]%>
-                            </p>
+                            
+                            <h4><%=review.book_title%> </h4>
+                            <h5><%=review.book_author%></h5>
+                            <%if review.book_cover%>
+                              <%= image_tag(review.book_cover, :class => "cover_profile")%> 
+                            <% end %>
                             <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#profile-0<%=@i%>">Lire +</a>
                         </div>
                     </div>
@@ -112,7 +114,10 @@
                                         </p>
                                     </div>
                                     <p><%=review.body%></p>                                    
-                                   <%if review.book_cover%> <%= image_tag review.book_cover%><%end %>                                  
+                                   <%if review.book_cover%>
+                                     <%= image_tag(review.book_cover, :class => "cover_profile")%> 
+                                     
+                                   <%end %>                                  
                                </div>
                             </div>
                         </div>
