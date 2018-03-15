@@ -31,11 +31,28 @@ class ReviewsController < ApplicationController
              @phrase = "2 Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
              @reviews = Review.all   
           end
-
-     
+   
     end
 
+
   end
+
+def cp
+ @users = User.postal_code(params[:postal_code])
+ @reviews = []
+   @users.each do |user|
+    user.reviews.each do |review_cp|
+      @reviews << review_cp
+    end
+   end
+ @reviews 
+ if @reviews == []
+  flash[:success] = "Aucun voisin avec le même code postal :/"
+  redirect_to reviews_path
+ else
+ render 'reviews/index'
+end
+end
     
   
   def create

@@ -15,7 +15,11 @@ get '/about', to: 'static_pages#about', as: 'about'
     get '/profile', to: 'users#profile', as: 'profile'
 
 #Reviews
-resources :reviews
+resources :reviews do #route qui permet de créer un id dans l'url add_cart ce qui permet de trouver le bon item à ajouter
+    collection do
+      get :cp
+    end
+  end
 
 #Messages
 resources :messages, :only => [:new, :create]
