@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create(email:"sebastien@hotmail.fr", password: "foobar", name: "Sebastien Lille", date_of_birth: 16/06/1987, code_postal:"59800", address: "58 rue de la Barre, Lille")
-User.create(email:"leila_06@hotmail.com", password: "foobar", name: "Leila Paris", date_of_birth: 06/07/1990, code_postal:"75005", address: "78 rue Gay Lussac")
-User.create(email:"rombaut.se@gmail.com", password: "foobar", name: "Sebastien Paris", date_of_birth: 16/06/1987, code_postal:"75012", address: "28 rue Traversière")
-User.create(email:"leila.chaouih@gmail.com", password: "foobar", name: "Leila Région Parisienne", date_of_birth: 06/07/1990, code_postal:"95290", address: "5 impasse des Sablons")
-User.create(email:"sophie.tochon@gmail.com", password: "foobar", name: "Sophie", date_of_birth: 12/9/1988, code_postal:"75011", address: "Place de la Nation")
-User.create(email:"fannyhenno@gmail.com", password: "foobar", name: "Fanny", date_of_birth: 10/03/1986, code_postal:"59160", address: "Lomme")
-User.create(email:"fabien.laroche89@gmail.com", password: "foobar", name: "Fabien", date_of_birth: 01/06/1982, code_postal:"13002", address: "Marseille")
+User.create(email:"sebastien@hotmail.fr", password: "foobar", name: "Sebastien Lille", date_of_birth: 16/06/1987, postal_code:"59800", address: "58 rue de la Barre, Lille")
+User.create(email:"leila_06@hotmail.com", password: "foobar", name: "Leila Paris", date_of_birth: 06/07/1990, postal_code:"75005", address: "78 rue Gay Lussac")
+User.create(email:"rombaut.se@gmail.com", password: "foobar", name: "Sebastien Paris", date_of_birth: 16/06/1987, postal_code:"75012", address: "28 rue Traversière")
+User.create(email:"leila.chaouih@gmail.com", password: "foobar", name: "Leila Région Parisienne", date_of_birth: 06/07/1990, postal_code:"95290", address: "5 impasse des Sablons")
+User.create(email:"sophie.tochon@gmail.com", password: "foobar", name: "Sophie", date_of_birth: 12/9/1988, postal_code:"75011", address: "Place de la Nation")
+User.create(email:"fannyhenno@gmail.com", password: "foobar", name: "Fanny", date_of_birth: 10/03/1986, postal_code:"59160", address: "Lomme")
+User.create(email:"fabien.laroche89@gmail.com", password: "foobar", name: "Fabien", date_of_birth: 01/06/1982, postal_code:"13002", address: "Marseille")
 
 
 
