@@ -23,3 +23,6 @@ https://gorails.com/episodes/geolocation-and-search-with-geocoder
  Les méthodes utiles de Geocoder : User.first.nearbys
  User.near("75002, France")
 Help with config : http://hankstoever.com/posts/11-Pro-Tips-for-Using-Geocoder-with-Rails
+
+- Google image: 
+http://geoffrey-hug.logdown.com/posts/692831-how-to-use-google-to-search-images-in-your-rails-app
