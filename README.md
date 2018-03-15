@@ -22,6 +22,4 @@ https://github.com/alexreisner/geocoder
 https://gorails.com/episodes/geolocation-and-search-with-geocoder
  Les méthodes utiles de Geocoder : User.first.nearbys
  User.near("75002, France")
-
-- Install Redis (cache for Geocoder)
-https://github.com/codeforamerica/ohana-api/wiki/Customizing-the-geocoding-configuration
+Help with config : http://hankstoever.com/posts/11-Pro-Tips-for-Using-Geocoder-with-Rails
