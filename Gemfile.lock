@@ -38,6 +38,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     ansi (1.5.0)
     arel (8.0.0)
     bcrypt (3.1.11)
@@ -71,6 +73,9 @@ GEM
     geocoder (1.4.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    google_custom_search_api (2.0.0)
+      addressable
+      httparty
     googlebooks (0.0.9)
       httparty
     guard (2.13.0)
@@ -132,6 +137,7 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    public_suffix (3.0.2)
     puma (3.9.1)
     rack (2.0.4)
     rack-test (0.8.3)
@@ -233,6 +239,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   geocoder
+  google_custom_search_api
   googlebooks
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
