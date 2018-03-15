@@ -18,8 +18,8 @@
   background: 
     /* top, transparent red, faked with gradient */ 
     linear-gradient(
-      rgb(64, 80, 96), 
-      rgba(0, 0, 0, 0.3) 
+      rgba(63, 79, 95, 0.6), 
+      rgba(63, 79, 95, 0.3) 
     ),
     /* bottom, image */
     url(asset-path('assets/slider/slide5.jpg'));
@@ -4636,6 +4636,17 @@ a.socialIcon:hover, .socialHoverClass {
 .social-circle i {
   color: #fff; }
 
+.counter {
+  margin-bottom: 60px;
+  background-color : white;
+  height: 250px;
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+.counter p {
+  color: #837f7f;
+}
 .countdown-counter {
   display: block;
   width: 100%;
