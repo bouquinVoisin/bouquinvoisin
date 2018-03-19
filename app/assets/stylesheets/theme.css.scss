@@ -66,6 +66,38 @@
 
 }
 
+#filterssection { 
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+#filterssection a:hover, #filterssection span:hover{
+  font-weight: bold;
+}
+
+#filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 80%;
+  border-bottom: 1px solid gray;
+}
+
+#filtersitems {
+  display: flex;
+justify-content: space-around;
+width: 100%;
+}
+#filters select {
+  box-shadow: none;
+  background: none;
+  border: 2px solid #ff6b6b;
+  height: 36px;
+  border-radius: 5px;
+}
+
 
 .swiper-container {
   margin: 0 auto;
@@ -4794,6 +4826,7 @@ a.socialIcon:hover, .socialHoverClass {
     background-color: rgba(230, 230, 230, 0);
     border-color: inherit;
     color: #ff6b6b; }
+
 
 .post {
   margin-top: 30px;

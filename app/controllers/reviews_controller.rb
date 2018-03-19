@@ -3,11 +3,13 @@ class ReviewsController < ApplicationController
   
   attr_accessor :google_books, :results, :research
 
+
   def new
   	@review = Review.new
   end
 
   def index
+    @review_option = false
     @user = current_user
     @phrase = ""
     case 
@@ -33,11 +35,12 @@ class ReviewsController < ApplicationController
           end
    
     end
-
+ 
 
   end
 
 def cp
+ @review_option = true
  @users = User.postal_code(params[:postal_code])
  @reviews = []
    @users.each do |user|
@@ -52,6 +55,23 @@ def cp
  else
    render 'reviews/index'
  end
+end
+
+def choose_category
+  @review_option = true
+  @reviews = []
+  @reviews = Review.book_category(params[:book_category])
+  if @reviews == []
+   flash[:success] = "Aucun bouquin dans cette catégorie"
+   redirect_to reviews_path
+ else
+   render 'reviews/index'
+ end
+end
+
+def all
+  @reviews = Review.all
+  render 'reviews/index'
 end
     
   

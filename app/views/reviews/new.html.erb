@@ -15,7 +15,17 @@
 	                         <%= f.text_field :book_author, class: "form-control", placeholder: "Auteur du livre" %>	           
 	                        </div>
 	                        <div class="form-group">
-	                         <%= f.select :book_category, ['Aventure', 'Fantastique', 'Roman d\'amour', 'Policier', 'Science-fiction', 'Autre'], :class => "form-control", placeholder: "Genre"%>	           
+	                         <%= f.select :book_category, ['Romans',
+	                        'BD, Comics, Mangas',
+							'Poésie',
+							'Théâtre',
+							'Biographies / Mémoires',
+							'Sciences humaines et sociales',
+							'Philosophie, Essais littéraires',
+							'Économie, Business, Politiques',
+							'Développement personnel',
+							'Autre'  ], :class => "form-control", placeholder: "Genre"%>	  
+     
 	                        </div>	                        
 	                        <div class="form-group">
 	                         <%= f.text_area :body, class: "form-control", placeholder: "Dis nous pourquoi tu adores ce livre" %>           
