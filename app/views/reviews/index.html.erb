@@ -1,55 +1,4 @@
-	<section class="home">
-		<div class="box home-search">
-			<div class="container">
-				<div class="row">
-					<div class="">
-						<div class="box">
-							<form class="form-inline" action="search.html">
-								<div class="home-search-row col-md-12">
-									<div class="home-search-group pt-30 pb-30">
-										<div class="form-group col-md-2">
-											<select id="type" class="selectpicker" data-live-search="false" title="Genre">
-												<option>Aventure</option>
-												<option>Fantastique</option>
-												<option>Roman d'amour</option>
-												<option>Policier</option>
-												<option>Science-fiction</option>
-												<option>Autre</option>
-											</select>
-										</div>
 
-										<div class="dropdown show form-group col-md-2">
-										  <a class="btn btn-secondary dropdown-toggle selectpicker" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										    A proximité
-										  </a>
-
-										  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-										    <a class="dropdown-item" href="#"> &lsaquo;1km</a>
-										    <a class="dropdown-item" href="#">&lsaquo;2km</a>
-										    <a class="dropdown-item" href="#">&lsaquo;5km</a>
-										    <%= link_to "code postal", cp_reviews_path, class: "dropdown-item" %>
-										    <a class="dropdown-item" href="#">France</a>
-										  </div>
-										</div>
-								
-
-
-										<div class="form-group col-md-6">
-											<input type="text" class="form-control" placeholder="Saisissez votre adresse pour une recherche dans votre quartier" />
-										</div>
-
-										<div class="form-group col-md-2">
-											<button type="submit" class="btn btn-primary">search <span class="ti-angle-right"></span></button>
-										</div>
-									</div>
-								</div>
-							</form>
-					    </div>
-				    </div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<section class="padding">
 
@@ -59,6 +8,70 @@
 		          <span><%= @phrase %></span>
 		        </div>
 		      </div>
+
+		      <section class = "row" id="filterssection">
+		      	
+				 <a id ="filtering">Filtrer les résultats <span class = "ti-filter"></span></a>
+				 
+				 <div id = "filters">
+                    <div id="filtersitems">
+							<div id = "formfilters">
+								<%= form_tag(choose_category_reviews_path, method: "get" ) do |f| %>
+
+						               <%= label_tag 'Filtrer par type'%><br>
+							           <%= select_tag :book_category, options_for_select(['Choisir un genre', 'Romans', 'BD, Comics, Mangas',
+																	              'Poésie',
+																	              'Théâtre',
+																	              'Biographies / Mémoires',
+																	              'Sciences humaines et sociales',
+																	              'Philosophie, Essais littéraires',
+																	              'Économie, Business, Politiques',
+																	              'Développement personnel',
+																	              'Autre']), :onchange => "this.form.submit();"  %>
+
+						        <% end %>
+						        <% if @review_option %>
+							    <%= link_to "Décocher les options", reviews_path %>
+							    <% end %>
+						 
+
+
+					        </div>
+
+                            <div id = "filtergeo">
+								 <label>Filtrer par zone géographique</label>
+								  <ul>
+
+								 <li> <%= link_to "A proximité", reviews_path%></li>
+							      <li><%= link_to "par code postal", cp_reviews_path %></li>
+							      <li><%= link_to "France entière", all_reviews_path%></li>
+							      </ul>
+						    </div>
+
+						     <div id = "filteroptions">
+								<%= form_tag(choose_category_reviews_path, method: "get" ) do |f| %>
+
+						               <%= label_tag 'Filtrer par type'%><br>
+							           <%= select_tag :reviews_options, options_for_select(['Options', '+ récent', '- récent',
+																	              '+ de likes',
+																	              '+ près',
+                                                                                  ]), :onchange => "this.form.submit();"  %>
+
+						    <% end %>
+				            </div>
+				          </div>
+
+				             <div class = "row">
+
+							    <a id = "upfilters"><span class = "ti-angle-up"></span></a>
+							</div>
+				 
+
+			
+
+		</div>
+
+			</section>
 
 		<div class="container">
 			<div class="row">
@@ -121,29 +134,7 @@
 		            <%end%>
 
 
-			        <div class="col-md-12 ml-0 mr-0 pt-5 pb-0 border">
-	                    <div class="category-pagination text-center">
-	                        <nav aria-label="Page navigation">
-	                            <ul class="pagination">
-	                                <li>
-	                                    <a href="#" aria-label="Previous">
-	                                        <span aria-hidden="true">&laquo;</span>
-	                                    </a>
-	                                </li>
-	                                <li class="active"><a href="#">1</a></li>
-	                                <li><a href="#">2</a></li>
-	                                <li><a href="#">3</a></li>
-	                                <li><a href="#">4</a></li>
-	                                <li><a href="#">5</a></li>
-	                                <li>
-	                                    <a href="#" aria-label="Next">
-	                                        <span aria-hidden="true">&raquo;</span>
-	                                    </a>
-	                                </li>
-	                            </ul>
-	                        </nav>
-	                    </div>
-	                </div>
+			        
 				</div><!--/ col-md-9-->
 			</div><!--/ row -->
 		</div><!--/ container -->

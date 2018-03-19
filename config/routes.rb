@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 resources :reviews do #route qui permet de créer un id dans l'url add_cart ce qui permet de trouver le bon item à ajouter
     collection do
       get :cp
+      get :choose_category
+      get :all
     end
   end
 
