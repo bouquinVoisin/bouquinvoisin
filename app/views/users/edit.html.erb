@@ -11,7 +11,7 @@
 	                        <div class="form-group">
 	                        <p> Nous avons besoin de vous localiser afin de vous montrer les bouquins préférés de vos voisins. Donnez-nous votre exacte, ou bien votre rue, votre code postal ou votre ville. Votre adresse exacte ne sera jamais communiquée aux autres membres.</p>
 	                         <%= f.label "Votre adresse"%>
-	                         <%= f.text_field :address, class: "form-control", placeholder: "Votre adresse" %>
+	                         <%= f.text_field :address, class: "form-control", placeholder: "Votre adresse" %><br>
 
 	                         <%= f.label "Votre code postal"%>
 	                         <%= f.text_field :postal_code, class: "form-control", placeholder: "Votre code postal" %>	           
@@ -22,6 +22,11 @@
 	                         <%= f.text_area :bio, class: "form-control", placeholder: "Présentez-vous aux autres membres :)" %>           
 	                        </div>
 
+	                         <div class="form-group">
+	                         <%= f.label :Votre_photo%>
+	                         <%= f.file_field :avatar, class: "form-control", placeholder: "Votre photo de profil" %>           
+	                        </div>
+	
 	                        <%= f.submit "Edite ton profil", class: "btn btn-default col-md-12 btn-lg text-center float-right" %>
 
 	                        	  <% if @user.errors.any? %>

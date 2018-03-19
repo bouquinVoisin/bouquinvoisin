@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  
   has_many :reviews, dependent: :destroy
   has_many :books, :through => :reviews
    
@@ -15,11 +16,13 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :postal_code, presence: true, length: { maximum: 5 }
    
-scope :postal_code, -> (postal_code) { where postal_code: postal_code }
+  scope :postal_code, -> (postal_code) { where postal_code: postal_code }
 
 	def full_address
 	 address + " " + postal_code + ", France"
 	end
+
+  mount_uploader :avatar, AvatarUploader
 
 
 

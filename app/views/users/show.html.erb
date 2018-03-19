@@ -9,7 +9,13 @@
                             <div class="post-header">
                                <div class = "row">
                                   <div class = "col-xs-5 col-md-4">
-                                    <img class="post-user mb-30" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsNLHhn2q9dD2MlYx1GXRhJrsYLbm-cBmfr2IVhBlGCot2i1Dg" alt="user avatar">      
+                                    
+                                    <% if @user.avatar? %>
+                                      <%= image_tag @user.avatar.url, :class => "post-user mb-30", :id => "avatar"%>  
+                                    <% else %>
+                                      <%= image_tag "default_avatar.jpeg" %>
+                                    <% end %>    
+                               
                                   </div>
 
                                   <div class = "col-xs-6 offset-md-1 col-md-6">

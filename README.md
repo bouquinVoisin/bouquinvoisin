@@ -26,3 +26,6 @@ Help with config : http://hankstoever.com/posts/11-Pro-Tips-for-Using-Geocoder-w
 
 - Google image: 
 http://geoffrey-hug.logdown.com/posts/692831-how-to-use-google-to-search-images-in-your-rails-app
+
+-CarrierWave (upload images): 
+https://www.youtube.com/watch?v=Q8wF9RrJhrY
