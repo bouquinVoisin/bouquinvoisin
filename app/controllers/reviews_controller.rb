@@ -47,11 +47,11 @@ def cp
    end
  @reviews 
  if @reviews == []
-  flash[:success] = "Aucun voisin avec le même code postal :/"
-  redirect_to reviews_path
+   flash[:success] = "Aucun voisin avec le même code postal :/"
+   redirect_to reviews_path
  else
- render 'reviews/index'
-end
+   render 'reviews/index'
+ end
 end
     
   

@@ -14,6 +14,8 @@ gem 'ransack'
 gem 'dotenv-rails'
 gem 'geocoder'
 gem "google_custom_search_api"
+gem "omniauth"
+gem "omniauth-facebook"
 
 
 

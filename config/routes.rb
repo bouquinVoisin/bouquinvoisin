@@ -4,15 +4,18 @@ Rails.application.routes.draw do
 
 #Static Pages
   root 'static_pages#home'
-get '/contact', to: 'static_pages#contact', as: 'contact'
-get '/about', to: 'static_pages#about', as: 'about'
+  get '/contact', to: 'static_pages#contact', as: 'contact'
+  get '/about', to: 'static_pages#about', as: 'about'
 
 
 
 #Users 
-  devise_for :users
-    resources :users, :only => [:show, :edit, :update]
-    get '/profile', to: 'users#profile', as: 'profile'
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  } 
+
+  resources :users, :only => [:show, :edit, :update]
+  get '/profile', to: 'users#profile', as: 'profile'
 
 #Reviews
 resources :reviews do #route qui permet de créer un id dans l'url add_cart ce qui permet de trouver le bon item à ajouter
