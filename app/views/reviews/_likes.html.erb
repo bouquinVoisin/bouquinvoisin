@@ -1,0 +1,10 @@
+
+<%if current_user.likes?(review)%>
+  <%= link_to review_likes_path(review), method: :delete, remote: true, class:"btn btn-link btn-sm ml-0 pull-right" do %>
+      <span class="ti-heart"></span>Je n'aime plus<%end%>
+
+<%else%>
+  <%= link_to review_likes_path(review), method: :post, remote: true, class:"btn btn-link btn-sm ml-0 pull-right" do %>
+      <span class="ti-heart"></span>J'aime<%end%>
+<%end%>
+<%= review.likes.count %>

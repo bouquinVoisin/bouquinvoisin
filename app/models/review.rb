@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :user
+  has_many :likes
   #belongs_to :book
 
   validates :body, presence: true

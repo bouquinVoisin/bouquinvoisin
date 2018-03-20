@@ -4,6 +4,7 @@ class User < ApplicationRecord
   
   has_many :reviews, dependent: :destroy
   has_many :books, :through => :reviews
+  has_many :likes
    
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -24,6 +25,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-
+   def likes?(review)
+    review.likes.where(user_id: id).any?
+  end
 
 end

@@ -131,4 +131,78 @@
             <%end%>
             
 
-        </section>       
+        </section>
+
+<% unless @reviews_liked == [] %>
+        <section id="recoshow">
+            <div class = "row headtitle">
+                <h2> Mes recommandations favorites</h2>
+            </div>
+   
+            <div class="row mt-30">
+                <% @reviews_liked.each do |review| %>
+                  <% @k += 1 %>
+                    <div class="col-md-4 wow fadeInLeft">
+                        <div class="services-box text-center shadow">
+
+                            
+                            <h4><%=review.book_title%> </h4>
+                            <h5><%=review.book_author%></h5>
+                            <%if review.book_cover%>
+                              <%= image_tag(review.book_cover, :class => "cover_profile")%> 
+                            <% end %>
+                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#profile-0<%=@i%>">Lire +</a>
+                        </div>
+                    </div>
+                <% end %>
+            <% if @reviews.count <3 %>
+                   <%(3-@reviews.count).times do%>
+
+                     <div class="col-md-4 wow fadeInLeft">
+                        <div class="services-box text-center shadow">
+                            <span class="icon"> + </span>
+                            <h4>Ajouter une recommandation</h4>
+                            <p class="fixed-height">Faite découvrir un de vos livres préférez
+                            </p>
+                            <%=link_to 'Ajouter +', new_review_path, class: "btn btn-margin btn-default btn-lg"%>
+                           
+                        </div>
+                      </div> 
+                    <%end%>            
+             <%end %>            
+            </div>
+
+
+                <!-- / SERVICE MODAL -->
+            <% @reviews_liked.each do |review| %>
+              <% @l += 1 %>
+                <div id="profile-0<%=@j%>" class="modal fade services-modal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content shadow">
+                            <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
+                            <div class="modal-body">
+                                <div class="post-entry post-entry-modal">
+
+                                    <div class="services-box text-center">
+                                        <span class="icon"># <%=@j%></span>
+                                        <h4>La recommandation de <%=@user.name%></h4>
+                                        <h3><%=review.book_title%>, <%=review.book_author%></h3>
+                                        <p>Genre : <%=review.book_category%>
+                                        </p>
+                                    </div>
+                                    <p><%=review.body%></p>                                    
+                                   <%if review.book_cover%>
+                                     <%= image_tag(review.book_cover, :class => "cover_profile")%> 
+                                     
+                                   <%end %>                                  
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%end%>
+            
+
+        </section>              
+  <%end%>
