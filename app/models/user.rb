@@ -13,8 +13,8 @@ class User < ApplicationRecord
   geocoded_by :full_address
    after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
-  #validates :name, presence: true, length: { maximum: 50 }
-  #validates :postal_code, presence: true, length: { maximum: 5 }
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :postal_code, presence: true, length: { maximum: 5 }
    
   scope :postal_code, -> (postal_code) { where postal_code: postal_code }
 
