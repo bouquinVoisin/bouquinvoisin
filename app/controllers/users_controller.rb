@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  respond_to :html, :js
 
   def show
   	@i = 0
   	@j=0
     @user = User.find(params[:id])
     @reviews = @user.reviews
+    @message = Message.new
   end
 
   def profile
@@ -40,10 +42,32 @@ class UsersController < ApplicationController
     end
   end
 
+  def send_email
+    @message = Message.new(message_params)
+    @user = User.find(params[:id])
+
+    @message.user_id = current_user.id
+    @message.save
+    if @message
+    MessageMailer.new_message(@message, @user).deliver_now
+    respond_to do |format|
+      format.js { render nothing: true }
+    end 
+    
+  else flash[:error] = "Votre message n'a pas été envoyé, veuillez réssayer ultérieurement ..."
+    redirect_to @user
+end 
+
+  end
+
 private 
 
   def user_params
     params.require(:user).permit(:bio, :address, :avatar)
+  end
+
+    def message_params
+    params.require(:message).permit(:body)
   end
 
 end
