@@ -13,8 +13,8 @@ class User < ApplicationRecord
   geocoded_by :full_address
    after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :postal_code, presence: true, length: { maximum: 5 }
+  #validates :name, presence: true, length: { maximum: 50 }
+  #validates :postal_code, presence: true, length: { maximum: 5 }
    
   scope :postal_code, -> (postal_code) { where postal_code: postal_code }
 
@@ -42,8 +42,8 @@ def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-    user.name = auth.info.name   # assuming the user model has a name
-    user.image = auth.info.image # assuming the user model has an image
+    #user.name = auth.info.name   # assuming the user model has a name
+    #user.image = auth.info.image # assuming the user model has an image
   end
 end
 
