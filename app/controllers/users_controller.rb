@@ -11,9 +11,18 @@ class UsersController < ApplicationController
   def profile
   	@i = 0
   	@j=0
+    @k=0
+    @l=0
 
   	@user = current_user
   	@reviews = @user.reviews
+
+    @reviews_liked = []
+    @user.likes.each do |like|
+      @reviews_liked << Review.find(like.review_id)
+    end
+   @reviews_liked
+
 
   end
 

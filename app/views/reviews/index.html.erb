@@ -97,10 +97,14 @@
 									<a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=@k%>" >Voir le commentaire</a>
 									<%= link_to user_link, :class => "btn btn-link btn-sm ml-0" do %>
 									Voir le profil de <%=User.find(review.user_id).name%>
+									<div id ="<%=review.id%>_likes">
+										<%= render :partial => 'likes', :locals => { :review => review} %>
+									</div>
+									
 
 									<% end%>
 
-									<a href="#" class="btn btn-link btn-sm ml-0 pull-right"><span class="ti-star"></span>J'aime</a>
+
 							</div>
 						</div>
 					<% end %>
