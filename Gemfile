@@ -17,8 +17,9 @@ gem "google_custom_search_api"
 gem "omniauth"
 gem "omniauth-facebook"
 gem 'carrierwave', '~> 1.0'
-
-
+gem 'nokogiri'
+gem 'google_drive'
+gem 'gmail'
 
 
 group :development, :test do
