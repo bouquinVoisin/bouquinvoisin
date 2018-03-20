@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'messages/new'
 
 #Static Pages
   root 'static_pages#home'
@@ -14,7 +12,10 @@ Rails.application.routes.draw do
     :omniauth_callbacks => 'users/omniauth_callbacks'
   } 
 
-  resources :users, :only => [:show, :edit, :update]
+  resources :users, :only => [:show, :edit, :update] do
+   #Messages
+   post "send_email", on: :member
+  end
   get '/profile', to: 'users#profile', as: 'profile'
 
 #Reviews
@@ -27,8 +28,7 @@ resources :reviews do #route qui permet de créer un id dans l'url add_cart ce q
     end
   end
 
-#Messages
-resources :messages, :only => [:new, :create]
+
 
 #Books - en STAND BY
   get 'books/new'

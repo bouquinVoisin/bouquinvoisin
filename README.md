@@ -29,3 +29,6 @@ http://geoffrey-hug.logdown.com/posts/692831-how-to-use-google-to-search-images-
 
 -CarrierWave (upload images): 
 https://www.youtube.com/watch?v=Q8wF9RrJhrY
+
+- facebook
+https://github.com/rails-camp/facebook-omniauth-demo

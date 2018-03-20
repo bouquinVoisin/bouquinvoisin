@@ -1,0 +1,37 @@
+ <section id = "contactsection">
+            <div class = "row headtitle">
+                    <h2>Contacter <%=@user.name%></h2>
+            </div>
+
+            <div class = "row" id="formmessage">
+
+                        <div class="comments-form col-md-12" id="comments-form">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading ">
+                                    <div class="panel-title h3">Un des livres vous intéresse ? Envoyez un message à <%=@user.name%> et demandez-lui si il voudrait bien vous le prêter :) 
+                                        <div class="pull-right login-context-info">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <%= form_for(:message, url: send_email_user_path(@user), html: { method: :post }, :remote=>true, :id => "comment-new",  :class => "form-horizontal") do |f| %>
+                                    
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <%= f.text_area :body, :class => "form-control", :style => "min-height: 200px;", :placeholder => "Votre message ... "%>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- Button -->
+                                            <div class="col-md-12 login-btn">
+                                                <%= f.submit :class => "btn btn-info btn-lg text-center float-right"%>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                            </div>
+            
+                        </div>
+            </div>
+   </section>
