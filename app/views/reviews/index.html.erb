@@ -18,9 +18,9 @@
 							<div id = "formfilters">
 								<%= form_tag(choose_category_reviews_path, method: "get" ) do |f| %>
 
-						               <%= label_tag 'Filtrer par type'%><br>
+						               <%= label_tag 'Filtrer'%><br>
 							            <%= select_tag :zone, options_for_select(['à proximité', 'par code postal', 'France entière'])  %>
-							            <%= select_tag :book_category, options_for_select(['Choisir un genre', 'Romans', 'BD, Comics, Mangas',
+							            <%= select_tag :book_category, options_for_select(['Romans', 'BD, Comics, Mangas',
 																	              'Poésie',
 																	              'Théâtre',
 																	              'Biographies / Mémoires',
@@ -40,23 +40,14 @@
 
 					        </div>
 
-                            <div id = "filtergeo">
-								 <label>Filtrer par zone géographique</label>
-								  <ul>
 
-								 <li> <%= link_to "A proximité", reviews_path%></li>
-							      <li><%= link_to "par code postal", cp_reviews_path %></li>
-							      <li><%= link_to "France entière", all_reviews_path%></li>
-							      </ul>
-						    </div>
 
 						     <div id = "filteroptions">
 								<%= form_tag(choose_category_reviews_path, method: "get" ) do |f| %>
 
 						               <%= label_tag 'Filtrer par type'%><br>
-							           <%= select_tag :reviews_options, options_for_select(['Options', '+ récent', '- récent',
-																	              '+ de likes',
-																	              '+ près',
+							           <%= select_tag :reviews_options, options_for_select(['+ proche', '+ récent', '+ ancien',
+																	              '+ de likes',																	              
                                                                                   ]), :onchange => "this.form.submit();"  %>
 
 						    <% end %>

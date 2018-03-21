@@ -8,94 +8,82 @@ class ReviewsController < ApplicationController
   	@review = Review.new
   end
 
-  def index
-    @review_option = false
-    @user = current_user
-    @phrase = ""
-    case 
-      when user_signed_in? && @user.nearbys.nil? || user_signed_in? && !@user.nearbys.exists?
-
+  def checked_results(reviews)
+     reviews.each do |review|
+      if review.user_id == current_user.id
+        reviews.delete(review)
+      end      
+     end
+     reviews
+     
+     if no_results(reviews)
         @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
-        @reviews = Review.all   
-      
-      when user_signed_in? && @user.nearbys.exists?
+        @reviews = Review.all        
+      else @reviews = reviews
+      end
+    reviews
+end
 
-            @phrase = ""
-            @reviews = []
-            @reviews = reviews_nearby
-        
 
-          if @reviews == []
-             @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
-             @reviews = Review.all   
-          end
-   
-    end
- 
-
-  end
+def no_results(reviews)
+   return true if current_user.nearbys.nil? || !current_user.nearbys.exists? || reviews == []
+end
+  
+def index
+    @review_option = false
+    @reviews = reviews_nearby
+    checked_results(@reviews)
+end
 
 
 def reviews_nearby
   @reviews = []  
- current_user.nearbys.each do |user|
-               user.reviews.each do |review_near|
-                @reviews << review_near
-              end
-             end
+   current_user.nearbys.each do |user|
+     user.reviews.each do |review_near|
+       @reviews << review_near
+     end
+   end
   @reviews 
 end
 
 def select_users(zone)
    if zone == 'par code postal'
     @users = User.postal_code(current_user.postal_code)
- elsif zone == 'France entière'
+   elsif zone == 'France entière'
     @users = User.all
- else
+   else
    @users = current_user.nearbys
- end
+   end
  @users
-
-
 end
 
 
 def choose_category
+  @review_option = true
   @user = current_user
   @reviews = []
-
-
-
-    # If a user has selected a category, but no type, only 
-    # show reviews from that category.
     if params[:book_category] && !params[:zone]
       @reviews = Review.book_category(params[:book_category])
     end
 
-    # If a user has selected a category and a type, only show
-    # reviews from that category with that type
     if params[:book_category] && params[:zone]
       @users = select_users(params[:zone])
 
         @users.each do |user|
           user.reviews.each do |review_cat|
                  if review_cat.book_category == params[:book_category]
-                  @reviews << review_cat
-   
+                  @reviews << review_cat   
                  end 
-
            end
        end
       @reviews
     end
 
-    # If a user has selected a type but not a category, show all 
-    # of the reviews with that type 
     if params[:book_category] && !params[:zone]
       @users = select_users(:zone)
       @reviews = @users.reviews
     end
-
+       checked_results(@reviews)
        render 'reviews/index'
 end
 
