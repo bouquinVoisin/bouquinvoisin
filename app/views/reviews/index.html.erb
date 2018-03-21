@@ -19,7 +19,8 @@
 								<%= form_tag(choose_category_reviews_path, method: "get" ) do |f| %>
 
 						               <%= label_tag 'Filtrer par type'%><br>
-							           <%= select_tag :book_category, options_for_select(['Choisir un genre', 'Romans', 'BD, Comics, Mangas',
+							            <%= select_tag :zone, options_for_select(['à proximité', 'par code postal', 'France entière'])  %>
+							            <%= select_tag :book_category, options_for_select(['Choisir un genre', 'Romans', 'BD, Comics, Mangas',
 																	              'Poésie',
 																	              'Théâtre',
 																	              'Biographies / Mémoires',
@@ -27,7 +28,8 @@
 																	              'Philosophie, Essais littéraires',
 																	              'Économie, Business, Politiques',
 																	              'Développement personnel',
-																	              'Autre']), :onchange => "this.form.submit();"  %>
+																	              'Autre']) %>
+                                        <%= submit_tag %>
 
 						        <% end %>
 						        <% if @review_option %>

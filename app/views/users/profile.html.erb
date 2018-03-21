@@ -22,13 +22,18 @@
                                     <% else %>
                                       <%= image_tag "default_avatar.jpeg" %>
                                     <% end %>
+                                      <%=link_to edit_user_path(@user) do%>
+                                       <span class="icon ti-pencil"></span>
+                                     <% end %>
                               
                                   </div>
 
                                   <div class = "col-xs- col-md-offset-1 col-md-3">
                                     <h3><%= @user.name %></h3>
-                                    <h4>xx ans</h4>
-                                    <h4><%= @user.address %></h4> 
+                                    
+                                    <h4><%= @user.address%></h4> 
+                                    <h4><%=@user.postal_code %><h4>
+                                    <p>Votre adresse exacte n'est pas communiquée aux autres membres, seul votre code postal l'est.</p>  
                                   </div> 
                                   <div class = "col-xs-1 col-md-1">
                                     <%=link_to edit_user_path(@user) do%>
@@ -71,7 +76,12 @@
                   <% @i += 1 %>
                     <div class="col-md-4 wow fadeInLeft">
                         <div class="services-box text-center shadow">
-
+                                    <%=link_to edit_review_path(review) do%>
+                                       <span class="icon ti-pencil"></span>
+                                     <% end %>
+                                      <%=link_to(review, method: :delete) do%>
+                                       <span class="icon ti-trash"></span>
+                                     <% end %>
                             
                             <h4><%=review.book_title%> </h4>
                             <h5><%=review.book_author%></h5>
@@ -79,6 +89,7 @@
                               <%= image_tag(review.book_cover, :class => "cover_profile")%> 
                             <% end %>
                             <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#profile-0<%=@i%>">Lire +</a>
+
                         </div>
                     </div>
                 <% end %>

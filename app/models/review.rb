@@ -11,4 +11,5 @@ class Review < ApplicationRecord
   scope :book_category, -> (book_category) { where book_category: book_category }
 
 
+
 end
