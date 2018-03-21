@@ -32,3 +32,6 @@ https://www.youtube.com/watch?v=Q8wF9RrJhrY
 
 - facebook
 https://github.com/rails-camp/facebook-omniauth-demo
+
+- pagination and infinite scrolls
+http://railsforbeginners.com/chapters/chapter-9-infinite-scroll/

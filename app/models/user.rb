@@ -28,7 +28,7 @@ end
    address + " " + postal_code + ", France"
 	end
   geocoded_by :full_address
-   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+   after_validation :geocode, if: ->(obj){ obj.address.present? || obj.address_changed? || obj.postal_code.present? || obj.postal_code_changed? }
 
 
   mount_uploader :avatar, AvatarUploader

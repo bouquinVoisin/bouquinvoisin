@@ -18,10 +18,11 @@ class ReviewsController < ApplicationController
      
      if no_results(reviews)
         @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
-        @reviews = Review.all        
-      else @reviews = reviews
+        @reviews = Review.paginate(:page => params[:page], :per_page => 2)    
+      else @reviews = reviews.paginate(:page => params[:page], :per_page => 2)
       end
     reviews
+
 end
 
 
@@ -33,6 +34,7 @@ def index
     @review_option = false
     @reviews = reviews_nearby
     checked_results(@reviews)
+    @reviews = @reviews.paginate(:page => params[:page], :per_page => 2)
 end
 
 

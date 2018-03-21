@@ -1,7 +1,9 @@
 class Review < ApplicationRecord
   belongs_to :user
   has_many :likes
-  #belongs_to :book
+
+
+ self.per_page = 10
 
   validates :body, presence: true
   validates :book_title, presence: true
