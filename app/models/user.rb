@@ -10,17 +10,26 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :postal_code, presence: true, length: { maximum: 5 }
+  before_save :set_address
+
+
+
+  scope :postal_code, -> (postal_code) { where postal_code: postal_code }
+
+
+
+def set_address
+  self.address = "" if self.address.blank?
+end
+	def full_address
+	 
+   address + " " + postal_code + ", France"
+	end
   geocoded_by :full_address
    after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :postal_code, presence: true, length: { maximum: 5 }
-   
-  scope :postal_code, -> (postal_code) { where postal_code: postal_code }
-
-	def full_address
-	 address + " " + postal_code + ", France"
-	end
 
   mount_uploader :avatar, AvatarUploader
 
