@@ -37,12 +37,14 @@ end
 
 
 def reviews_nearby
-  @reviews = []  
+  @reviews = [] 
+  unless current_user.nearbys.nil?
    current_user.nearbys.each do |user|
      user.reviews.each do |review_near|
        @reviews << review_near
      end
    end
+ end
   @reviews 
 end
 

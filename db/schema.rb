@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20180320074334) do
     t.string "last_sign_in_ip"
     t.string "name"
     t.datetime "date_of_birth"
-    t.string "address"
+    t.string "address", default: " "
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "bio"
