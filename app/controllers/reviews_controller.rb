@@ -8,21 +8,16 @@ class ReviewsController < ApplicationController
   	@review = Review.new
   end
 
-  def checked_results(reviews)
-     reviews.each do |review|
-      if review.user_id == current_user.id
-        reviews.delete(review)
-      end      
-     end
-     reviews
-     
+  def checked_results(reviews)     
      if no_results(reviews)
         @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
-        @reviews = Review.all        
+        @reviews = Review.all.where.not(user_id: current_user.id)
+
       else @reviews = reviews
       end
-    reviews
-end
+    @reviews
+  end
+
 
 
 def no_results(reviews)
@@ -39,22 +34,24 @@ end
 def reviews_nearby
   @reviews = [] 
   unless current_user.nearbys.nil?
-   current_user.nearbys.each do |user|
-     user.reviews.each do |review_near|
+    current_user.nearbys.each do |user|
+      user.reviews.each do |review_near|
        @reviews << review_near
-     end
-   end
- end
+      end
+    end
+  end
   @reviews 
 end
 
 def select_users(zone)
    if zone == 'par code postal'
-    @users = User.postal_code(current_user.postal_code)
+     @users = User.postal_code(current_user.postal_code)
+     @users = @users.where.not(id: current_user.id)
    elsif zone == 'France entière'
-    @users = User.all
+     @users = User.all
+     @users = @users.where.not(id: current_user.id)
    else
-   @users = current_user.nearbys
+     @users = current_user.nearbys
    end
  @users
 end
