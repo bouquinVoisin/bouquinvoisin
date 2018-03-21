@@ -20,6 +20,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'nokogiri'
 gem 'google_drive'
 gem 'gmail'
+gem 'will_paginate'
 
 
 group :development, :test do
