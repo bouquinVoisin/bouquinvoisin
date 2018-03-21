@@ -20,6 +20,8 @@
 							'Autre'  ]%><br>
 	  <%= label_tag 'Quel est ton commentaire sur ce livre :' %>
 	  <%= f.text_area :body, cols: "40", rows: "3"%><br><br>
+	  	  <%= label_tag 'Lien vers une image de la couverture :' %>
+	  <%= f.text_field :book_cover %><br>
 	  <%= f.submit "Valider tes modifications", :class => "btn btn-primary" %>
 
 	  <% if @review.errors.any? %>

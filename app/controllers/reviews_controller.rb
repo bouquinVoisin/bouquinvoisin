@@ -22,12 +22,8 @@ class ReviewsController < ApplicationController
 
             @phrase = ""
             @reviews = []
-             @user.nearbys.each do |user|
-               user.reviews.each do |review_near|
-                @reviews << review_near
-              end
-             end
-            @reviews 
+            @reviews = reviews_nearby
+        
 
           if @reviews == []
              @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
@@ -39,40 +35,72 @@ class ReviewsController < ApplicationController
 
   end
 
-def cp
- @review_option = true
- @users = User.postal_code(params[:postal_code])
- @reviews = []
-   @users.each do |user|
-    user.reviews.each do |review_cp|
-      @reviews << review_cp
-    end
-   end
- @reviews 
- if @reviews == []
-   flash[:success] = "Aucun voisin avec le même code postal :/"
-   redirect_to reviews_path
- else
-   render 'reviews/index'
- end
+
+def reviews_nearby
+  @reviews = []  
+ current_user.nearbys.each do |user|
+               user.reviews.each do |review_near|
+                @reviews << review_near
+              end
+             end
+  @reviews 
 end
+
+def select_users(zone)
+   if zone == 'par code postal'
+    @users = User.postal_code(current_user.postal_code)
+ elsif zone == 'France entière'
+    @users = User.all
+ else
+   @users = current_user.nearbys
+ end
+ @users
+
+
+end
+
 
 def choose_category
-  @review_option = true
+  @user = current_user
   @reviews = []
-  @reviews = Review.book_category(params[:book_category])
-  if @reviews == []
-   flash[:success] = "Aucun bouquin dans cette catégorie"
-   redirect_to reviews_path
- else
-   render 'reviews/index'
- end
+
+
+
+    # If a user has selected a category, but no type, only 
+    # show reviews from that category.
+    if params[:book_category] && !params[:zone]
+      @reviews = Review.book_category(params[:book_category])
+    end
+
+    # If a user has selected a category and a type, only show
+    # reviews from that category with that type
+    if params[:book_category] && params[:zone]
+      @users = select_users(params[:zone])
+
+        @users.each do |user|
+          user.reviews.each do |review_cat|
+                 if review_cat.book_category == params[:book_category]
+                  @reviews << review_cat
+   
+                 end 
+
+           end
+       end
+      @reviews
+    end
+
+    # If a user has selected a type but not a category, show all 
+    # of the reviews with that type 
+    if params[:book_category] && !params[:zone]
+      @users = select_users(:zone)
+      @reviews = @users.reviews
+    end
+
+       render 'reviews/index'
 end
 
-def all
-  @reviews = Review.all
-  render 'reviews/index'
-end
+
+
     
   
   def create
@@ -107,7 +135,7 @@ end
     @review = Review.find(params[:id])
     if @review.update(review_params)
       flash[:success] = "Vous avez bien édité votre commentaire"
-      redirect_to @review
+      redirect_to profile_path
   	else render 'edit'
     end
   end
@@ -117,7 +145,7 @@ end
     if @review.destroy
       flash[:success] = "Vous avez effacé votre commentaire"
     end
-    redirect_to root_path
+    redirect_to profile_path
   end
 
 

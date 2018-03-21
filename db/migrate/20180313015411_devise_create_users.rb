@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
       t.string :name
       t.datetime :date_of_birth
-      t.string :address
+      t.string :address, default: " "
 
       t.timestamps null: false
     end
