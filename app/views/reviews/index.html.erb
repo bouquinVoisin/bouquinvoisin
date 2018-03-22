@@ -48,9 +48,9 @@
 	</section>
 
 <div id="feed">
-    <%= render "review" %>
+    <%= render @reviews %>
 </div>
 
-<div id="infinite-scrolling">
+<div id="infinite-scrolling" style = "display: none;">
   <%= will_paginate @reviews %>
 </div>

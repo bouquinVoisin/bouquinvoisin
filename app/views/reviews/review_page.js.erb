@@ -1,7 +1,8 @@
-$('#feed').append('<%= j render "review" %>');
-<% if @posts.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @posts %>');
+
+$('#feed').append('<%= j render @reviews %>');
+<% if @reviews.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @reviews %>');
 <% else %>
   $(window).off('scroll');
-  $('.pagination').remove();
+ $('.pagination').remove(); 
 <% end %>
