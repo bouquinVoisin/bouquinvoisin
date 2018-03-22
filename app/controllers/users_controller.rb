@@ -3,18 +3,14 @@ class UsersController < ApplicationController
   respond_to :html, :js
 
   def show
-  	@i = 0
-  	@j=0
+
     @user = User.find(params[:id])
     @reviews = @user.reviews
     @message = Message.new
   end
 
   def profile
-  	@i = 0
-  	@j=0
-    @k=0
-    @l=0
+
 
   	@user = current_user
   	@reviews = @user.reviews

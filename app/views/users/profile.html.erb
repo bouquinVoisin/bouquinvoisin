@@ -73,7 +73,7 @@
    
             <div class="row mt-30">
                 <% @reviews.each do |review| %>
-                  <% @i += 1 %>
+                 
                     <div class="col-md-4 wow fadeInLeft">
                         <div class="services-box text-center shadow">
                                     <%=link_to edit_review_path(review) do%>
@@ -88,7 +88,7 @@
                             <%if review.book_cover%>
                               <%= image_tag(review.book_cover, :class => "cover_profile")%> 
                             <% end %>
-                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#profile-0<%=@i%>">Lire +</a>
+                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#profile-0<%=review.id%>">Lire +</a>
 
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                 <!-- / SERVICE MODAL -->
             <% @reviews.each do |review| %>
               <% @j += 1 %>
-                <div id="profile-0<%=@j%>" class="modal fade services-modal" role="dialog">
+                <div id="profile-0<%=review.id%>" class="modal fade services-modal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content shadow">
@@ -152,7 +152,7 @@
    
             <div class="row mt-30">
                 <% @reviews_liked.each do |review| %>
-                  <% @k += 1 %>
+                 
                     <div class="col-md-4 wow fadeInLeft">
                         <div class="services-box text-center shadow">
 
@@ -162,7 +162,7 @@
                             <%if review.book_cover%>
                               <%= image_tag(review.book_cover, :class => "cover_profile")%> 
                             <% end %>
-                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#profile-0<%=@i%>">Lire +</a>
+                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#profile-0<%=review.id%>">Lire +</a>
                         </div>
                     </div>
                 <% end %>
@@ -187,7 +187,7 @@
                 <!-- / SERVICE MODAL -->
             <% @reviews_liked.each do |review| %>
               <% @l += 1 %>
-                <div id="profile-0<%=@j%>" class="modal fade services-modal" role="dialog">
+                <div id="profile-0<%=review.id%>" class="modal fade services-modal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content shadow">
