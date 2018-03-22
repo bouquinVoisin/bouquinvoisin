@@ -35,8 +35,7 @@ class ReviewsController < ApplicationController
   def index
       @review_option = false
       @reviews = reviews_nearby
-      checked_results(@reviews)
-      @reviews = @reviews.paginate(:page => params[:page], :per_page => 5)
+      checked_results(@reviews).paginate(:page => params[:page], :per_page => 5)
   end
 
 

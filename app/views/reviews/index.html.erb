@@ -47,75 +47,10 @@
 		</div>
 	</section>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-md-offset-1 col-md-10">
-					
+<div id="feed">
+    <%= render "review" %>
+</div>
 
-					<% @k = 0%>
-					<% @reviews.each do |review|%>
-					  <% @k += 1 %>
-					  <% user_link = User.find(review.user_id) %>
-						<div class="box">
-							<div class="offer-box offer-box-horizontal border">
-									<% if review.book_cover %>
-									<div class="offer-box-head">
-										<div class="swiper-slide"><%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%></div>
-									</div>
-									<% end %>
-									<a href="#"> 
-										<span class="h4 offer-box-title"><%=review.book_title%> de <%=review.book_author %></span>
-										<span class="offer-box-location">Recommandé par votre voisin(e) <%=User.find(review.user_id).name%>, à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
-										<span class="offer-box-meta">Le commentaire sur ce livre : <%= review.body%></span>
-									</a>
-									<a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=@k%>" >Voir le commentaire</a>
-									<%= link_to user_link, :class => "btn btn-link btn-sm ml-0" do %>
-									Voir le profil de <%=User.find(review.user_id).name%>
-									<div id ="<%=review.id%>_likes">
-										<%= render :partial => 'likes', :locals => { :review => review} %>
-									</div>
-									
-
-									<% end%>
-
-
-							</div>
-						</div>
-					<% end %>
-
-					<% @l = 0%>
-					<% @reviews.each do |review| %>
-		              <% @l += 1 %>
-		              <% user_link = User.find(review.user_id) %>
-		                <div id="service-0<%=@l%>" class="modal fade services-modal" role="dialog">
-		                    <div class="modal-dialog">
-		                        <!-- Modal content-->
-		                        <div class="modal-content shadow">
-		                            <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
-		                            <div class="modal-body">
-		                                <div class="post-entry post-entry-modal">
-
-		                                    <div class="services-box text-center">
-		                                        
-		                                        <h4>La recommandation de <%=user_link.name%></h4>
-		                                        <h3><%=review.book_title%>, <%=review.book_author%></h3>
-		                                        <p>Genre : <%=review.book_category%>
-		                                        </p>
-		                                    </div>
-		                                    <p><%=review.body%></p>                                    
-		                                   <%if review.book_cover%> <%= image_tag review.book_cover%><%end %>                                  
-		                               </div>
-		                            </div>
-		                        </div>
-		                    </div>
-		                </div>
-		            <%end%>
-
-
-			        
-				</div><!--/ col-md-9-->
-			</div><!--/ row -->
-		</div><!--/ container -->
 <div id="infinite-scrolling">
   <%= will_paginate @reviews %>
 </div>
