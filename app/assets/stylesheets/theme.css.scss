@@ -31,17 +31,15 @@
 
  #bg1 {
   background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(63, 79, 95, 0.6), 
-      rgba(63, 79, 95, 0.3) 
-    ),
+    
     /* bottom, image */
     url(asset-path('assets/slider/slide5.jpg'));
 
     background-position: center;
   background-size: cover;
   overflow: hidden;
+  width: 100%;
+
  }
 
 #image_cover {
@@ -4548,7 +4546,7 @@ footer {
       padding: 15px 0;
       border-top: 1px solid #f5f5f5;
       border-bottom: 1px solid #f5f5f5;
-      margin-bottom: 60px; }
+      margin-bottom: 20px; }
       footer .footer-top p {
         padding-top: 5px;
         margin-bottom: 0; }
@@ -4683,16 +4681,30 @@ a.socialIcon:hover, .socialHoverClass {
 .social-circle i {
   color: #fff; }
 
+#about-counter {
+  background-color: white;
+}
 .counter {
   margin-bottom: 60px;
-  background-color : white;
+  background-color : transparent;
   height: 250px;
   padding: 20px;
   font-size: 1.2em;
+   font-size: 2.25rem;
+}
+
+.counter h3 {
+     color: #fc6471;
+    font-weight: 600;
+}
+
+.counter span {
+  color: #fc6471;
 }
 
 .counter p {
   color: #837f7f;
+  text-align: justify;
 }
 .countdown-counter {
   display: block;
@@ -4784,21 +4796,40 @@ a.socialIcon:hover, .socialHoverClass {
     justify-content: center;
     min-height: 100vh; }
   .home-slider h1, .home-slider .h1 {
-    width: 60%;
-   font-weight: bold;
-   font-size: 10vh; }
+    font-size: 3.125rem;
+    line-height: 3.5rem;
+    color: #03314B; 
+    font-family: 'Lato', sans-serif;
+     font-weight: 900;
+    margin : 70px 0 70px 0;}
     @media (max-width: 479px) {
       .home-slider h1, .home-slider .h1 {
-        font-size: 36px;
-       padding: 0 10px;
-       width: 85%; } }
+        position: relative;
+       font-size: 2.8rem;
+        line-height: 2.8125rem; } }
     .home-slider .btn {
     font-size: 2em;
+
     }
     @media (max-width: 479px) {
       .home-slider .btn {
-        font-size: 22px;
+        font-size: 16px;
+        margin-top: 25px;
         } }
+.homesubtitle {
+          font-size: 16px;
+        margin: -25px 0 30px 0;
+       color: #03314B;
+       font-weight: 600;
+            }
+    @media (max-width: 479px) {
+.homesubtitle {
+        font-size: 2.25rem;
+        margin: -25px 0 30px 0;
+       color: #03314B;
+       font-weight: 600;
+   } }
+  
 .home-search {
   background: #556270;
   padding: 30px; }
@@ -5760,5 +5791,9 @@ width: 104%;
   font-size: 2em;
   margin-left: 40px;
 
+}
+
+.githublink{
+  display: inline;
 }
 /*# sourceMappingURL=theme.css.map */
