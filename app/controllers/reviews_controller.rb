@@ -11,81 +11,91 @@ class ReviewsController < ApplicationController
   def checked_results(reviews)     
      if no_results(reviews)
         @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
-        @reviews = Review.all.where.not(user_id: current_user.id).paginate(:page => params[:page], :per_page => 2)    
-      else @reviews = reviews.paginate(:page => params[:page], :per_page => 2)
+        @users = User.near([current_user.latitude, current_user.longitude], 2000)
+        @reviews = []
+        @users.each do |user|
+          user.reviews.each do |review|
+            @reviews << review
+          end
+        end
+
+        @reviews = @reviews.paginate(:page => params[:page], :per_page => 5)    
+      else @reviews = reviews.paginate(:page => params[:page], :per_page => 5)
       end
     @reviews
 
-end
+  end
 
 
 
-def no_results(reviews)
-   return true if current_user.nearbys.nil? || !current_user.nearbys.exists? || reviews == []
-end
-  
-def index
-    @review_option = false
-    @reviews = reviews_nearby
-    checked_results(@reviews)
-    @reviews = @reviews.paginate(:page => params[:page], :per_page => 2)
-end
+  def no_results(reviews)
+     return true if current_user.nearbys.nil? || !current_user.nearbys.exists? || reviews == []
+  end
+    
+  def index
+      @review_option = false
+      @reviews = reviews_nearby
+      checked_results(@reviews)
+      @reviews = @reviews.paginate(:page => params[:page], :per_page => 5)
+  end
 
 
-def reviews_nearby
-  @reviews = [] 
-  unless current_user.nearbys.nil?
-    current_user.nearbys.each do |user|
-      user.reviews.each do |review_near|
-       @reviews << review_near
+  def reviews_nearby
+    @reviews = [] 
+    unless current_user.nearbys.nil?
+      current_user.nearbys.each do |user|
+        user.reviews.each do |review_near|
+         @reviews << review_near
+        end
       end
     end
+    @reviews 
   end
-  @reviews 
-end
 
-def select_users(zone)
-   if zone == 'par code postal'
-     @users = User.postal_code(current_user.postal_code)
-     @users = @users.where.not(id: current_user.id)
-   elsif zone == 'France entière'
-     @users = User.all
-     @users = @users.where.not(id: current_user.id)
-   else
-     @users = current_user.nearbys
-   end
- @users
-end
+  def select_users(zone)
+     if zone == 'par code postal'
+       @users = User.postal_code(current_user.postal_code)
+       @users = @users.where.not(id: current_user.id)
+       @users = @users.near([current_user.latitude, current_user.longitude], 100)
+     elsif zone == 'France entière'
+       @users = User.all
+       @users = @users.where.not(id: current_user.id)
+       @users = @users.near([current_user.latitude, current_user.longitude], 2000)
+     else
+       @users = current_user.nearbys
+     end
+   @users
+  end
 
 
-def choose_category
-  @review_option = true
-  @user = current_user
-  @reviews = []
-    if params[:book_category] && !params[:zone]
-      @reviews = Review.book_category(params[:book_category])
-    end
+  def choose_category
+    @review_option = true
+    @user = current_user
+    @reviews = []
+      if params[:book_category] && !params[:zone]
+        @reviews = Review.book_category(params[:book_category])
+      end
 
-    if params[:book_category] && params[:zone]
-      @users = select_users(params[:zone])
+      if params[:book_category] && params[:zone]
+        @users = select_users(params[:zone])
 
-        @users.each do |user|
-          user.reviews.each do |review_cat|
-                 if review_cat.book_category == params[:book_category]
-                  @reviews << review_cat   
-                 end 
-           end
-       end
-      @reviews
-    end
+          @users.each do |user|
+            user.reviews.each do |review_cat|
+                   if review_cat.book_category == params[:book_category]
+                    @reviews << review_cat   
+                   end 
+             end
+         end
+        @reviews
+      end
 
-    if params[:book_category] && !params[:zone]
-      @users = select_users(:zone)
-      @reviews = @users.reviews
-    end
-       checked_results(@reviews)
-       render 'reviews/index'
-end
+      if params[:book_category] && !params[:zone]
+        @users = select_users(:zone)
+        @reviews = @users.reviews
+      end
+         checked_results(@reviews)
+         render 'reviews/index'
+  end
 
 
 
