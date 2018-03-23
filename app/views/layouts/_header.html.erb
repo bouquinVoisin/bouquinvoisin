@@ -1,13 +1,17 @@
 	<header class="header header-fixed nav-down">
 		<div class="box mb-0">
 			<nav class="navbar navbar-default">
-				<div class="navbar-header">
+				<div class="navbar-header">	
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 					<%= link_to root_path, :class => "header-logo-small mt-15" do %>
 					<%= image_tag("logo.png", :alt=>"store logo", :id=>"logo")%>
 					<%end%>
-
 				</div>
-
 				<div class="collapse navbar-collapse js-navbar-collapse row">
 					<div class="navbar-buttons">
 						<% if user_signed_in? %>							
@@ -21,8 +25,6 @@
        					    <%= link_to "Inscrivez vous", new_user_registration_path, :class => "btn btn-primary btn-sm mt-10" %>
        					    
 						<% end %>
-
-
 					</div>
 				</div>
 			</nav>

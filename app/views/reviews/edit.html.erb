@@ -1,14 +1,17 @@
-<div align="center">
-
-<h3>Edition de commentaire</h3><br>
-
-	<%= form_for @review, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
-	  <%= label_tag 'Quel est le titre du livre :' %>
-	  <%= f.text_field :book_title %><br>
-	  <%= label_tag 'Quel est l\'auteur du livre :' %>
-	  <%= f.text_field :book_author %><br>
-	  <%= label_tag 'Quel est le genre du livre :' %>
-	  <%= f.select :book_category, ['Romans',
+<div class = "row">
+	<div class="col-md-offset-4 col-md-4 col-xs-12">
+ 	    <div class="contact-form contact-form-box border mt-30 mb-30 pull-left">
+                <h2 class = "headtitle"> Editer ta recommandation</h2><br>
+            		<div class="new_form">
+	                    <%= form_for @review, class: "mt-30", url: {action: "update"} do |f| %> 
+	                        <div class="form-group">
+	                         <%= f.text_field :book_title, class: "form-control", placeholder: "Titre du livre" %>	           
+	                        </div><br>
+	                        <div class="form-group">
+	                         <%= f.text_field :book_author, class: "form-control", placeholder: "Auteur du livre" %>	           
+	                        </div><br>
+	                        <div class="form-group">
+	                         <%= f.select :book_category, ['Romans',
 	                        'BD, Comics, Mangas',
 							'Poésie',
 							'Théâtre',
@@ -17,31 +20,30 @@
 							'Philosophie, Essais littéraires',
 							'Économie, Business, Politiques',
 							'Développement personnel',
-							'Autre'  ]%><br>
-	  <%= label_tag 'Quel est ton commentaire sur ce livre :' %>
-	  <%= f.text_area :body, cols: "40", rows: "3"%><br><br>
-	  	  <%= label_tag 'Lien vers une image de la couverture :' %>
-	  <%= f.text_field :book_cover %><br>
-	  <%= f.submit "Valider tes modifications", :class => "btn btn-primary" %>
+							'Autre'  ], :class => "form-control", placeholder: "Genre"%>	  
+     
+	                        </div><br>	                        
+	                        <div class="form-group">
+	                         <%= f.text_area :body, class: "form-control", placeholder: "Dis nous pourquoi tu adores ce livre" %>           
+	                        </div>
 
-	  <% if @review.errors.any? %>
-	    <div id="error_explanation">
-	      <h2>
-	        <%= pluralize(@review.errors.count, "error") %> prohibited
-	        this review from being saved:
-	      </h2>
-	      <ul>
-	        <% @review.errors.full_messages.each do |msg| %>
-	          <li><%= msg %></li>
-	        <% end %>
-	      </ul>
+	                        <%= f.submit "Edite ta recommandation", class: "btn btn-primary btn-sm mt-10 col-md-12 btn-lg text-center float-right" %>
+	                        <br><br>
+
+			                <% if @review.errors.any? %>
+						    	<div id="error_explanation">
+								    <h2>
+							        	<%= pluralize(@review.errors.count, "error") %> a empêché votre recommandation d'être sauvegardée:
+									</h2>
+								    <ul>
+										<% @review.errors.full_messages.each do |msg| %>
+									    <li><%= msg %></li>
+										<% end %>
+								    </ul>
+							    </div>
+						    <% end %>
+	                    <%end%>
+	                </div>
 	    </div>
-	  <% end %>
-    <% end %>
-	<br>
-    <%= link_to "Supprimer ce commentaire", review_path(@review),
-              method: :delete,
-              data: { confirm: 'Etes vous sûr ?' },
-              :class => "btn btn-info btn-lg text-center float-right" %>
-
+	</div>
 </div>

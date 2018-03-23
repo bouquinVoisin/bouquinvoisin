@@ -79,7 +79,7 @@
                                     <%=link_to edit_review_path(review) do%>
                                        <span class="icon ti-pencil"></span>
                                      <% end %>
-                                      <%=link_to(review, method: :delete) do%>
+                                      <%=link_to(review, method: :delete, data: { confirm: 'Etes vous sûr ?' }) do%>
                                        <span class="icon ti-trash"></span>
                                      <% end %>
                             
