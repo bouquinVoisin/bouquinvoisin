@@ -1,10 +1,9 @@
 
 <%if current_user.likes?(review)%>
-  <%= link_to review_likes_path(review), method: :delete, remote: true, class:"btn btn-link btn-sm ml-0 pull-right" do %>
-      <span class="ti-heart"></span>Je n'aime plus<%end%>
+  <%= link_to review_likes_path(review), method: :delete, remote: true, class: "btn btn-default unlike" do %>
+      <span class="ti-heart"></span>Retirer de ma bibli<%end%>
 
 <%else%>
-  <%= link_to review_likes_path(review), method: :post, remote: true, class:"btn btn-link btn-sm ml-0 pull-right" do %>
-      <span class="ti-heart"></span>J'aime<%end%>
+  <%= link_to review_likes_path(review), method: :post, remote: true, class: "btn btn-primary" do %>
+      <span class="ti-heart"></span>Ajouter à ma bibli<%end%>
 <%end%>
-<% unless review.likes.count ==0 %> <span class = "ti-heart likeindex"></span><span><%= review.likes.count %></span><%end%>
