@@ -26,7 +26,7 @@
 
 
 var ready = function() { // Fonction pour englober notre code js pour le rendre compatible avec rails
-   $('#filters').hide();
+
 // FONCTION POUR SCROLLER AU SEIN DE LA PAGE
    function goToByScroll(id){ // Définition de la fonction
     $('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');}
@@ -39,20 +39,6 @@ var ready = function() { // Fonction pour englober notre code js pour le rendre 
                                      }
                 );
 
-    $('#filtering').on("click", function () { // Appel de la fonction pour mes différents boutons et liens
-            
-             $('#filtering').hide();
-             $('#filters').slideDown();
-             
-                                     }
-                );
-
-        $('#upfilters').on("click", function () { // Appel de la fonction pour mes différents boutons et liens
-            
-             $('#filters').slideUp();
-             $('#filtering').fadeIn();
-                                     }
-                );
 
 
 

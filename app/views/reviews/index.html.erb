@@ -1,18 +1,18 @@
 <section class="padding">
-		<h3 align="center" id="title_index">Voici ce que nous avons dans notre Bibliothèque</h3><br>
-		       <div class="row">
-				<div class="col-xs-12 col-md-offset-2 col-md-8">
-		          <span><%= @phrase %></span>
-		        </div>
-		      </div>
-		      <section class = "row" id="filterssection">		      	
-				 <a id ="filtering">Filtrer les résultats <span class = "ti-filter"></span></a>				 
+	<div class = "row">
+		<div class = "col-xs-12 col-md-offset-2 col-md-8">
+		   <h3 align="center" id="title_index">Les livres recommandés par vos voisins</h3><br>
+		      
+		   
+
+		    <div class = "row" id="filterssection">		      	
+				 			 
 				 <div id = "filters">
                     <div id="filtersitems">
 							<div id = "formfilters">
-								<%= form_tag(choose_category_reviews_path, method: "get" ) do |f| %>
+								<%= form_tag(choose_category_reviews_path, method: "get", id: "formfilter" ) do |f| %>
 
-						               <%= label_tag 'Filtrer'%><br>
+						              
 							            <%= select_tag :zone, options_for_select(['à proximité', 'par code postal', 'France entière'])  %>
 							            <%= select_tag :book_category, options_for_select(['Romans', 'BD, Comics, Mangas',
 																	              'Poésie',
@@ -23,34 +23,29 @@
 																	              'Économie, Business, Politiques',
 																	              'Développement personnel',
 																	              'Autre']) %>
-                                        <%= submit_tag %>
-
+                                        <%= submit_tag "Rechercher", class: "btn btn-primary btn-sm mt-10" %>
+                                  <% if @review_option %>
+							        <%= link_to "Réinitialiser", reviews_path, style: "padding: 20px 0 0 20px;" %>
+							      <% end %>	
 						        <% end %>
-						        <% if @review_option %>
-							    <%= link_to "Décocher les options", reviews_path %>
-							    <% end %>						
+					
 					        </div>
-						     <div id = "filteroptions">
-								<%= form_tag(choose_category_reviews_path, method: "get" ) do |f| %>
+				   </div>
+		         </div>
+	       </div>
+	
+            <div class = "row" id="resultphrase">
+            	<span><%= @phrase %></span>
+            </div>
 
-						               <%= label_tag 'Filtrer par type'%><br>
-							           <%= select_tag :reviews_options, options_for_select(['+ proche', '+ récent', '+ ancien',
-																	              '+ de likes',																	              
-                                                                                  ]), :onchange => "this.form.submit();"  %>
+			<div class = "row" id="feed">
+			    <%= render @reviews %>
+			</div>
 
-						    <% end %>
-				            </div>
-				          </div>
-				             <div class = "row">
-							    <a id = "upfilters"><span class = "ti-angle-up"></span></a>
-							</div>
-		</div>
-	</section>
+			<div id="infinite-scrolling" style = "display: none;">
+			  <%= will_paginate @reviews %>
+			</div>
 
-<div id="feed">
-    <%= render @reviews %>
-</div>
-
-<div id="infinite-scrolling" style = "display: none;">
-  <%= will_paginate @reviews %>
-</div>
+        </div>
+    </div>
+</section>

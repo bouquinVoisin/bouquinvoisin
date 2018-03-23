@@ -1,31 +1,34 @@
-<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-md-offset-1 col-md-10">
+
+				<div class="col-xs-12 col-md-12">
 					
 
 
 					  <% user_link = User.find(review.user_id) %>
 						<div class="box">
-							<div class="offer-box offer-box-horizontal border">
+							<div class="offer-box offer-box-horizontal">
 									<% if review.book_cover %>
 									<div class="offer-box-head">
 										<div class="swiper-slide"><%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%></div>
 									</div>
 									<% end %>
-									<a href="#"> 
-										<span class="h4 offer-box-title"><%=review.book_title%> de <%=review.book_author %></span>
-										<span class="offer-box-location">Recommandé par votre voisin(e) <%=User.find(review.user_id).name%>, à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
+									 <div>
+										<span class="booktitle"><%=review.book_title%></span><br>
+										<span class="bookauthor"> de <%=review.book_author %></span><br>
+										<span class = "bookcategory"><%=review.book_category %></span><br><br>
+										<span class="bookauthor">Recommandé par 
+											<%= link_to user_link do %>
+											   <%=User.find(review.user_id).name%>
+											<% end %>
+											, à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
 										<span class="offer-box-meta">Le commentaire sur ce livre : <%= review.body%></span>
-									</a>
-									<a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=review.id%>" >Voir le commentaire</a>
-									<%= link_to user_link, :class => "btn btn-link btn-sm ml-0" do %>
-									Voir le profil de <%=User.find(review.user_id).name%>
-									<div id ="<%=review.id%>_likes">
-										<%= render :partial => 'likes', :locals => { :review => review} %>
-									</div>
 									
+									<a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=review.id%>" >Lire la recommandation</a>
+									
+									
+									<%= render :partial => 'likes', :locals => { :review => review} %>
+									
+									</div>
 
-									<% end%>
 
 
 							</div>
@@ -61,8 +64,6 @@
 
 			        
 				</div><!--/ col-md-9-->
-			</div><!--/ row -->
-		</div><!--/ container -->
 
 		
 

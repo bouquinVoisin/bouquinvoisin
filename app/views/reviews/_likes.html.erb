@@ -7,4 +7,4 @@
   <%= link_to review_likes_path(review), method: :post, remote: true, class:"btn btn-link btn-sm ml-0 pull-right" do %>
       <span class="ti-heart"></span>J'aime<%end%>
 <%end%>
-<%= review.likes.count %>
+<% unless review.likes.count ==0 %> <span class = "ti-heart likeindex"></span><span><%= review.likes.count %></span><%end%>

@@ -68,15 +68,17 @@
 }
 
 #title_index {
-  background-color: #917676;
-  color: white;
-  width: 80%;
-  padding: 20px;
-  margin: auto;
-  border-radius: 5px;
+color: #03314B;
+font-weight: 600;
+text-align: left;
 
 }
 
+#resultphrase {
+font-weight: 600;
+color: #03314b;
+padding: 20px 0 50px 0px;
+}
 #filterssection { 
   margin-bottom: 20px;
   display: flex;
@@ -92,23 +94,30 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  width: 80%;
-  border-bottom: 1px solid gray;
+  width: 100%;
+  border-bottom: 3px solid #ff6b6b;
 }
 
 #filtersitems {
   display: flex;
-justify-content: space-around;
 width: 100%;
 }
 #filters select {
-  box-shadow: none;
-  background: none;
-  border: 2px solid #ff6b6b;
-  height: 36px;
-  border-radius: 5px;
+background: #fff url(../images/select-arrow-open.png) 98% center no-repeat;
+display: block;
+border: 1px solid #ccc;
+padding: 10px;
+border-radius: 5px;
+margin: 10px 10px 0 0;
+text-transform: uppercase;
+font-family: 'Montserrat';
+color: #03315b;
+font-weight: bold;
 }
 
+#formfilter {
+  display: flex;
+}
 
 .swiper-container {
   margin: 0 auto;
@@ -5558,6 +5567,23 @@ This is visible during transitions. */
     .blog-sidebar .blog-posts-list li {
       padding: 0; }
 
+
+.booktitle {
+  color: #03314b;
+font-weight: bold;
+font-size: 2rem;
+}
+
+.bookcategory {
+  padding: 2px 10px;
+border: 1px solid #999;
+border-radius: 120px;
+color: #999;
+font-size: 12px;
+line-height: 19px;
+}
+
+
 .contact-with-map {
   padding-bottom: 0; }
 .contact-form {
@@ -5673,7 +5699,7 @@ This is visible during transitions. */
     overflow: hidden;
     white-space: nowrap; }
   .offer-box [class^="ti-"], .offer-box [class*=" ti-"] {
-    color: #FF6B6B; }
+    color: gray; }
   .offer-box-horizontal {
     border-radius: 3px; }
     .offer-box-horizontal .offer-box-head {
@@ -5813,4 +5839,6 @@ width: 104%;
 .githublink{
   display: inline;
 }
+
+
 /*# sourceMappingURL=theme.css.map */
