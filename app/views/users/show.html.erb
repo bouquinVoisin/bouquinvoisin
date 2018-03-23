@@ -37,45 +37,94 @@
                                
                                         <div class="row mt-30">
                                             <% @reviews.each do |review| %>
-                                              
-                                                <div class="col-md-4 wow fadeInLeft">
-                                                    <div class="services-box text-center shadow">
-                                                        <h4><%=review.book_title%>, <%=review.book_author%></h4>
-                                                        <p class="fixed-height"><%=review.body[0..50]%>
-                                                        </p>
-                                                        <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#service-0<%=review.id%>">Lire +</a>
-                                                    </div>
+
+                                                <div class = "row cardreviews">
+                                                   <div class = "col-xs-offset-1 col-xs-10 col-md-4">
+
+                                                    <% user_link = User.find(review.user_id) %>
+
+                                                <% if review.book_cover %>
+                                                <%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%>               
+                                                <% end %>
+
+                                                  </div>
+                                        <div class = "col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-6 bookcarttext">
+                                                              <div class = "bookdetails">
+                                                  <span class="booktitle"><%=review.book_title%></span><br>
+                                                  <span class="bookauthor"> de <%=review.book_author %></span><br><br>
+                                                  <div class = "rowlike"><span class = "bookcategory"><%=review.book_category %></span> 
+                                                     <div id ="<%=review.id%>_likescount">
+                                                        <%= render :partial => 'likescount', :locals => { :review => review} %>
+                                                       </div></div>
+                                                    
+                                              </div>
+                                                  <span class="bookauthor">Recommandé par 
+                                                    <%= link_to user_link do %>
+                                                       <%=User.find(review.user_id).name%>
+                                                    <% end %>
+                                                     à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
+                                                  
+                                                
+                                                <a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=review.id%>" >Lire la recommandation</a>
+                                                
+                                                <div id ="<%=review.id%>_likes">
+                                                <%= render :partial => 'likes', :locals => { :review => review} %>
                                                 </div>
+                                         </div>
+
+
+
+                                       </div>
+
+
+
+
+
+                                                <% user_link = User.find(review.user_id) %>
+                                                  <div id="service-0<%=review.id%>" class="modal fade services-modal" role="dialog">
+                                                      <div class="modal-dialog">
+                                                          <!-- Modal content-->
+                                                          <div class="modal-content shadow">
+                                                              <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
+                                                              <div class="modal-body">
+                                                                  <div class="post-entry post-entry-modal">
+
+                                                                     
+                                                                        <div class = "row">
+                                                                          <div class = "col-xs-12 col-md-6">
+                                                                             <%if review.book_cover%> <%= image_tag review.book_cover, style: "width: 100%"%><%end %>  
+                                                                          </div>
+                                                                          <div class = "col-xs-12 col-md-6">
+                                                                            <h4 style = "margin-top: 20px;">La recommandation de <%=user_link.name%></h4>
+                                                            <span class="booktitle"><%=review.book_title%></span><br>
+                                                            <span class="bookauthor"> de <%=review.book_author %></span><br>
+                                                                              <span class = "bookcategory"><%=review.book_category %></span> 
+                                                                              <p><%=review.body%></p> 
+                                                                          </div>
+                                                                        </div>
+                                                                          
+                                                                 
+                                                                                                    
+                                                                      
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                     </div>
+                                                  </div>
+
+
+
+
+
+    
+
+
                                             <% end %>            
                                         </div>
 
 
                                             <!-- / SERVICE MODAL -->
-                                        <% @reviews.each do |review| %>
-
-                                            <div id="service-0<%=review.id%>" class="modal fade services-modal" role="dialog">
-                                                <div class="modal-dialog">
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content shadow">
-                                                        <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
-                                                        <div class="modal-body">
-                                                            <div class="post-entry post-entry-modal">
-
-                                                                <div class="services-box text-center">
-
-                                                                    <h4>La recommandation de <%=@user.name%></h4>
-                                                                    <h3><%=review.book_title%>, <%=review.book_author%></h3>
-                                                                    <p>Genre : <%=review.book_category%>
-                                                                    </p>
-                                                                </div>
-                                                                <p><%=review.body%></p>                                    
-                                                               <%if review.book_cover%> <%= image_tag review.book_cover%><%end %>                                  
-                                                           </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <%end%>
+                                        
                                     </section>
                                </div> 
                         </div>                 
@@ -83,5 +132,10 @@
             </div>
         </section>
     </div>
+
+    <div id ="contact-user">
+-        <%= render :partial => 'messages' %>
+     </div>
+-    <div id = "sent"></div>
             
        
