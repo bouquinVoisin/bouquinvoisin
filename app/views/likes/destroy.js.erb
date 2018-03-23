@@ -1,2 +1,3 @@
 
 $('#<%=@review.id%>_likes').html("<%=j render partial: "reviews/likes", locals: {review: @review} %>");
+$('#<%=@review.id%>_likescount').html("<%=j render partial: "reviews/likescount", locals: {review: @review} %>");
