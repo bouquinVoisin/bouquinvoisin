@@ -1,5 +1,4 @@
-
-    $(document).on('ready page:load', function () {
+var ready = function() {
       var isLoading = false;
       if ($('#infinite-scrolling').size() > 0) {
         $(window).on('scroll', function() {
@@ -14,4 +13,8 @@
           }
         });
       }
-    });
+};
+
+/*pour lancer le js (donc le schroll) à tous les coups : au chargement de la page et si la page est en cache
+$(document).ready(ready);*/
+$(document).on('turbolinks:load', ready);

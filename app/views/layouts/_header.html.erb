@@ -2,35 +2,24 @@
 		<div class="box mb-0">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header">
-					<a href="#" class="header-logo-small mt-15"><%= image_tag("logo.png", :alt=>"store logo", :id=>"logo")%>Bouquin Voisin</a>
-					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
+					<%= link_to root_path, :class => "header-logo-small mt-15" do %>
+					<%= image_tag("logo.png", :alt=>"store logo", :id=>"logo")%>
+					<%end%>
+
 				</div>
 
 				<div class="collapse navbar-collapse js-navbar-collapse row">
-					<ul class="nav navbar-nav">
-						<li class="header-link"><%=link_to "home", root_path %></li>
-						
-
-
-						<li class="header-link"><%=link_to "about", about_path %></li>
-
-						
-						
-					</ul>
-
 					<div class="navbar-buttons">
-						<% if user_signed_in? %>
+						<% if user_signed_in? %>							
 							<%= link_to "Mon profil", profile_path, class: "btn btn-link btn-sm mt-10"%>
+							<%=link_to "A propos", about_path, class: "btn btn-link btn-sm mt-10" %>
 							<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-link btn-sm mt-10"%>
 							<%= link_to reviews_path, class: "btn btn-primary btn-sm mt-10" do %><span class="ti-plus"></span>Découvrez de nouveaux livres<%end%>
 						<% else %>
+							<%=link_to "A propos", about_path, class: "btn btn-link btn-sm mt-10" %>
 							<%= link_to "Connectez vous", new_user_session_path, :class => "btn btn-link btn-sm mt-10"  %>
        					    <%= link_to "Inscrivez vous", new_user_registration_path, :class => "btn btn-primary btn-sm mt-10" %>
+       					    
 						<% end %>
 
 

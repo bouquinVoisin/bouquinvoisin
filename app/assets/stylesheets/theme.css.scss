@@ -30,17 +30,30 @@
 }
 
  #bg1 {
-  background: 
-    
-    /* bottom, image */
-    url(asset-path('assets/slider/slide5.jpg'));
+  background:
+  linear-gradient(to right, #ffffff, #f2f2f2b3, #f1f2f700), url(/assets/slider/slide4.jpg);
+  background-size: cover;
+  background-position: center;
+  vertical-align: center;
+ 
+ }
 
-    background-position: center;
+  @media (max-width: 479px) {
+  #bg1 {
+  background:
+  url(asset-path('assets/slider/slide5.jpg'));
+  background-position: center;
   background-size: cover;
   overflow: hidden;
   width: 100%;
 
- }
+ }}
+
+ .mega {
+  position: static !important; }
+  @media (max-width: 479px) {
+    .mega {
+      width: 100%; } }
 
 #image_cover {
   width: 100%; 
@@ -4250,11 +4263,7 @@ legend {
 .no-border {
   border: none !important; }
 
-.mega {
-  position: static !important; }
-  @media (max-width: 479px) {
-    .mega {
-      width: 100%; } }
+
   .mega-menu {
     padding: 20px 0px;
     box-shadow: none;
@@ -4539,10 +4548,13 @@ footer {
   width: 100%;
   float: left;
   margin-top: 60px;
-  padding-bottom: 60px; }
+  padding-bottom: 60px;
+  text-align: right;
+   }
   footer .footer {
     border-top: 1px solid #ecebeb; }
     footer .footer-top {
+
       padding: 15px 0;
       border-top: 1px solid #f5f5f5;
       border-bottom: 1px solid #f5f5f5;
@@ -4685,7 +4697,7 @@ a.socialIcon:hover, .socialHoverClass {
   background-color: white;
 }
 .counter {
-  margin-bottom: 60px;
+  margin-bottom: -25px;
   background-color : transparent;
   height: 250px;
   padding: 20px;
@@ -4700,11 +4712,13 @@ a.socialIcon:hover, .socialHoverClass {
 
 .counter span {
   color: #fc6471;
+  font-size: 5rem;
 }
 
 .counter p {
   color: #837f7f;
   text-align: justify;
+  font-size: 1.5rem;
 }
 .countdown-counter {
   display: block;
@@ -4801,14 +4815,17 @@ a.socialIcon:hover, .socialHoverClass {
     color: #03314B; 
     font-family: 'Lato', sans-serif;
      font-weight: 900;
-    margin : 70px 0 70px 0;}
+    margin : 70px 0 70px 0;
+    margin-top: 20vh;
+  }
     @media (max-width: 479px) {
       .home-slider h1, .home-slider .h1 {
         position: relative;
        font-size: 2.8rem;
-        line-height: 2.8125rem; } }
+        line-height: 2.8125rem;
+        margin : 70px 0 70px 0; } }
     .home-slider .btn {
-    font-size: 2em;
+    font-size: 1.5em;
 
     }
     @media (max-width: 479px) {
@@ -4817,10 +4834,10 @@ a.socialIcon:hover, .socialHoverClass {
         margin-top: 25px;
         } }
 .homesubtitle {
-          font-size: 16px;
+        font-size: 30px;
         margin: -25px 0 30px 0;
        color: #03314B;
-       font-weight: 600;
+       font-weight: 500;
             }
     @media (max-width: 479px) {
 .homesubtitle {
