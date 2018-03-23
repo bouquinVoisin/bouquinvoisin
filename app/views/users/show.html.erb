@@ -1,98 +1,87 @@
-
     <div class="container">
         <section id = "profileshow">
             <div class="row ">
-                <div class="post padding-medium">
-                   
-                        <div class=" post-content">
-
-                            <div class="post-header">
+                <div class="post padding-medium">                  
+                        <div class=" post-content">          
                                <div class = "row">
-                                  <div class = "col-xs-5 col-md-4">
+                                  <div class = "col-xs-12 col-md-3" align="center">
                                     
                                     <% if @user.avatar? %>
                                       <%= image_tag @user.avatar.url, :class => "post-user mb-30", :id => "avatar"%>  
                                     <% else %>
                                       <%= image_tag "default_avatar.jpeg" %>
                                     <% end %>    
-                               
-                                  </div>
-
-                                  <div class = "col-xs-6 offset-md-1 col-md-6">
+                            
                                     <h3><%= @user.name %></h3>
-                                    <h4>xx ans</h4>
-                                    <h4><%= @user.address %></h4> 
-                                  </div>                             
-                               </div>
+                                    <% if @user.postal_code? %>
+                                      <span class="ti-location-pin icon"></span> <%= @user.postal_code%>
+                                    <%end%>
+                                    <p id="bio_show"><%= @user.bio %></p> 
+                                    <a id = "contactshow" class="btn btn-primary" data-toggle="collapse" href="#comments-form"><span class="ti-email icon"></span> contacter</a>  
 
-                               <div class = "row">
-                                   <div class = offset-xs-1 col-xs-10 offset-md-2 col-md-8>
-                                     <p> Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio. Biobiob iobi obi obiob iobiobio.</p>
-                                     <a id = "contactshow" class="btn btn-primary" data-toggle="collapse" href="#comments-form">contacter <%= @user.name%></a>
                                    </div>
-                               </div>                  
-                            </div>
-                        </div>
-                 
+
+                                  <div class = "col-xs-12 col-md-offset-1 col-md-8">
+        
+                                        
+                                    <section id="recoshow">
+                                        <div class = "row headtitle">
+                                            <% if @user.reviews.count == 0 %>
+                                              <h2><%=@user.name%> n'a pas encore écrit de recommandations !</h2>  
+                                            <%elsif @user.reviews.count == 1 %>
+                                              <h2> La recommandation de <%=@user.name%></h2>
+                                            <% else%>
+                                              <h2> Les <%=@user.reviews.count%> recommandations de <%=@user.name%></h2>
+                                            <% end %>
+                                        </div>
+                               
+                                        <div class="row mt-30">
+                                            <% @reviews.each do |review| %>
+                                              
+                                                <div class="col-md-4 wow fadeInLeft">
+                                                    <div class="services-box text-center shadow">
+                                                        <h4><%=review.book_title%>, <%=review.book_author%></h4>
+                                                        <p class="fixed-height"><%=review.body[0..50]%>
+                                                        </p>
+                                                        <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#service-0<%=review.id%>">Lire +</a>
+                                                    </div>
+                                                </div>
+                                            <% end %>            
+                                        </div>
+
+
+                                            <!-- / SERVICE MODAL -->
+                                        <% @reviews.each do |review| %>
+
+                                            <div id="service-0<%=review.id%>" class="modal fade services-modal" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content shadow">
+                                                        <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
+                                                        <div class="modal-body">
+                                                            <div class="post-entry post-entry-modal">
+
+                                                                <div class="services-box text-center">
+
+                                                                    <h4>La recommandation de <%=@user.name%></h4>
+                                                                    <h3><%=review.book_title%>, <%=review.book_author%></h3>
+                                                                    <p>Genre : <%=review.book_category%>
+                                                                    </p>
+                                                                </div>
+                                                                <p><%=review.body%></p>                                    
+                                                               <%if review.book_cover%> <%= image_tag review.book_cover%><%end %>                                  
+                                                           </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <%end%>
+                                    </section>
+                               </div> 
+                        </div>                 
                 </div>
             </div>
         </section>
-            
-        <section id="recoshow">
-            <div class = "row headtitle">
-                <h2> Les recommandations de <%=@user.name%></h2>
-            </div>
-   
-            <div class="row mt-30">
-                <% @reviews.each do |review| %>
-                  
-                    <div class="col-md-4 wow fadeInLeft">
-                        <div class="services-box text-center shadow">
-                            <span class="icon"> # <%= @i%></span>
-                            <h4><%=review.book_title%>, <%=review.book_author%></h4>
-                            <p class="fixed-height"><%=review.body[0..50]%>
-                            </p>
-                            <a href="#" class="btn btn-margin btn-default btn-lg" data-toggle="modal" data-target="#service-0<%=review.id%>">Lire +</a>
-                        </div>
-                    </div>
-                <% end %>            
-            </div>
-
-
-                <!-- / SERVICE MODAL -->
-            <% @reviews.each do |review| %>
-
-                <div id="service-0<%=review.id%>" class="modal fade services-modal" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content shadow">
-                            <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
-                            <div class="modal-body">
-                                <div class="post-entry post-entry-modal">
-
-                                    <div class="services-box text-center">
-                                        <span class="icon"># <%=@j%></span>
-                                        <h4>La recommandation de <%=@user.name%></h4>
-                                        <h3><%=review.book_title%>, <%=review.book_author%></h3>
-                                        <p>Genre : <%=review.book_category%>
-                                        </p>
-                                    </div>
-                                    <p><%=review.body%></p>                                    
-                                   <%if review.book_cover%> <%= image_tag review.book_cover%><%end %>                                  
-                               </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <%end%>
-        </section>
-
-    <div id ="contact-user">
-        <%= render :partial => 'messages' %>
     </div>
-    <div id = "sent"></div>
-      
             
-
-
-</div>
+       

@@ -2,7 +2,7 @@
 <div class="row" align="center">
   <div class="col-xs-12 col-md-offset-4 col-md-4">
              <div class="contact-form contact-form-box border mt-30 mb-30">
-             <h5 align="center">Se connecter</h5><br>
+             <h5 align="center" class="headtitle">Se connecter</h5><br>
                       
                       <%= form_for(resource, as: resource_name, url: session_path(resource_name), :class => "mt-30") do |f| %>
                           <%= devise_error_messages! %>
@@ -22,7 +22,6 @@
                           <% end -%><br>
 
                           <%= f.submit "Se connecter", :id => "submit", :class => "btn btn-primary col-md-12 btn-lg text-center float-right"%>
-
                           <%= render "devise/shared/links" %>
                           
                       <% end %>

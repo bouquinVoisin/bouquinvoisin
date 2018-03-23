@@ -8,7 +8,7 @@ class User < ApplicationRecord
    
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :postal_code, presence: true, length: { maximum: 5 }

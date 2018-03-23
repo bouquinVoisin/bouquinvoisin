@@ -10,6 +10,9 @@
 	                    <%= form_for @user, method: :patch, class: "mt-30" do |f| %> 
 	                        <div class="form-group">
 	                        <p> Nous avons besoin de vous localiser afin de vous montrer les bouquins préférés de vos voisins. Donnez-nous votre exacte, ou bien votre rue, votre code postal ou votre ville. Votre adresse exacte ne sera jamais communiquée aux autres membres.</p>
+	                         <%= f.label "Votre prénom"%>
+	                         <%= f.text_field :name, class: "form-control", placeholder: "Votre prénom" %><br>
+
 	                         <%= f.label "Votre adresse"%>
 	                         <%= f.text_field :address, class: "form-control", placeholder: "Votre adresse" %><br>
 

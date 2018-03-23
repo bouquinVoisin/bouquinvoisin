@@ -59,7 +59,7 @@ end
 private 
 
   def user_params
-    params.require(:user).permit(:bio, :address, :avatar)
+    params.require(:user).permit(:bio, :address, :avatar, :name, :postal_code)
   end
 
     def message_params
