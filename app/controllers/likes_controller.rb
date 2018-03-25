@@ -23,6 +23,13 @@
     @review.save
   end
 
+    def destroy_popup
+    @review.likes.where(user_id: current_user.id).destroy_all
+    @review.numberlikes -=1
+    @review.save
+    redirect_to profile_path
+  end
+
 
 
  private
