@@ -23,9 +23,7 @@
 
                                    </div>
 
-                                  <div class = "col-xs-12 col-md-offset-4 col-md-8">
-        
-                                        
+                                  <div class = "col-xs-12 col-md-offset-4 col-md-8">                                        
                                     <section id="recoshow">
                                         <div class = "row headtitle">
                                             <% if @user.reviews.count == 0 %>
@@ -61,48 +59,15 @@
                                                     <span class="icon ti-trash"></span>
                                                   <% end %>
                                                 </div> 
+                                                <% end %> 
                                         </div>
-
-
-
                                   </div>
 
 
 
 
 
-                                                <% user_link = User.find(review.user_id) %>
-                                                  <div id="service-0<%=review.id%>" class="modal fade services-modal" role="dialog">
-                                                      <div class="modal-dialog">
-                                                          <!-- Modal content-->
-                                                          <div class="modal-content shadow">
-                                                              <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
-                                                              <div class="modal-body">
-                                                                  <div class="post-entry post-entry-modal">
-
-                                                                     
-                                                                        <div class = "row">
-                                                                          <div class = "col-xs-12 col-md-6">
-                                                                             <%if review.book_cover%> <%= image_tag review.book_cover, style: "width: 100%"%><%end %>  
-                                                                          </div>
-                                                                          <div class = "col-xs-12 col-md-6">
-                                                                            <h4 style = "margin-top: 20px;">La recommandation de <%=user_link.name%></h4>
-                                                            <span class="booktitle"><%=review.book_title%></span><br>
-                                                            <span class="bookauthor"> de <%=review.book_author %></span><br>
-                                                                              <span class = "bookcategory"><%=review.book_category %></span> 
-                                                                              <p><%=review.body%></p> 
-                                                                          </div>
-                                                                        </div>
-                                                                          
-                                                                 
-                                                                                                    
-                                                                      
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                     </div>
-                                                  </div>
-
+                                               
 
 
 
@@ -110,12 +75,11 @@
     
 
 
-                                            <% end %>            
+                                                       
                                         </div>
 
 
-                                            <!-- / SERVICE MODAL -->
-                                        
+                                           
                                     </section>
                                </div> 
                         </div>                 

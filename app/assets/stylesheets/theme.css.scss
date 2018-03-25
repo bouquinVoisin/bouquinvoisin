@@ -14,6 +14,9 @@
  * Released on: February 7, 2016
  */
 
+textarea.form-control {
+    height: 150px;
+}
 
 #logo {
   height: 25px;
@@ -5912,14 +5915,10 @@ line-height: 19px;
   color: #03314B;
   font-weight: 600;
   
-}
+} @media (max-width: 479px) {
+  .headtitle {
+        font-size: 35px;} }
 
-.headtitle h2 {
-  font-size: 2em;  
-  font-weight: 600;
-  text-align: center;
-
-}
 
 .githublink{
   display: inline;
