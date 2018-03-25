@@ -4920,7 +4920,7 @@ a.socialIcon:hover, .socialHoverClass {
   .post-content {
     background: #fff;
     padding: 20px;
-    border: 1px solid rgba(170, 170, 170, 0.15); }
+     }
     @media (max-width: 479px) {
       .post-content {
         padding: 15px; } }
@@ -5944,4 +5944,10 @@ line-height: 19px;
   margin-right: 0px;
   text-align: justify;
 }
+
+#contact_show {
+  position: fixed;
+} @media (max-width: 479px) {
+    #contact_show {
+      position: static; } }
 /*# sourceMappingURL=theme.css.map */

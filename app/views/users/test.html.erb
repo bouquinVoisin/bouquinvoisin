@@ -38,34 +38,45 @@
                                         </div>
                                
                                         <div class="row mt-30">
-                                       
-                                            <% @reviews.each do |review| %>       
-                                                <div class = "col-xs-offset-1 col-xs-10 col-md-4">               
-                                                  <% if review.book_cover %>
-                                                    <%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%>
-                                                  <% end %>
-                                                  <div class = "bookdetails">
-                                                    <span class="booktitle"><%=review.book_title%></span><br>
-                                                    <span class="bookauthor"> de <%=review.book_author %></span><br><br>
-                                                    <div class = "rowlike"><span class = "bookcategory"><%=review.book_category %></span>
-                                                       <div id ="<%=review.id%>_likescount">
-                                                          <%= render :partial => 'likescount', :locals => { :review => review} %>
-                                                       </div>
-                                                    </div>
-                                                      
+                                            <% @reviews.each do |review| %>
+
+                                                <div class = "row cardreviews">
+                                                   <div class = "col-xs-offset-1 col-xs-10 col-md-4">
+
+                                                    <% user_link = User.find(review.user_id) %>
+
+                                                <% if review.book_cover %>
+                                                <%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%>               
+                                                <% end %>
+
                                                   </div>
-                                                  <%=link_to edit_review_path(review) do%>
-                                                    <span class="icon ti-pencil"></span>
-                                                  <% end %>
-                                                  <%=link_to(review, method: :delete, data: { confirm: 'Etes vous sûr ?' }) do%>
-                                                    <span class="icon ti-trash"></span>
-                                                  <% end %>
-                                                </div> 
-                                        </div>
+                                        <div class = "col-xs-offset-1 col-xs-10 col-md-offset-1 col-md-6 bookcarttext">
+                                                              <div class = "bookdetails">
+                                                  <span class="booktitle"><%=review.book_title%></span><br>
+                                                  <span class="bookauthor"> de <%=review.book_author %></span><br><br>
+                                                  <div class = "rowlike"><span class = "bookcategory"><%=review.book_category %></span> 
+                                                     <div id ="<%=review.id%>_likescount">
+                                                        <%= render :partial => 'likescount', :locals => { :review => review} %>
+                                                       </div></div>
+                                                    
+                                              </div>
+                                                  <span class="bookauthor">Recommandé par 
+                                                    <%= link_to user_link do %>
+                                                       <%=User.find(review.user_id).name%>
+                                                    <% end %>
+                                                     à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
+                                                  
+                                                
+                                                <a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=review.id%>" >Lire la recommandation</a>
+                                                
+                                                <div id ="<%=review.id%>_likes">
+                                                <%= render :partial => 'likes', :locals => { :review => review} %>
+                                                </div>
+                                         </div>
 
 
 
-                                  </div>
+                                       </div>
 
 
 
