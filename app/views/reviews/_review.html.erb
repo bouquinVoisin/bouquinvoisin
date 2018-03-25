@@ -17,7 +17,7 @@
 										<span class="bookauthor"> de <%=review.book_author %></span><br><br>
 										<div class = "rowlike"><span class = "bookcategory"><%=review.book_category %></span> 
 										   <div id ="<%=review.id%>_likescount">
-										  		<%= render :partial => 'likescount', :locals => { :review => review} %>
+										  		<%= render :partial => 'likescount.html.erb', :locals => { :review => review} %>
 									       </div></div>
 										  
 								</div>
@@ -25,7 +25,7 @@
 											<%= link_to user_link do %>
 											   <%=User.find(review.user_id).name%>
 											<% end %>
-											 à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
+											 à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez toi</span>
 										
 									
 									<a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=review.id%>" >Lire la recommandation</a>
@@ -58,7 +58,12 @@
 		                                    			 <%if review.book_cover%> <%= image_tag review.book_cover, style: "width: 100%"%><%end %>  
 		                                    		</div>
 		                                    		<div class = "col-xs-12 col-md-6">
-				                                    	<h4 style = "margin-top: 20px;">La recommandation de <%=user_link.name%></h4>
+				                                    	<h4 style = "margin-top: 20px;">La recommandation de 
+				                                    	<%= link_to user_link, style: "color: #ff6b6b; text-decoration: underline;" do %>
+													     <%=User.find(review.user_id).name%>
+													    <% end %></h4>
+														
+													
 															<span class="booktitle"><%=review.book_title%></span><br>
 															<span class="bookauthor"> de <%=review.book_author %></span><br>
 				                                        <span class = "bookcategory"><%=review.book_category %></span> 

@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
 
         @reviews = @reviews.paginate(:page => params[:page], :per_page => 5)    
       else @reviews = reviews.paginate(:page => params[:page], :per_page => 5)
+        @phrase = "Ces livres font parti des 3 livres préférés des tes voisins. Lis leur recommandation et emprunte-leur !"
       end
     @reviews
 

@@ -16,9 +16,11 @@
                             
                                     <h3><%= @user.name %></h3>
                                     <% if @user.postal_code? %>
-                                      <span class="ti-location-pin icon"></span> <%= @user.postal_code%>
+                                      <span class="ti-location-pin icon"></span> <%= @user.postal_code%><br>
                                     <%end%>
-                                    <p id="bio_show"><%= @user.bio %></p> 
+                                    <span>à <%= current_user.distance_from(@user).round(2) %> km de chez toi</span>
+                                    <p class="bioshow"><%= @user.bio %></p> 
+
                                     <a id = "contactshow" class="btn btn-primary" data-toggle="collapse" href="#comments-form"><span class="ti-email icon"></span> contacter</a>  
                                    </div>
                                    </div>
@@ -31,9 +33,9 @@
                                             <% if @user.reviews.count == 0 %>
                                               <h2><%=@user.name%> n'a pas encore écrit de recommandations !</h2>  
                                             <%elsif @user.reviews.count == 1 %>
-                                              <h2> La recommandation de <%=@user.name%></h2>
+                                              <h2 class = "topreco"> La recommandation de <%=@user.name%></h2>
                                             <% else%>
-                                              <h2> Les <%=@user.reviews.count%> recommandations de <%=@user.name%></h2>
+                                              <h2 class = "topreco"> Les <%=@user.reviews.count%> recommandations de <%=@user.name%></h2>
                                             <% end %>
                                         </div>
                                
@@ -60,11 +62,7 @@
                                                        </div></div>
                                                     
                                               </div>
-                                                  <span class="bookauthor">Recommandé par 
-                                                    <%= link_to user_link do %>
-                                                       <%=User.find(review.user_id).name%>
-                                                    <% end %>
-                                                     à <%= current_user.distance_from(User.find(review.user_id)).round(2) %> km de chez vous</span>
+
                                                   
                                                 
                                                 <a href="#" class="btn btn-default" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=review.id%>" >Lire la recommandation</a>
@@ -125,7 +123,12 @@
                                         </div>
 
 
-                                            <!-- / SERVICE MODAL -->
+                                        <div id ="contact-user" class="row">
+                                              
+                                                <%= render :partial => 'messages' %>
+                                              </div>
+                                            
+                                        <div id = "sent"></div>
                                         
                                     </section>
                                </div> 
@@ -135,11 +138,6 @@
         </section>
     </div>
     
-    <div id ="contact-user" class="row">
-      <div class="col-xs-12 col-md-offset-5 col-md-6 col-md-offset-1">
-        <%= render :partial => 'messages' %>
-      </div>
-     </div>
-    <div id = "sent"></div>
+
             
        

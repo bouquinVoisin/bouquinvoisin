@@ -1,11 +1,11 @@
-<% if review.likes.count == 1 %> 
-   <%if current_user.likes?(review)%>
+<% if review.likes.count == 1 && current_user.likes?(review) %> 
       <span class = "ti-heart likeindexactive"></span><span><%= review.likes.count %> like</span>
-   <% else %> <span class = "ti-heart likeindex"></span><span><%= review.likes.count %> like</span>
-   <% end %>
-<% elsif review.likes.count > 1%><span class = "ti-heart likeindexactive"></span><span><%= review.likes.count %> likes</span>
-    <%if current_user.likes?(review)%>
-      <span class = "ti-heart likeindexactive"></span><span><%= review.likes.count %> like</span>
-   <% else %> <span class = "ti-heart likeindex"></span><span><%= review.likes.count %> like</span>
-   <% end %>
+   <% elsif review.likes.count == 1 && !current_user.likes?(review)%> 
+      <span class = "ti-heart likeindex"></span><span><%= review.likes.count %> like</span>
+
+   <% elsif review.likes.count > 1 && current_user.likes?(review) %> 
+      <span class = "ti-heart likeindexactive"></span><span><%= review.likes.count %> likes</span>
+   <% elsif review.likes.count > 1 && !current_user.likes?(review) %> 
+      <span class = "ti-heart likeindex"></span><span><%= review.likes.count %> likes</span>
+      
 <%end%>

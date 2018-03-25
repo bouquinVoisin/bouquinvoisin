@@ -18,7 +18,7 @@
 							<%= link_to "Mon profil", profile_path, class: "btn btn-link btn-sm mt-10"%>
 							<%=link_to "A propos", about_path, class: "btn btn-link btn-sm mt-10" %>
 							<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-link btn-sm mt-10"%>
-							<%= link_to reviews_path, class: "btn btn-primary btn-sm mt-10" do %>Découvrez de nouveaux livres<%end%>
+							<%= link_to reviews_path, class: "btn btn-primary btn-sm mt-10" do %>Découvre de nouveaux livres<%end%>
 						<% else %>
 							<%=link_to "A propos", about_path, class: "btn btn-link btn-sm mt-10" %>
 							<%= link_to "Connectez vous", new_user_session_path, :class => "btn btn-link btn-sm mt-10"  %>

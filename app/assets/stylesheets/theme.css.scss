@@ -21,13 +21,21 @@ textarea.form-control {
 #logo {
   height: 25px;
 }
-
+.bioshow {
+  max-width: 200px;
+overflow-wrap: break-word;
+  margin-top: 30px;
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: justify;
+}
 #avatar {
   height: 100%;
   left: 0;
   top: 0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 .cover_profile {
   max-height: 350px;
@@ -5673,7 +5681,7 @@ line-height: 19px;
     padding-bottom: 20px;
 }   @media (max-width: 479px) {
   .bookcarttext {
-       height: 300px;
+       height: 240px;
        margin-bottom: 20px; } }
 
 
@@ -5943,7 +5951,13 @@ line-height: 19px;
      font-size: 25px;
     margin-top: 50px; } }
 
-
+.topreco {
+  border-top: 4px solid #03314b;
+}
+.bottomreco {
+  color: #ff6b6b;
+border-bottom: 4px solid #ff6b6b;
+}
 
 
 .githublink{
@@ -5963,12 +5977,6 @@ line-height: 19px;
   font-weight: bold;
 }
 
-#bio_show {
-  margin-top: 30px;
-  margin-left: 0px;
-  margin-right: 0px;
-  text-align: justify;
-}
 
 .stickycontact {
   position: fixed;
@@ -5980,6 +5988,7 @@ line-height: 19px;
 .avatar1 {
   height: 200px;
   width: 200px;
+  margin-bottom: 10px;
 
 }
 
@@ -5991,6 +6000,7 @@ line-height: 19px;
     position: relative;
     height: 100%;
     width: 100%;
+    margin-bottom: 10px;
 
 }
 
