@@ -4,11 +4,12 @@
                 <div class="post padding-medium">                  
                         <div class=" post-content">          
                                <div class = "row">
-                                  <div id="contact_show" class = "col-xs-12 col-md-3" align="center">
+                                  <div id="contact_show" class = "col-sm-12 col-md-3" align="center">
+                                    <div class = "stickycontact"> 
                                     
                                     <% if @user.avatar? %>
 
-                                      <%= image_tag @user.avatar.url, :class => "post-user mb-30", :id => "avatar", process :resize_to_fill => [150, 150]%>  
+                                      <%= image_tag @user.avatar.url, :class => "post-user mb-30", :id => "avatar"%>  
                                     <% else %>
                                       <%= image_tag "default_avatar.jpeg" %>
                                     <% end %>    
@@ -19,10 +20,10 @@
                                     <%end%>
                                     <p id="bio_show"><%= @user.bio %></p> 
                                     <a id = "contactshow" class="btn btn-primary" data-toggle="collapse" href="#comments-form"><span class="ti-email icon"></span> contacter</a>  
-
+                                   </div>
                                    </div>
 
-                                  <div class = "col-xs-12 col-md-offset-4 col-md-8">
+                                  <div class = "col-sm-12 col-md-offset-1 col-md-8">
         
                                         
                                     <section id="recoshow">

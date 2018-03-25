@@ -121,7 +121,7 @@ class ReviewsController < ApplicationController
     @review.book_cover = @results.items.first.link
 
   	if @review.save
-  		flash[:success] = "Vous avez créé un nouveau commentaire"
+  		flash[:success] = "Ta recommandation bouquin a bien été créée !"
   		redirect_to profile_path
   	else
   		render 'new'
@@ -140,7 +140,7 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      flash[:success] = "Vous avez bien édité votre commentaire"
+      flash[:success] = "Ta recommandation bouquin a bien été modifiée !"
       redirect_to profile_path
   	else render 'edit'
     end
@@ -149,7 +149,7 @@ class ReviewsController < ApplicationController
   def destroy 
     @review = Review.find(params[:id])
     if @review.destroy
-      flash[:success] = "Vous avez effacé votre commentaire"
+      flash[:success] = "Ta recommandation bouquin a bien été supprimée !"
     end
     redirect_to profile_path
   end

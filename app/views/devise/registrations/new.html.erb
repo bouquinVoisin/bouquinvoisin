@@ -22,18 +22,39 @@
                           <div class="form-group">
                               <%= f.text_field :name, autocomplete: "off", :class => "form-control", :placeholder => "Prénom"%>
                           </div>
-
+                          <br>
                           <div class="form-group">
-                              <%= f.text_field :address, autocomplete: "off", :class => "form-control", :placeholder => "Adresse"%><i style="font-size: 80%">L'adresse nous permettra de vous proposer les commentaires de vos voisins</i>
+                            <%= f.label "Adresse", id: "formlabeladdress" %>
+                              <%= f.text_field :address, autocomplete: "off", :class => "form-control", type: "search", id: "form-address", placeholder: "Adresse"%>
                           </div>
 
+                          
+
+                            <script src="https://cdn.jsdelivr.net/npm/places.js@1.6.0"></script>
+                            <script>
+                                (function() {
+                                    var placesAutocomplete = places({
+                                      container: document.querySelector('#form-address'),
+                                      type: 'address',
+                                      templates: {
+                                        value: function(suggestion) {
+                                          return suggestion.name;
+                                        }
+                                      }
+                                    });
+                                    placesAutocomplete.on('change', function resultSelected(e) {
+                                      document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+                                    });
+                                  })();
+                            </script>
+
                            <div class="form-group">
-                              <%= f.text_field :postal_code, autocomplete: "off", :class => "form-control", :placeholder => "Code postal"%><i style="font-size: 80%">L'adresse nous permettra de vous proposer les commentaires de vos voisins</i>
+                              <%= f.text_field :postal_code, autocomplete: "off", :class => "form-control", :placeholder => "Code postal", id: "form-zip"%>
                           </div>
                           
 
-                          <%= f.submit "S'inscrire", :id => "submit", :class => "btn btn-primary col-md-12 btn-lg text-center float-right"%>
-
+                          <%= f.submit "S'inscrire", :id => "submit", :class => "btn btn-primary col-md-12 btn-lg text-center float-right", style: "margin-bottom: 20px;"%>
+                          
                           <%= render "devise/shared/links" %>
                       <% end %>
               </div>                

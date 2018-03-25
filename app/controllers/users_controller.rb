@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
    @user = User.find(params[:id])
      if @user.update(user_params)
-       flash[:success] = "Vous avez bien édité votre profil"
+       flash[:success] = "Tu as ben mofifié ton profil"
        redirect_to profile_path
     else render 'edit'
     end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       format.js { render nothing: true }
     end 
     
-  else flash[:error] = "Votre message n'a pas été envoyé, veuillez réssayer ultérieurement ..."
+  else flash[:error] = "Ton message n'a pas été envoyé, réessaie plus tard ..."
     redirect_to @user
 end 
 

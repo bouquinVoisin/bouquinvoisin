@@ -1,8 +1,9 @@
 <div class = "row">
 	<div class="col-md-offset-4 col-md-4 col-xs-12">
- 	    <div class="contact-form contact-form-box border mt-30 mb-30 pull-left">
+ 	    <div class="contact-form contact-form-box border mt-30 mb-30 pull-left" style = "padding: 40px;">
             <div class = "row headtitle">
-                <h2> Créer une recommandation</h2><br>
+                <h2 class = "headtitle"> Ecris une recommandation bouquin</h2><br>
+                <p style = "font-size: 16px; margin-bottom: 20px;">Présente un livre que tu aimerais faire découvrir à tous tes voisins ! </p>
             </div>
             		<div class="new_form">
 	                    <%= form_for @review, class: "mt-30", url: {action: "create"} do |f| %> 
@@ -26,10 +27,10 @@
      
 	                        </div><br>	                        
 	                        <div class="form-group">
-	                         <%= f.text_area :body, class: "form-control", placeholder: "Dis nous pourquoi tu adores ce livre" %>           
+	                         <%= f.text_area :body, class: "form-control textreview", placeholder: "Dis nous pourquoi tu adores ce livre"  %>           
 	                        </div>
 
-	                        <%= f.submit "Crée ta recommandation", class: "btn btn-primary btn-sm mt-10 col-md-12 btn-lg text-center float-right" %>
+	                        <%= f.submit "Publie ta recommandation", class: "btn btn-primary btn-sm mt-10 col-md-12 btn-lg text-center float-right" %>
 					
 			                <% if @review.errors.any? %>
 						    	<div id="error_explanation">

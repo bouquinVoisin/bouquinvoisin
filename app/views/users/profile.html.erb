@@ -1,8 +1,9 @@
 <div class = "container">
   <div class="post padding-medium">       
     <div class = "row">
-        <div id="contact_show" class = "col-xs-12 col-md-3" align="center">
-                                    
+        <div id="contact_show" class = "col-sm-12 col-md-3" align="center">
+           <div class = "stickycontact">                         
+
             <% if @user.avatar? %>
               <div class="avatar1">
                 <div class="avatar2">
@@ -21,10 +22,10 @@
             <%=link_to edit_user_path(@user) do%>
                <span class="icon ti-pencil"></span>
              <% end %> 
-
+           </div>
         </div>
 
-        <div class = "col-xs-12 col-md-offset-4 col-md-8">                                        
+        <div class = "col-sm-12 col-md-offset-1 col-md-8">                                        
           <section id="recoshow">
               <div class = "row headtitle">
                 <% if @user.reviews.count == 0 %>
@@ -55,7 +56,7 @@
                           <%=link_to edit_review_path(review) do%>
                             <span class="icon ti-pencil"></span>
                           <% end %>
-                          <%=link_to(review, method: :delete, data: { confirm: 'Etes vous sûr ?' }) do%>
+                          <%=link_to(review, method: :delete, data: { confirm: 'Es-tu sûr ?' }) do%>
                             <span class="icon ti-trash"></span>
                           <% end %><br>
                           <span class="booktitle"><%=review.book_title%></span><br>
@@ -69,13 +70,6 @@
                           </div>
                             
                         </div>
-
-                        <%=link_to edit_review_path(review) do%>
-                             <span class="icon ti-pencil"></span>
-                        <% end %>
-                        <%=link_to(review, method: :delete, data: { confirm: 'Etes vous sûr ?' }) do%>
-                              <span class="icon ti-trash"></span>
-                        <% end %>
 
                       </div> 
                   <% end %> 

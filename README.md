@@ -38,3 +38,6 @@ http://railsforbeginners.com/chapters/chapter-9-infinite-scroll/
 
 - Google Analytics :
 https://gist.github.com/esBeee/545653241530f8f2c2e16371bec56f20
+
+- Algolia Places
+https://community.algolia.com/places/

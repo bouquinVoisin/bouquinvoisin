@@ -3,34 +3,54 @@
 	<div class="col-md-offset-4 col-md-4 col-xs-12">
 				     <div class="contact-form contact-form-box border mt-30 mb-30 pull-left">
             <div class = "row headtitle">
-                <h2> Editez votre profil</h2>
+                <h2> Modifie ton profil</h2>
             </div>
 
 
 	                    <%= form_for @user, method: :patch, class: "mt-30" do |f| %> 
 	                        <div class="form-group">
-	                        <p> Nous avons besoin de vous localiser afin de vous montrer les bouquins préférés de vos voisins. Donnez-nous votre exacte, ou bien votre rue, votre code postal ou votre ville. Votre adresse exacte ne sera jamais communiquée aux autres membres.</p>
-	                         <%= f.label "Votre prénom"%>
-	                         <%= f.text_field :name, class: "form-control", placeholder: "Votre prénom" %><br>
+	                         
+	                         <%= f.label "Ta photo"%>
+	                         <%= f.file_field :avatar, class: "form-control"%>           
+	                       
 
-	                         <%= f.label "Votre adresse"%>
-	                         <%= f.text_field :address, class: "form-control", placeholder: "Votre adresse" %><br>
 
-	                         <%= f.label "Votre code postal"%>
-	                         <%= f.text_field :postal_code, class: "form-control", placeholder: "Votre code postal" %>	           
+	                         <%= f.label "Prénom"%>
+	                         <%= f.text_field :name, class: "form-control"%><br>
+
+	                         <%= f.label "Adresse"%>
+	                         <%= f.text_field :address, class: "form-control", id: "form-address-user" %><br>
+
+	                         <%= f.label "Code postal"%>
+	                         <%= f.text_field :postal_code, class: "form-control", id: "form-zip-user" %>	           
 	                        </div>
 	                                              
 	                        <div class="form-group">
-	                         <%= f.label "Votre bio"%>
-	                         <%= f.text_area :bio, class: "form-control", placeholder: "Présentez-vous aux autres membres :)" %>           
+	                         <%= f.label "Bio"%>
+	                         <%= f.text_area :bio, class: "form-control", placeholder: "Présente-toi à tes voisins. Dis leur quel genre de bouquin tu aimes :)", style: "border: 1px solid #55627033;" %>           
 	                        </div>
 
-	                         <div class="form-group">
-	                         <%= f.label :Votre_photo%>
-	                         <%= f.file_field :avatar, class: "form-control", placeholder: "Votre photo de profil" %>           
-	                        </div>
-	
-	                        <%= f.submit "Edite ton profil", class: "btn btn-default col-md-12 btn-lg text-center float-right" %>
+
+                            <script src="https://cdn.jsdelivr.net/npm/places.js@1.6.0"></script>
+                            <script>
+                                (function() {
+                                    var placesAutocomplete = places({
+                                      container: document.querySelector('#form-address-user'),
+                                      type: 'address',
+                                      templates: {
+                                        value: function(suggestion) {
+                                          return suggestion.name;
+                                        }
+                                      }
+                                    });
+                                    placesAutocomplete.on('change', function resultSelected(e) {
+                                      document.querySelector('#form-zip-user').value = e.suggestion.postcode || '';
+                                    });
+                                  })();
+                            </script>
+
+
+	                        <%= f.submit "Modifier", class: "btn btn-default col-md-12 btn-lg text-center float-right" %>
 
 	                        	  <% if @user.errors.any? %>
 									    <div id="error_explanation">
@@ -47,4 +67,5 @@
 								  <% end %>
 	                    <%end%>
 	                </div>
+	                <%= link_to edit_user_registration_path do %><span class = "ti-settings"></span> Paramètres du compte <%end%>
 </div>

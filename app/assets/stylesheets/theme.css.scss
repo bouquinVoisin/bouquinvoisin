@@ -78,6 +78,9 @@ textarea.form-control {
 #see_review_btn {
   color: #ff5562;
 }
+#review_book_category {
+  width: 100%;
+}
 
 #title_index {
 color: #03314B;
@@ -4088,10 +4091,17 @@ button.close, .close {
   box-shadow: none;
   background: none;
   border-bottom: 2px solid #ecebeb;
-  height: 36px; }
+  height: 36px;
+  color: black;
+   }
   .form-control:focus {
     box-shadow: none;
-    outline: 0 none; }
+    outline: 0 none;
+    color: black;}
+
+  .font-control:placeholder {
+  color: red;
+}
 
 legend {
   border: none;
@@ -5917,11 +5927,10 @@ line-height: 19px;
 
 .headtitle {
   color: #03314B;
-  font-weight: 600;
-  
+  font-weight: 600;  
 } @media (max-width: 479px) {
   .headtitle {
-        font-size: 35px;
+        font-size: 1.5em;
         font-weight: 600; } }
 
 
@@ -5931,8 +5940,9 @@ line-height: 19px;
   margin-bottom: 40px;
 }  @media (max-width: 479px) {
 .headtitle h2{
-     font-size: 1.5em;
+     font-size: 25px;
     margin-top: 50px; } }
+
 
 
 
@@ -5960,10 +5970,10 @@ line-height: 19px;
   text-align: justify;
 }
 
-#contact_show {
+.stickycontact {
   position: fixed;
 } @media (max-width: 479px) {
-    #contact_show {
+    .stickycontact {
       position: static; } }
 
 
@@ -6007,5 +6017,18 @@ height: 200px;
 overflow: hidden;
 display: block;
 }
+
+#formlabeladdress {
+float : left;
+left: 10px;
+padding-left: 10px;
+font-weight: normal;
+}
+
+.textreview {
+  border: 1px solid #55627033; 
+  height: 40vh;
+}
+
 
 /*# sourceMappingURL=theme.css.map */
