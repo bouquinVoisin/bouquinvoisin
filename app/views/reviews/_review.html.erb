@@ -5,7 +5,9 @@
 					            <% user_link = User.find(review.user_id) %>
 
 									<% if review.book_cover %>
-									<%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%>								
+									<a href="#" data-toggle="modal" id="see_review_btn" data-target="#service-0<%=review.id%>" >
+									<%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%>	
+									</a>							
 									<% end %>
 
                     </div>
