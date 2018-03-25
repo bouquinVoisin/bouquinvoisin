@@ -1,94 +1,169 @@
-    <div class="container">
-        <section id = "profileshow">
-            <div class="row ">
-                <div class="post padding-medium">                  
-                        <div class=" post-content">          
-                               <div class = "row">
-                                  <div id="contact_show" class = "col-xs-12 col-md-3" align="center">
+<div class = "container">
+  <div class="post padding-medium">       
+    <div class = "row">
+        <div id="contact_show" class = "col-xs-12 col-md-3" align="center">
                                     
-                                    <% if @user.avatar? %>
-                                      <div class="avatar1">
-                                        <div class="avatar2">
-                                          <%= image_tag @user.avatar.url, :id => "avatar"%>  
-                                        </div>
-                                      </div>
-                                    <% else %>
-                                      <%= image_tag "default_avatar.jpeg" %>
-                                    <% end %>    
+            <% if @user.avatar? %>
+              <div class="avatar1">
+                <div class="avatar2">
+                  <%= image_tag @user.avatar.url, :id => "avatar"%>  
+                </div>
+              </div>
+            <% else %>
+              <%= image_tag "default_avatar.jpeg" %>
+            <% end %>    
                             
-                                    <h3><%= @user.name %></h3>
-                                    <% if @user.postal_code? %>
-                                      <span class="ti-location-pin icon"></span> <%= @user.postal_code%>
-                                    <%end%>
-                                    <p id="bio_show"><%= @user.bio %></p> 
-                                    <%=link_to edit_user_path(@user) do%>
-                                       <span class="icon ti-pencil"></span>
-                                     <% end %> 
+            <h3 style = "max-width: 200px;"><%= @user.name %></h3>
+            <% if @user.postal_code? %>
+              <span class="ti-location-pin icon"></span> <%= @user.postal_code%>
+            <%end%>
+            <p id="bio_show"><%= @user.bio %></p> 
+            <%=link_to edit_user_path(@user) do%>
+               <span class="icon ti-pencil"></span>
+             <% end %> 
 
-                                   </div>
+        </div>
 
-                                  <div class = "col-xs-12 col-md-offset-4 col-md-8">                                        
-                                    <section id="recoshow">
-                                        <div class = "row headtitle">
-                                            <% if @user.reviews.count == 0 %>
-                                              <h2><%=@user.name%> n'a pas encore écrit de recommandations !</h2>  
-                                            <%elsif @user.reviews.count == 1 %>
-                                              <h2> La recommandation de <%=@user.name%></h2>
-                                            <% else%>
-                                              <h2> Les <%=@user.reviews.count%> recommandations de <%=@user.name%></h2>
-                                            <% end %>
-                                        </div>
+        <div class = "col-xs-12 col-md-offset-4 col-md-8">                                        
+          <section id="recoshow">
+              <div class = "row headtitle">
+                <% if @user.reviews.count == 0 %>
+                  <h2><%=@user.name%>, quels livres recommanderais-tu ?</h2>  
+                  <p> Présente tes 3 livres préférés</p>
+                <%elsif @user.reviews.count == 1 %>
+                  <h2>Ta recommandation</h2>
+                  <p> Merci pour ta recommandation ! Tu peux en écrire encore 2.</p>
+               
+                 <%elsif @user.reviews.count == 2 %>
+                  <h2>Tes recommandations</h2>
+                  <p> Merci pour tes recommandations ! Tu peux en écrire encore 1.</p>
+                  <%else%>
+                  <h2>Tes recommandations</h2>
+                 <p> Merci pour tes recommandations ! </p>
+                <% end %>
+              </div>
                                
-                                        <div class="row mt-30">
+              <div class="row mt-30">
+             
+                  <% @reviews.each do |review| %>       
+                      <div class = "col-xs-12 col-md-4 wow fadeInLeft">               
+                        <% if review.book_cover %>
+                          <%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%>
+                        <% end %>
+
+                        <div class = "bookdetails">
+                          <%=link_to edit_review_path(review) do%>
+                            <span class="icon ti-pencil"></span>
+                          <% end %>
+                          <%=link_to(review, method: :delete, data: { confirm: 'Etes vous sûr ?' }) do%>
+                            <span class="icon ti-trash"></span>
+                          <% end %><br>
+                          <span class="booktitle"><%=review.book_title%></span><br>
+                          
+                        
+                          <span class="bookauthor"> de <%=review.book_author %></span><br><br>
+                          <div class = "rowlike"><span class = "bookcategory"><%=review.book_category %></span>
+                             <div id ="<%=review.id%>_likescount">
+                                <%= render :partial => 'likescount', :locals => { :review => review} %>
+                             </div>
+                          </div>
+                            
+                        </div>
+
+                        <%=link_to edit_review_path(review) do%>
+                             <span class="icon ti-pencil"></span>
+                        <% end %>
+                        <%=link_to(review, method: :delete, data: { confirm: 'Etes vous sûr ?' }) do%>
+                              <span class="icon ti-trash"></span>
+                        <% end %>
+
+                      </div> 
+                  <% end %> 
+              
+                                        
+                 <% if @reviews.count <3 %>
+                    <%(3-@reviews.count).times do%>
+                    <%=link_to new_review_path do%>
+                      <div class = "col-xs-12 col-md-4 wow fadeInLeft"> 
+                        <div class="services-box text-center shadow">
+                                <span class="icon"> + </span>
+                                <h4>Ecris une recommandation</h4>
+                                <p class="fixed-height">Fais découvrir un de tes livres préférés</p>
+                                 
+                        </div>
+                      </div> 
+                    <%end%>
+                    <%end%>            
+                 <%end %>                
+                                        
+              </div>
+
+             <div class = "row headtitle">
+              <h2>Ta bibliothèque</h2>
+                <% if @reviews_liked.count == 0 %>               
+                     <p> Tu n'as pas encore ajouté de livres à ta bibliothèque. </p>
+                <%elsif @user.reviews.count == 1 %>                  
+                     <p> Tu as ajouté un livre à ta bibliothèque. Ajoutes-en d'autres.</p>                              
+                  <%else%>                
+                     <p> Voici les livres que tu as ajouté à ta bibliothèque </p>
+                <% end %>
+             </div>
+                               
+             <div class="row mt-30" id ="likecards">
+             
+                  <% @reviews_liked.each do |review| %>
+                    <div class = "col-xs-6 col-md-3" >    
+                      <a href="#"  data-toggle="modal"  data-target="#service-0<%=review.id%>">
+                        <div class = "wow fadeInLeft">               
+                          <% if review.book_cover %>
+                            <%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover_like")%>
+                          <% end %>
+                       </div>
+                      </a>
+                    </div> 
+
+
+                    <% user_link = User.find(review.user_id) %>
+                    <div id="service-0<%=review.id%>" class="modal fade services-modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content shadow">
+                                <a class="close" data-dismiss="modal"><span class="ti-close"></span></a>
+                                 <div class="modal-body">
+                                    <div class="post-entry post-entry-modal">
+
                                        
-                                            <% @reviews.each do |review| %>       
-                                                <div class = "col-xs-offset-1 col-xs-10 col-md-4">               
-                                                  <% if review.book_cover %>
-                                                    <%= image_tag(review.book_cover, :alt=>"offer image", :id => "image_cover")%>
-                                                  <% end %>
-                                                  <div class = "bookdetails">
-                                                    <span class="booktitle"><%=review.book_title%></span><br>
-                                                    <span class="bookauthor"> de <%=review.book_author %></span><br><br>
-                                                    <div class = "rowlike"><span class = "bookcategory"><%=review.book_category %></span>
-                                                       <div id ="<%=review.id%>_likescount">
-                                                          <%= render :partial => 'likescount', :locals => { :review => review} %>
-                                                       </div>
-                                                    </div>
-                                                      
-                                                  </div>
-                                                  <%=link_to edit_review_path(review) do%>
-                                                    <span class="icon ti-pencil"></span>
-                                                  <% end %>
-                                                  <%=link_to(review, method: :delete, data: { confirm: 'Etes vous sûr ?' }) do%>
-                                                    <span class="icon ti-trash"></span>
-                                                  <% end %>
-                                                </div> 
-                                                <% end %> 
-                                        </div>
-                                  </div>
+                                          <div class = "row">
+                                            <div class = "col-xs-12 col-md-6">
+                                               <%if review.book_cover%> <%= image_tag review.book_cover, style: "width: 100%"%><%end %>  
+                                            </div>
+                                            <div class = "col-xs-12 col-md-6">
+                                              <h4 style = "margin-top: 20px;">La recommandation de <%=user_link.name%></h4>
+                                                <span class="booktitle"><%=review.book_title%></span><br>
+                                                <span class="bookauthor"> de <%=review.book_author %></span><br>
+                                                <span class = "bookcategory"><%=review.book_category %></span> 
 
-
-
-
-
-                                               
-
-
-
+                                                <p><%=review.body%></p> 
+                                                <%= link_to destroy_popup_review_likes_path(review), method: :delete, remote: true, class: "btn btn-default unlike" do %>
+                                                <span class="ti-heart"></span>Retirer de ma bibli<%end%>
+                                            </div>
+                                          </div>
+                        
+                                    </div>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                  <% end %>
 
     
 
 
-                                                       
-                                        </div>
+               </div> 
+             </section>
+           </div>  
 
 
-                                           
-                                    </section>
-                               </div> 
-                        </div>                 
-                </div>
-            </div>
-        </section>
+        </div>
+      </div>
     </div>
- 
+   

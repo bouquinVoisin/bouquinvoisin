@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
 #Reviews
 resources :reviews do 
-    resource :likes, controller: 'likes'
+    resource :likes, controller: 'likes' do       
+       delete "destroy_popup", on: :member
+       end
     collection do
       get :cp
       get :choose_category
@@ -31,12 +33,6 @@ resources :reviews do
   end
 
 
-
-#Books - en STAND BY
-  get 'books/new'
-  get 'books/search'
-  get 'books/autocomplete'
-  get 'books/index'
 
 
 
