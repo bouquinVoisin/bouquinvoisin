@@ -7,7 +7,11 @@
                                   <div id="contact_show" class = "col-xs-12 col-md-3" align="center">
                                     
                                     <% if @user.avatar? %>
-                                      <%= image_tag @user.avatar.url, :class => "post-user mb-30", :id => "avatar"%>  
+                                      <div class="avatar1">
+                                        <div class="avatar2">
+                                          <%= image_tag @user.avatar.url, :id => "avatar"%>  
+                                        </div>
+                                      </div>
                                     <% else %>
                                       <%= image_tag "default_avatar.jpeg" %>
                                     <% end %>    

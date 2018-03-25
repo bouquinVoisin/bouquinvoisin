@@ -23,11 +23,11 @@ textarea.form-control {
 }
 
 #avatar {
-  height: 200px;
-  border: 10px solid #fff;
-  border-radius: 1000px;
-  left: 50%;
-  max-width: 30vh;
+  height: 100%;
+  left: 0;
+  top: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
 }
 .cover_profile {
   max-height: 350px;
@@ -5949,4 +5949,23 @@ line-height: 19px;
 } @media (max-width: 479px) {
     #contact_show {
       position: static; } }
+
+.avatar1 {
+  height: 200px;
+  width: 200px;
+
+}
+
+.avatar2 {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+}
+
+
 /*# sourceMappingURL=theme.css.map */
