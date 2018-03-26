@@ -14,7 +14,7 @@
               <%= image_tag "default_avatar.jpeg" %>
             <% end %>    
             <%=link_to edit_user_path(@user), style: "margin-top:10px;" do%>
-               <span class="icon ti-pencil"></span>Modifier le profil
+               <br><span class="icon ti-pencil"></span>Modifier le profil
              <% end %>                              
             <h3 style = "max-width: 200px;"><%= @user.name %></h3>
             <% if @user.postal_code? %>
