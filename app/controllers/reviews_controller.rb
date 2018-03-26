@@ -10,8 +10,8 @@ class ReviewsController < ApplicationController
 
   def checked_results(reviews)     
      if no_results(reviews)
-        @phrase = "Nous n'avons trouvé aucune recommandation autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
-        @users = User.near([current_user.latitude, current_user.longitude], 2000)
+        @phrase = "Aucun résultat autour de chez toi. Tu peux jeter un oeil aux recommandations des membres ailleurs en France. N'hésite pas à inviter tes voisins :)"
+        @users = User.near([current_user.latitude, current_user.longitude], 2000).where.not(id: current_user.id)
         @reviews = []
         @users.each do |user|
           user.reviews.each do |review|
