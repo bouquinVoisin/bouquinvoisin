@@ -41,3 +41,9 @@ https://gist.github.com/esBeee/545653241530f8f2c2e16371bec56f20
 
 - Algolia Places
 https://community.algolia.com/places/
+
+- Conseils SEO de Thibaud
+https://github.com/Tibaud/atelier-seo 
+
+- gmail/ ovh
+https://docs.ovh.com/fr/emails/mail-mutualise-guide-configuration-dun-e-mail-mutualise-ovh-sur-linterface-de-gmail/

@@ -29,6 +29,13 @@ overflow-wrap: break-word;
   margin-right: 0px;
   text-align: justify;
 }
+
+#manifest {
+  text-align: justify;
+}
+#manifest p {
+  color: black;
+}
 #avatar {
   height: 100%;
   left: 0;
@@ -47,7 +54,7 @@ overflow-wrap: break-word;
 
  #bg1 {
   background:
-  linear-gradient(to right, #ffffff, #f2f2f2b3, #f1f2f700), url(/assets/slider/slide4.jpg);
+  linear-gradient(to right, #ffffff, #f2f2f2b3, #f1f2f700), url(/assets/slider/slide.png);
   background-size: cover;
   background-position: center;
   vertical-align: center;
